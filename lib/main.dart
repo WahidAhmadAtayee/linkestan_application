@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:linkestan_application/splash_screen.dart';
+import 'package:linkestan_application/communication_network_screem.dart';
 
-
+// import 'package:linkestan_application/splash_screen.dart';
 
 
 void main() {
@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SplashScreen();
+    // return SplashScreen();
+    return Communication_Network();
   }
 }

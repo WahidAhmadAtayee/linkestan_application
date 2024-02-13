@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'communication_network_screem.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,6 +9,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String? selectedValue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,8 +87,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     color: Color.fromRGBO(255, 255, 255, 1),
                                   ),
-                                  child: Image.asset(
-                                      "images/visiting_card.png"),
+                                  child:
+                                      Image.asset("images/visiting_card.png"),
                                 ),
                                 Text(
                                   "Visiting Card",
@@ -104,7 +106,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           top: 65.0,
                           left: 240.0,
                           child: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return Communication_Network();
+                                }),
+                              );
+                            },
                             child: Column(
                               children: [
                                 Container(
@@ -164,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: Color.fromRGBO(255, 255, 255, 1),
                                   ),
                                   child:
-                                      Image.asset("images/contacts.png"),
+                                      Image.asset("images/contacts_logo.png"),
                                 ),
                                 Text(
                                   "Contacts",
