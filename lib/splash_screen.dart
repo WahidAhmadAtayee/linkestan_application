@@ -8,28 +8,26 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Expanded(
+          Container(
+            color: Color.fromRGBO(255, 0, 0, 1),
             child: Container(
-              color: Color.fromRGBO(255, 0, 0, 1),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(260),
-                  ),
-                  color: Color.fromRGBO(255, 255, 255, 1),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(255),
                 ),
-                width: double.infinity,
-                height: 500,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 30.0,
-                    left: 90.0,
-                    right: 50.0,
-                    bottom: 20.0,
-                  ),
-                  child: Image.asset(
-                    "images/LinkestanLogo.png",
-                  ),
+                color: Color.fromRGBO(255, 255, 255, 1),
+              ),
+              width: double.infinity,
+              height: 500,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 30.0,
+                  left: 90.0,
+                  right: 50.0,
+                  bottom: 20.0,
+                ),
+                child: Image.asset(
+                  "images/LinkestanLogo.png",
                 ),
               ),
             ),
@@ -40,7 +38,7 @@ class SplashScreen extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(167),
+                    topRight: Radius.circular(170),
                   ),
                   color: Color.fromARGB(255, 255, 0, 0),
                 ),
@@ -49,6 +47,9 @@ class SplashScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(
+                      height: 50.0,
+                    ),
                     Text(
                       "Welcome to\nLinkestan App",
                       style: TextStyle(
@@ -57,7 +58,7 @@ class SplashScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 85.0,
+                      height: 100.0,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

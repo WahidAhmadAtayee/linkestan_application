@@ -101,6 +101,8 @@ class _Communication_NetworkState extends State<Communication_Network> {
                         ),
                         color: Color.fromRGBO(255, 0, 0, 1),
                         child: ListTile(
+                          contentPadding: EdgeInsets.only(top: 1.5, bottom: 1.5, left: 1.5, right: 10.5,),
+                          // work
                           title: Text(
                             "${name[index]}",
                             style: TextStyle(
@@ -109,7 +111,7 @@ class _Communication_NetworkState extends State<Communication_Network> {
                             ),
                           ),
                           leading: Container(
-                            width: 80.0,
+                            width: 85.0,
                             height: 50.0,
                             color: Color.fromRGBO(255, 255, 255, 1),
                             child: Image.asset("${pic[index]}"),
