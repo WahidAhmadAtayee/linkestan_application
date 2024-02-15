@@ -36,8 +36,8 @@ class _WebsitesState extends State<Websites> {
                 alignment: AlignmentDirectional.topStart,
                 children: [
                   Positioned(
-                    top: 10.0,
-                    left: 10.0,
+                    top: 15.0,
+                    left: 15.0,
                     child: IconButton(
                       onPressed: () {
                         //
@@ -51,7 +51,8 @@ class _WebsitesState extends State<Websites> {
                   ),
                   Positioned(
                     top: 15.0,
-                    left: 150.0,
+                    left: 100.0,
+                    right: 100.0,
                     child: Text(
                       "Websites",
                       style: TextStyle(
@@ -83,6 +84,7 @@ class _WebsitesState extends State<Websites> {
                     top: 150.0,
                     left: 30.0,
                     right: 30.0,
+                    bottom: 30.0,
                   ),
                   itemBuilder: (context, index) {
                     return Expanded(

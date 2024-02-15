@@ -25,8 +25,8 @@ class About extends StatelessWidget {
                     alignment: AlignmentDirectional.topStart,
                     children: [
                       Positioned(
-                        top: 10.0,
-                        left: 10.0,
+                        top: 15.0,
+                        left: 15.0,
                         child: IconButton(
                           onPressed: () {
                             //
@@ -98,8 +98,7 @@ class About extends StatelessWidget {
               ),
             ],
           ),
-        
-        Positioned(
+          Positioned(
             top: 80.0,
             left: 20.0,
             child: Container(
@@ -107,7 +106,7 @@ class About extends StatelessWidget {
               width: 140.0,
               child: CircleAvatar(
                 backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-                // Add your picture
+                // Add your picture => Image.asset(""),
                 child: Text(
                   "Photo",
                   style: TextStyle(

@@ -42,8 +42,8 @@ class _Communication_NetworkState extends State<Communication_Network> {
                 alignment: AlignmentDirectional.topStart,
                 children: [
                   Positioned(
-                    top: 10.0,
-                    left: 10.0,
+                    top: 15.0,
+                    left: 15.0,
                     child: IconButton(
                       onPressed: () {
                         // 
@@ -58,6 +58,7 @@ class _Communication_NetworkState extends State<Communication_Network> {
                   Positioned(
                     top: 15.0,
                     left: 100.0,
+                    right: 100.0,
                     child: Text(
                       "Communication\nNetwork",
                       style: TextStyle(
@@ -84,12 +85,12 @@ class _Communication_NetworkState extends State<Communication_Network> {
                 ),
                 width: double.infinity,
                 height: 700,
-                //
                 child: ListView.separated(
                   padding: const EdgeInsets.only(
                     top: 150.0,
                     left: 30.0,
                     right: 30.0,
+                    bottom: 50.0,
                   ),
                   itemBuilder: (context, index) {
                     return Expanded(
@@ -102,7 +103,6 @@ class _Communication_NetworkState extends State<Communication_Network> {
                         color: Color.fromRGBO(255, 0, 0, 1),
                         child: ListTile(
                           contentPadding: EdgeInsets.only(top: 1.5, bottom: 1.5, left: 1.5, right: 10.5,),
-                          // work
                           title: Text(
                             "${name[index]}",
                             style: TextStyle(
