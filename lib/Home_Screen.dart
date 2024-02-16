@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkestan_application/contacts_screen.dart';
+import 'package:linkestan_application/notes_screen.dart';
 import 'package:linkestan_application/websites_screen.dart';
 import 'communication_network_screem.dart';
 
@@ -264,7 +265,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             left: 20.0,
                             child: GestureDetector(
                               onTap: () {
-                                //
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return Notes();
+                                  }),
+                                );
                               },
                               child: Column(
                                 children: [

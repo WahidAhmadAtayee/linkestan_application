@@ -51,6 +51,7 @@ class _SignInState extends State<SignIn> {
                     child: Column(
                       children: [
                         TextField(
+                          // controller: ,
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
@@ -71,6 +72,7 @@ class _SignInState extends State<SignIn> {
                         ),
                         SizedBox(height: 10.0),
                         TextField(
+                          // controller: ,
                           cursorColor: Color.fromRGBO(255, 0, 0, 1),
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
