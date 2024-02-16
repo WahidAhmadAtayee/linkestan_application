@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/contacts_screen.dart';
+import 'package:linkestan_application/websites_screen.dart';
 import 'communication_network_screem.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,7 +11,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String? selectedValue;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +88,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             top: 65.0,
                             left: 70.0,
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                //
+                              },
                               child: Column(
                                 children: [
                                   Container(
@@ -170,7 +175,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             top: 280.0,
                             left: 55.0,
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return Contacts();
+                                  }),
+                                );
+                              },
                               child: Column(
                                 children: [
                                   Container(
@@ -207,7 +219,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             top: 280.0,
                             right: 35.0,
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return Websites();
+                                  }),
+                                );
+                              },
                               child: Column(
                                 children: [
                                   Container(
@@ -244,7 +263,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             top: 487.0,
                             left: 20.0,
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                //
+                              },
                               child: Column(
                                 children: [
                                   Container(

@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/signin_screen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin{
+  @override
+  void initState() {
+    _navigator();
+    super.initState();
+  }
+  void _navigator() async {
+    await Future.delayed(Duration(seconds: 5), () {
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return SignIn();
+        },
+      ));
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

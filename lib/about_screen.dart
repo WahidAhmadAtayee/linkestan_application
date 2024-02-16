@@ -76,7 +76,7 @@ class About extends StatelessWidget {
                             "Information",
                             style: TextStyle(
                               fontSize: 30.0,
-                              color: Color.fromARGB(255, 255, 0, 0),
+                              color: Color.fromRGBO(255, 0, 0, 1),
                             ),
                           ),
                         ),

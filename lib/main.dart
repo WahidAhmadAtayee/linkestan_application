@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/signin_screen.dart';
 import 'package:linkestan_application/splash_screen.dart';
 
 
@@ -7,6 +8,9 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyApp(),
+      routes: {
+        '/nextScreen': (context) => SignIn(),
+      },
     ),
   );
 }
