@@ -126,6 +126,13 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                                   TextField(
                                     // controller: ,
                                     decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        borderSide: BorderSide(
+                                          color: Color.fromRGBO(255, 0, 0, 1),
+                                        ),
+                                      ),
                                       prefixIcon: Icon(
                                         Icons.web,
                                         color: Color.fromRGBO(255, 17, 0, 1),
@@ -143,6 +150,13 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                                   TextField(
                                     // controller: ,
                                     decoration: InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        borderSide: BorderSide(
+                                          color: Color.fromRGBO(255, 0, 0, 1),
+                                        ),
+                                      ),
                                       prefixIcon: Icon(
                                         Icons.description,
                                         color: Color.fromRGBO(255, 17, 0, 1),
@@ -278,6 +292,14 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                                         TextField(
                                           // controller: ,
                                           decoration: InputDecoration(
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              borderSide: BorderSide(
+                                                color: Color.fromRGBO(
+                                                    255, 0, 0, 1),
+                                              ),
+                                            ),
                                             prefixIcon: Icon(
                                               Icons.web,
                                               color:
@@ -297,6 +319,14 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                                         TextField(
                                           // controller: ,
                                           decoration: InputDecoration(
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              borderSide: BorderSide(
+                                                color: Color.fromRGBO(
+                                                    255, 0, 0, 1),
+                                              ),
+                                            ),
                                             prefixIcon: Icon(
                                               Icons.description,
                                               color:

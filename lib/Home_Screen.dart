@@ -120,6 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 20.0,
                     ),
                     DropdownButton(
+                      icon: null,
                       value: selectedValue,
                       onChanged: (String? newValue) {
                         setState(() {

@@ -203,9 +203,7 @@ class _SignUpState extends State<SignUp> {
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              height: 10.0,
-                            ),
+                            SizedBox(height: 10.0),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -266,7 +264,7 @@ class _SignUpState extends State<SignUp> {
                   child: IconButton(
                     onPressed: () {
                       showModalBottomSheet(
-                        barrierColor: Color.fromRGBO(255, 0, 0, 0.3),
+                          barrierColor: Color.fromRGBO(255, 0, 0, 0.3),
                           showDragHandle: true,
                           backgroundColor: Color.fromRGBO(255, 255, 255, 0.8),
                           context: context,
@@ -282,7 +280,7 @@ class _SignUpState extends State<SignUp> {
                                     Expanded(
                                       child: InkWell(
                                         onTap: () {
-                                          // 
+                                          //
                                         },
                                         child: SizedBox(
                                           child: Column(
@@ -290,12 +288,14 @@ class _SignUpState extends State<SignUp> {
                                               Icon(
                                                 Icons.image,
                                                 size: 70,
-                                                color: Color.fromRGBO(255, 0, 0, 1),
+                                                color: Color.fromRGBO(
+                                                    255, 0, 0, 1),
                                               ),
                                               Text(
                                                 "Gallery",
                                                 style: TextStyle(
-                                                  color: Color.fromRGBO(255, 0, 0, 1),
+                                                  color: Color.fromRGBO(
+                                                      255, 0, 0, 1),
                                                 ),
                                               ),
                                             ],
@@ -306,7 +306,7 @@ class _SignUpState extends State<SignUp> {
                                     Expanded(
                                       child: InkWell(
                                         onTap: () {
-                                          // 
+                                          //
                                         },
                                         child: SizedBox(
                                           child: Column(
@@ -314,12 +314,14 @@ class _SignUpState extends State<SignUp> {
                                               Icon(
                                                 Icons.camera_alt,
                                                 size: 70,
-                                                color: Color.fromRGBO(255, 0, 0, 1),
+                                                color: Color.fromRGBO(
+                                                    255, 0, 0, 1),
                                               ),
                                               Text(
                                                 "Camera",
                                                 style: TextStyle(
-                                                  color: Color.fromRGBO(255, 0, 0, 1),
+                                                  color: Color.fromRGBO(
+                                                      255, 0, 0, 1),
                                                 ),
                                               ),
                                             ],

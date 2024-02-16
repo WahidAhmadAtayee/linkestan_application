@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:linkestan_application/signin_screen.dart';
-import 'package:linkestan_application/splash_screen.dart';
+import 'package:linkestan_application/contacts_screen.dart';
+// import 'package:linkestan_application/signin_screen.dart';
+// import 'package:linkestan_application/splash_screen.dart';
 
 
 void main() {
@@ -8,9 +9,9 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyApp(),
-      routes: {
-        '/nextScreen': (context) => SignIn(),
-      },
+      // routes: {
+      //   '/nextScreen': (context) => SignIn(),
+      // },
     ),
   );
 }
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SplashScreen();
+    // return SplashScreen();
+    return Contacts();
   }
 }
