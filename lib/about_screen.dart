@@ -29,7 +29,7 @@ class About extends StatelessWidget {
                         left: 15.0,
                         child: IconButton(
                           onPressed: () {
-                            //
+                            Navigator.pop(context);
                           },
                           icon: Icon(
                             Icons.arrow_back,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/show_details_websites_screen.dart';
 
 class Websites extends StatefulWidget {
   const Websites({super.key});
@@ -40,7 +41,7 @@ class _WebsitesState extends State<Websites> {
                     left: 15.0,
                     child: IconButton(
                       onPressed: () {
-                        //
+                        Navigator.pop(context);
                       },
                       icon: Icon(
                         Icons.arrow_back,
@@ -112,7 +113,12 @@ class _WebsitesState extends State<Websites> {
                             color: Color.fromRGBO(255, 0, 0, 1),
                           ),
                           onTap: () {
-                            //
+                            Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return ShowDetailsWebsites();
+                                  }),
+                                );
                           },
                         ),
                       ),

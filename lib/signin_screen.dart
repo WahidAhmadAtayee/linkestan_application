@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home_screen.dart';
+
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
 
@@ -102,7 +104,14 @@ class _SignInState extends State<SignIn> {
                           height: 15.0,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return HomeScreen();
+                              }),
+                            );
+                          },
                           child: Text(
                             "Sign In",
                             style: TextStyle(

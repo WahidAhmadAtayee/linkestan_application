@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/home_screen.dart';
 
 class ShowDetailsWebsites extends StatefulWidget {
   const ShowDetailsWebsites({super.key});
@@ -44,7 +45,7 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                     left: 15.0,
                     child: IconButton(
                       onPressed: () {
-                        //
+                        Navigator.pop(context);
                       },
                       icon: Icon(
                         Icons.arrow_back,
@@ -71,7 +72,12 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                     right: 15.0,
                     child: IconButton(
                       onPressed: () {
-                        //
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return HomeScreen();
+                          }),
+                        );
                       },
                       icon: Icon(
                         Icons.home,
@@ -223,7 +229,6 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                 height: 700,
                 child: ListView.separated(
                   padding: const EdgeInsets.all(50.0),
-                  
                   itemBuilder: (context, index) {
                     return Expanded(
                       child: Container(
@@ -250,8 +255,8 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                                             icon: Icon(
                                               Icons.close,
                                               size: 20,
-                                              color: Color.fromRGBO(
-                                                  255, 0, 0, 1),
+                                              color:
+                                                  Color.fromRGBO(255, 0, 0, 1),
                                             ),
                                             onPressed: () {
                                               Navigator.pop(context);
@@ -275,8 +280,8 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                                           decoration: InputDecoration(
                                             prefixIcon: Icon(
                                               Icons.web,
-                                              color: Color.fromRGBO(
-                                                  255, 0, 0, 1),
+                                              color:
+                                                  Color.fromRGBO(255, 0, 0, 1),
                                             ),
                                             labelText: "URL",
                                             border: OutlineInputBorder(
@@ -294,8 +299,8 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                                           decoration: InputDecoration(
                                             prefixIcon: Icon(
                                               Icons.description,
-                                              color: Color.fromRGBO(
-                                                  255, 17, 0, 1),
+                                              color:
+                                                  Color.fromRGBO(255, 17, 0, 1),
                                             ),
                                             labelText: "Description",
                                             border: OutlineInputBorder(
@@ -329,8 +334,7 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                                                 RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(
-                                                        30.0),
+                                                    BorderRadius.circular(30.0),
                                               ),
                                             ),
                                           ),
@@ -399,9 +403,8 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                                                   MaterialStateProperty.all(
                                                 Size(100, 30),
                                               ),
-                                              shape:
-                                                  MaterialStateProperty.all<
-                                                      RoundedRectangleBorder>(
+                                              shape: MaterialStateProperty.all<
+                                                  RoundedRectangleBorder>(
                                                 RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -430,9 +433,8 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
                                                   MaterialStateProperty.all(
                                                 Size(100, 30),
                                               ),
-                                              shape:
-                                                  MaterialStateProperty.all<
-                                                      RoundedRectangleBorder>(
+                                              shape: MaterialStateProperty.all<
+                                                  RoundedRectangleBorder>(
                                                 RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(

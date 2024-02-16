@@ -282,7 +282,7 @@ class _SignUpState extends State<SignUp> {
                                     Expanded(
                                       child: InkWell(
                                         onTap: () {
-                                          // padding: const EdgeInsets.all(18.0),
+                                          // 
                                         },
                                         child: SizedBox(
                                           child: Column(

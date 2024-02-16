@@ -46,7 +46,7 @@ class _Communication_NetworkState extends State<Communication_Network> {
                     left: 15.0,
                     child: IconButton(
                       onPressed: () {
-                        // 
+                        Navigator.pop(context);
                       },
                       icon: Icon(
                         Icons.arrow_back,

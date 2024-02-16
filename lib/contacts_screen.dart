@@ -54,7 +54,7 @@ class _ContactsState extends State<Contacts> {
                     left: 10.0,
                     child: IconButton(
                       onPressed: () {
-                        //
+                        Navigator.pop(context);
                       },
                       icon: Icon(
                         Icons.arrow_back,

@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:linkestan_application/contacts_screen.dart';
 import 'package:linkestan_application/notes_screen.dart';
+import 'package:linkestan_application/visiting_card_screen.dart';
 import 'package:linkestan_application/websites_screen.dart';
+import 'about_screen.dart';
 import 'communication_network_screem.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,11 +16,213 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
+  String? selectedValue;
+  List languages = ["English", "دری", "پښتو"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0.0,
+        title: Text(
+          "Home",
+          style: TextStyle(
+            color: Color.fromRGBO(255, 255, 255, 1),
+            fontSize: 30.0,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Color.fromRGBO(255, 0, 0, 1),
+      ),
+      drawer: Drawer(
+        shadowColor: const Color.fromRGBO(255, 0, 0, 1),
+        backgroundColor: Color.fromARGB(210, 255, 255, 255),
+        width: 268.0,
+        child: Expanded(
+          child: Column(
+            children: [
+              UserAccountsDrawerHeader(
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Color.fromRGBO(255, 0, 0, 1),
+                ),
+                accountName: ListTile(
+                  leading: Icon(
+                    Icons.account_circle,
+                    color: Color.fromRGBO(255, 255, 255, 1),
+                    size: 15.0,
+                  ),
+                  title: Text(
+                    "Full-Name",
+                    style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      color: Color.fromARGB(197, 255, 224, 224),
+                    ),
+                  ),
+                  minLeadingWidth: 0.5,
+                ),
+                accountEmail: ListTile(
+                  leading: Icon(
+                    Icons.phone_android,
+                    color: Color.fromRGBO(255, 255, 255, 1),
+                    size: 15.0,
+                  ),
+                  title: Text(
+                    "07xxxxxxxx",
+                    style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      color: Color.fromARGB(197, 255, 224, 224),
+                    ),
+                  ),
+                  minLeadingWidth: 0.5,
+                ),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                        "images/UserAccountsDrawerHeader_background.JPG"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  size: 30.0,
+                  color: Color.fromRGBO(255, 0, 0, 1),
+                ),
+                title: Text(
+                  "Settings",
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    color: Color.fromRGBO(255, 0, 0, 1),
+                  ),
+                ),
+                minLeadingWidth: 1.0,
+              ),
+              Divider(
+                color: Color.fromRGBO(255, 0, 0, 1),
+                indent: 20.0,
+                endIndent: 20.0,
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.language,
+                  color: Color.fromRGBO(255, 0, 0, 1),
+                ),
+                title: Row(
+                  children: [
+                    Text(
+                      "Language",
+                      style: TextStyle(
+                        color: Color.fromRGBO(255, 0, 0, 1),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20.0,
+                    ),
+                    DropdownButton(
+                      value: selectedValue,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedValue = newValue;
+                        });
+                      },
+                      items: languages.map<DropdownMenuItem<String>>((var value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+                minLeadingWidth: 1.0,
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.share,
+                  color: Color.fromRGBO(255, 0, 0, 1),
+                ),
+                title: Text(
+                  "Share App",
+                  style: TextStyle(
+                    color: Color.fromRGBO(255, 0, 0, 1),
+                  ),
+                ),
+                minLeadingWidth: 1.0,
+                onTap: () {
+                  // Share.share("Share the app");
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.logout,
+                  color: Color.fromRGBO(255, 0, 0, 1),
+                ),
+                title: Text(
+                  "LogOut",
+                  style: TextStyle(
+                    color: Color.fromRGBO(255, 0, 0, 1),
+                  ),
+                ),
+                minLeadingWidth: 1.0,
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.info,
+                  color: Color.fromRGBO(255, 0, 0, 1),
+                ),
+                title: Text(
+                  "About",
+                  style: TextStyle(
+                    color: Color.fromRGBO(255, 0, 0, 1),
+                  ),
+                ),
+                minLeadingWidth: 1.0,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return About();
+                    }),
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.exit_to_app,
+                  color: Color.fromRGBO(255, 0, 0, 1),
+                ),
+                title: Text(
+                  "Exit",
+                  style: TextStyle(
+                    color: Color.fromRGBO(255, 0, 0, 1),
+                  ),
+                ),
+                minLeadingWidth: 1.0,
+                onTap: () {
+                  exit(0);
+                },
+              ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: 15.0),
+                    child: Text(
+                      "Version 0.1",
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        color: Color.fromRGBO(255, 0, 0, 1),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           Column(
@@ -27,44 +233,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                     border: Border.all(color: Color.fromARGB(255, 255, 0, 0)),
                     borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(140),
+                      bottomRight: Radius.circular(130),
                     ),
                     color: Color.fromRGBO(255, 0, 0, 1),
                   ),
                   width: double.infinity,
                   height: 150,
-                  child: Stack(
-                    alignment: AlignmentDirectional.topStart,
-                    children: [
-                      Positioned(
-                        top: 15.0,
-                        left: 15.0,
-                        child: IconButton(
-                          onPressed: () {
-                            //
-                          },
-                          icon: Icon(
-                            Icons.menu,
-                            color: Colors.white,
-                            size: 30.0,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 15.0,
-                        left: 100.0,
-                        right: 100.0,
-                        child: Text(
-                          "Home",
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontSize: 30.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
               ),
               Expanded(
@@ -75,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       border: Border.all(
                           color: const Color.fromARGB(255, 255, 255, 255)),
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(240),
+                        topLeft: Radius.circular(220),
                         bottomRight: Radius.circular(330),
                       ),
                       color: Color.fromRGBO(255, 255, 255, 1),
@@ -90,7 +264,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             left: 70.0,
                             child: GestureDetector(
                               onTap: () {
-                                //
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return VisitingCard();
+                                  }),
+                                );
                               },
                               child: Column(
                                 children: [
@@ -311,12 +490,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           Positioned(
-            bottom: 65.0,
-            right: 20.0,
+            left: 15.0,
             child: Image.asset(
               "images/LinkestanLogo.png",
-              width: 200.0,
-              height: 200.0,
+              width: 180.0,
+              height: 180.0,
             ),
           ),
         ],
