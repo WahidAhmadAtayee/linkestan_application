@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/signup_screen.dart';
 
 import 'home_screen.dart';
 
@@ -99,6 +100,17 @@ class _SignInState extends State<SignIn> {
                               ),
                             ),
                           ),
+                          obscureText: true,
+                          obscuringCharacter: "*",
+                        ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: TextButton(
+                            onPressed: () {
+                              //
+                            },
+                            child: Text("Forgot password?"),
+                          ),
                         ),
                         SizedBox(
                           height: 15.0,
@@ -113,7 +125,7 @@ class _SignInState extends State<SignIn> {
                             );
                           },
                           child: Text(
-                            "Sign In",
+                            "Log In",
                             style: TextStyle(
                               fontSize: 22.0,
                               color: Color.fromRGBO(255, 255, 255, 1),
@@ -136,7 +148,14 @@ class _SignInState extends State<SignIn> {
                           height: 10.0,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return SignUp();
+                              }),
+                            );
+                          },
                           child: Text(
                             "Sign Up",
                             style: TextStyle(
@@ -164,14 +183,16 @@ class _SignInState extends State<SignIn> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Sign In as a guest?",
+                              "Sign In as a Guest?",
                               style: TextStyle(
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                             ),
                             TextButton(
-                              onPressed: () {},
-                              child: Text("click here!"),
+                              onPressed: () {
+                                //
+                              },
+                              child: Text("Click here!"),
                             ),
                           ],
                         ),
@@ -186,7 +207,7 @@ class _SignInState extends State<SignIn> {
             top: 60.0,
             right: 40.0,
             child: Text(
-              "SIGNIN",
+              "LOGIN",
               style: TextStyle(
                 color: Color.fromRGBO(255, 255, 255, 1),
                 fontSize: 80.0,

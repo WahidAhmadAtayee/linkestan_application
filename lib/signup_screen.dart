@@ -144,7 +144,8 @@ class _SignUpState extends State<SignUp> {
                                 ),
                               ),
                               cursorColor: Color.fromRGBO(255, 0, 0, 1),
-                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: true,
+                              obscuringCharacter: "*",
                             ),
                             SizedBox(height: 10.0),
                             TextField(
@@ -175,7 +176,8 @@ class _SignUpState extends State<SignUp> {
                                 ),
                               ),
                               cursorColor: Color.fromRGBO(255, 0, 0, 1),
-                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: true,
+                              obscuringCharacter: "*",
                             ),
                             SizedBox(height: 15.0),
                             ElevatedButton(
@@ -217,7 +219,7 @@ class _SignUpState extends State<SignUp> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text("SignIn"),
+                                  child: Text("Log in"),
                                 ),
                               ],
                             ),
@@ -260,7 +262,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Positioned(
                   right: 25.0,
-                  bottom: -8.0,
+                  bottom: -5.0,
                   child: IconButton(
                     onPressed: () {
                       showModalBottomSheet(
@@ -336,7 +338,7 @@ class _SignUpState extends State<SignUp> {
                           });
                     },
                     icon: Icon(
-                      Icons.camera_alt,
+                      Icons.add_a_photo,
                       color: Color.fromRGBO(255, 0, 0, 1),
                       size: 30.0,
                     ),

@@ -30,6 +30,7 @@ class About extends StatelessWidget {
                         child: IconButton(
                           onPressed: () {
                             Navigator.pop(context);
+                            Navigator.pop(context);
                           },
                           icon: Icon(
                             Icons.arrow_back,

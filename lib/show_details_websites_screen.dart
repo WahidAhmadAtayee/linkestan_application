@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkestan_application/home_screen.dart';
+import 'package:linkestan_application/tabBarPages_ShowDetailsWebsites/offer_show_details_websites.dart';
+import 'package:linkestan_application/tabBarPages_ShowDetailsWebsites/others_show_details_website.dart';
 
 class ShowDetailsWebsites extends StatefulWidget {
   const ShowDetailsWebsites({super.key});
@@ -8,7 +10,22 @@ class ShowDetailsWebsites extends StatefulWidget {
   State<ShowDetailsWebsites> createState() => _ShowDetailsWebsitesState();
 }
 
-class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
+class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void initState() {
+    tabController = TabController(length: 7, vsync: this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+
   List websiteLinks = [
     "www.google.com",
     "www.youtube.com",
@@ -24,480 +41,118 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          Container(
-            color: Color.fromRGBO(255, 255, 255, 1),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(280),
-                ),
-                color: Color.fromRGBO(255, 0, 0, 1),
-              ),
-              width: double.infinity,
-              height: 200,
-              child: Stack(
-                alignment: AlignmentDirectional.topStart,
-                children: [
-                  Positioned(
-                    top: 15.0,
-                    left: 15.0,
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 30.0,
-                      ),
+          Column(
+            children: [
+              Container(
+                color: Color.fromRGBO(255, 255, 255, 1),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(280),
                     ),
+                    color: Color.fromRGBO(255, 0, 0, 1),
                   ),
-                  Positioned(
-                    top: 15.0,
-                    left: 100.0,
-                    right: 100.0,
-                    child: Text(
-                      "Government",
-                      style: TextStyle(
-                        color: Color.fromRGBO(255, 255, 255, 1),
-                        fontSize: 30,
+                  width: double.infinity,
+                  height: 200,
+                  child: Stack(
+                    alignment: AlignmentDirectional.topStart,
+                    children: [
+                      Positioned(
+                        top: 15.0,
+                        left: 15.0,
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                            size: 30.0,
+                          ),
+                        ),
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Positioned(
-                    top: 15.0,
-                    right: 15.0,
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return HomeScreen();
-                          }),
-                        );
-                      },
-                      icon: Icon(
-                        Icons.home,
-                        color: Colors.white,
-                        size: 30.0,
+                      Positioned(
+                        top: 15.0,
+                        left: 100.0,
+                        right: 100.0,
+                        child: Text(
+                          "Government",
+                          style: TextStyle(
+                            color: Color.fromRGBO(255, 255, 255, 1),
+                            fontSize: 30,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ),
-                  ),
-                  Positioned(
-                    right: 35.0,
-                    bottom: 40.0,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              iconPadding: EdgeInsets.only(right: 1.0),
-                              icon: Column(
-                                children: [
-                                  Align(
-                                    alignment: Alignment.topRight,
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.close,
-                                        size: 20,
-                                        color: Color.fromRGBO(255, 17, 0, 1),
-                                      ),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                    ),
-                                  ),
-                                  Image.asset(
-                                    "images/Website_Logo.png",
-                                    width: 200.0,
-                                    height: 150.0,
-                                  ),
-                                  SizedBox(
-                                    height: 15,
-                                  ),
-                                ],
-                              ),
-                              title: Column(
-                                children: [
-                                  TextField(
-                                    // controller: ,
-                                    decoration: InputDecoration(
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        borderSide: BorderSide(
-                                          color: Color.fromRGBO(255, 0, 0, 1),
-                                        ),
-                                      ),
-                                      prefixIcon: Icon(
-                                        Icons.web,
-                                        color: Color.fromRGBO(255, 17, 0, 1),
-                                      ),
-                                      labelText: "URL",
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    ),
-                                    keyboardType: TextInputType.url,
-                                  ),
-                                  SizedBox(
-                                    height: 15,
-                                  ),
-                                  TextField(
-                                    // controller: ,
-                                    decoration: InputDecoration(
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        borderSide: BorderSide(
-                                          color: Color.fromRGBO(255, 0, 0, 1),
-                                        ),
-                                      ),
-                                      prefixIcon: Icon(
-                                        Icons.description,
-                                        color: Color.fromRGBO(255, 17, 0, 1),
-                                      ),
-                                      labelText: "Description",
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    ),
-                                    keyboardType: TextInputType.text,
-                                    maxLength: 150,
-                                    maxLines: 2,
-                                  ),
-                                  SizedBox(
-                                    height: 15,
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "Add Website",
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                    style: ButtonStyle(
-                                      backgroundColor: MaterialStatePropertyAll(
-                                          Color.fromRGBO(255, 17, 0, 1)),
-                                      fixedSize: MaterialStateProperty.all(
-                                        Size(260, 40),
-                                      ),
-                                      shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(30.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                      Positioned(
+                        top: 15.0,
+                        right: 15.0,
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return HomeScreen();
+                              }),
                             );
                           },
-                        );
-                      },
-                      child: Text(
-                        "Add New Website",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Color.fromRGBO(255, 0, 0, 1),
-                        ),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(
-                          Color.fromRGBO(255, 255, 255, 1),
-                        ),
-                        fixedSize: MaterialStateProperty.all(
-                          // Set the width and height of the button
-                          Size(250, 45),
-                        ),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
+                          icon: Icon(
+                            Icons.home,
+                            color: Colors.white,
+                            size: 30.0,
                           ),
                         ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  color: Color.fromRGBO(255, 0, 0, 1),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(150),
+                        bottomLeft: Radius.circular(170),
+                      ),
+                      color: Color.fromRGBO(255, 255, 255, 1),
+                    ),
+                    width: double.infinity,
+                    height: 700,
+                    child: Expanded(
+                      child: TabBarView(
+                        controller: tabController,
+                        children: [
+                          OfferShowDetailsWebsite(),
+                          OthersShowDetailsWebsite(),
+                        ],
                       ),
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-          Expanded(
-            child: Container(
-              color: Color.fromRGBO(255, 0, 0, 1),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(150),
-                    bottomLeft: Radius.circular(170),
-                  ),
-                  color: Color.fromRGBO(255, 255, 255, 1),
-                ),
-                width: double.infinity,
-                height: 700,
-                child: ListView.separated(
-                  padding: const EdgeInsets.all(50.0),
-                  itemBuilder: (context, index) {
-                    return Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15.0),
-                          ),
-                          color: Color.fromRGBO(255, 0, 0, 1),
-                        ),
-                        child: ListTile(
-                          contentPadding: EdgeInsets.only(left: 3.0),
-                          leading: IconButton(
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    iconPadding: EdgeInsets.only(right: 1.0),
-                                    icon: Column(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment.topRight,
-                                          child: IconButton(
-                                            icon: Icon(
-                                              Icons.close,
-                                              size: 20,
-                                              color:
-                                                  Color.fromRGBO(255, 0, 0, 1),
-                                            ),
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                          ),
-                                        ),
-                                        Icon(
-                                          Icons.edit_document,
-                                          size: 150.0,
-                                          color: Color.fromRGBO(255, 0, 0, 1),
-                                        ),
-                                        SizedBox(
-                                          height: 15,
-                                        ),
-                                      ],
-                                    ),
-                                    title: Column(
-                                      children: [
-                                        TextField(
-                                          // controller: ,
-                                          decoration: InputDecoration(
-                                            enabledBorder: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              borderSide: BorderSide(
-                                                color: Color.fromRGBO(
-                                                    255, 0, 0, 1),
-                                              ),
-                                            ),
-                                            prefixIcon: Icon(
-                                              Icons.web,
-                                              color:
-                                                  Color.fromRGBO(255, 0, 0, 1),
-                                            ),
-                                            labelText: "URL",
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                          ),
-                                          keyboardType: TextInputType.url,
-                                        ),
-                                        SizedBox(
-                                          height: 15,
-                                        ),
-                                        TextField(
-                                          // controller: ,
-                                          decoration: InputDecoration(
-                                            enabledBorder: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              borderSide: BorderSide(
-                                                color: Color.fromRGBO(
-                                                    255, 0, 0, 1),
-                                              ),
-                                            ),
-                                            prefixIcon: Icon(
-                                              Icons.description,
-                                              color:
-                                                  Color.fromRGBO(255, 17, 0, 1),
-                                            ),
-                                            labelText: "Description",
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                          ),
-                                          keyboardType: TextInputType.text,
-                                          maxLength: 150,
-                                          maxLines: 2,
-                                        ),
-                                        SizedBox(
-                                          height: 15,
-                                        ),
-                                        ElevatedButton(
-                                          onPressed: () {},
-                                          child: Text(
-                                            "CHANGE",
-                                            style: TextStyle(fontSize: 20),
-                                          ),
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStatePropertyAll(
-                                                    Color.fromRGBO(
-                                                        255, 17, 0, 1)),
-                                            fixedSize:
-                                                MaterialStateProperty.all(
-                                              Size(260, 30),
-                                            ),
-                                            shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(30.0),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                            icon: Icon(
-                              Icons.edit,
-                              color: Colors.white,
-                              size: 30.0,
-                            ),
-                          ),
-                          title: Text(
-                            "${websiteLinks[index]}",
-                            style: TextStyle(
-                              color: Color.fromRGBO(255, 255, 255, 1),
-                              fontSize: 20.0,
-                            ),
-                          ),
-                          subtitle: Text(
-                            "${websiteDescriptions[index]}",
-                            style: TextStyle(
-                              color: Color.fromRGBO(255, 255, 255, 1),
-                            ),
-                          ),
-                          trailing: IconButton(
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    iconPadding: EdgeInsets.only(right: 1.0),
-                                    icon: Icon(
-                                      Icons.delete,
-                                      size: 150.0,
-                                      color: Color.fromRGBO(255, 0, 0, 1),
-                                    ),
-                                    title: Text(
-                                      "Do you want to delete?",
-                                      style: TextStyle(
-                                        color: Color.fromRGBO(255, 0, 0, 1),
-                                        fontSize: 25.0,
-                                      ),
-                                    ),
-                                    content: Expanded(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          ElevatedButton(
-                                            onPressed: () {},
-                                            child: Text(
-                                              "YES",
-                                              style: TextStyle(fontSize: 20),
-                                            ),
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStatePropertyAll(
-                                                      Color.fromRGBO(
-                                                          255, 0, 0, 1)),
-                                              fixedSize:
-                                                  MaterialStateProperty.all(
-                                                Size(100, 30),
-                                              ),
-                                              shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          30.0),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 5.0,
-                                          ),
-                                          ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                              "NO",
-                                              style: TextStyle(fontSize: 20),
-                                            ),
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStatePropertyAll(
-                                                      Color.fromRGBO(
-                                                          255, 0, 0, 1)),
-                                              fixedSize:
-                                                  MaterialStateProperty.all(
-                                                Size(100, 30),
-                                              ),
-                                              shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          30.0),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                            icon: Icon(
-                              Icons.delete,
-                              color: Colors.white,
-                              size: 30.0,
-                            ),
-                          ),
-                          onTap: () {
-                            //
-                          },
-                        ),
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) => SizedBox(
-                    height: 5.0,
-                  ),
-                  itemCount: websiteLinks.length,
-                ),
+          Positioned(
+            top: 210.0,
+            right: 30.0,
+            left: 30.0,
+            child: Padding(
+              padding: const EdgeInsets.all(1.8),
+              child: TabBar(
+                labelStyle: TextStyle(fontSize: 20.0),
+                controller: tabController,
+                labelColor: Color.fromRGBO(255, 0, 0, 1),
+                indicatorColor: Color.fromRGBO(255, 0, 0, 1),
+                indicatorWeight: 4.0,
+                unselectedLabelColor: Color.fromRGBO(255, 0, 0, 0.43),
+                tabs: [
+                  Tab(text: "Offer"),
+                  Tab(text: "Others"),
+                ],
               ),
             ),
           ),

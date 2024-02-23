@@ -1,4 +1,14 @@
+import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+List communictionNetworkLinks = [
+  "https://afghan-wireless.com/",
+  "https://www.etisalat.af/en/",
+  "https://roshan.af/home",
+  "https://www.mtn.com.af/",
+  "https://www.salaam.af/en",
+];
 
 class Communication_Network extends StatefulWidget {
   const Communication_Network({super.key});
@@ -22,6 +32,7 @@ class _Communication_NetworkState extends State<Communication_Network> {
     "images/MTN_Logo.png",
     "images/Salaam_Logo.png",
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,53 +96,66 @@ class _Communication_NetworkState extends State<Communication_Network> {
                 ),
                 width: double.infinity,
                 height: 700,
-                child: ListView.separated(
-                  padding: const EdgeInsets.only(
-                    top: 150.0,
-                    left: 30.0,
-                    right: 30.0,
-                    bottom: 50.0,
-                  ),
-                  itemBuilder: (context, index) {
-                    return Expanded(
-                      child: Card(
-                        shape: BeveledRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(15),
-                          ),
-                        ),
-                        color: Color.fromRGBO(255, 0, 0, 1),
-                        child: ListTile(
-                          contentPadding: EdgeInsets.only(top: 1.5, bottom: 1.5, left: 1.5, right: 10.5,),
-                          title: Text(
-                            "${name[index]}",
-                            style: TextStyle(
-                              color: Color.fromRGBO(255, 255, 255, 1),
-                              fontSize: 25.0,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 30.0, bottom: 60.0),
+                  child: ListView.separated(
+                    padding: const EdgeInsets.only(
+                      top: 50.0,
+                      left: 30.0,
+                      right: 30.0,
+                      bottom: 10.0,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(50),
+                              bottomRight: Radius.circular(50),
                             ),
+                            color: Color.fromRGBO(255, 0, 0, 1),
                           ),
-                          leading: Container(
-                            width: 85.0,
-                            height: 50.0,
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            child: Image.asset("${pic[index]}"),
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(
+                              top: 1.5,
+                              bottom: 1.5,
+                              left: 1.5,
+                              right: 10.5,
+                            ),
+                            title: Text(
+                              "${name[index]}",
+                              style: TextStyle(
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                fontSize: 25.0,
+                              ),
+                            ),
+                            leading: Container(
+                              width: 85.0,
+                              height: 50.0,
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              child: Image.asset("${pic[index]}"),
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                            ),
+                            onTap: () async {
+                              final Uri _url =
+                                  Uri.parse(communictionNetworkLinks[index]);
+                              if (!await launchUrl(_url)) {
+                                throw Exception("Could not launch $_url");
+                              }
+                            },
                           ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                          ),
-                          onTap: () {
-                            //
-                          },
                         ),
-                      ),
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) =>
-                      SizedBox(
-                    height: 5.0,
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        SizedBox(
+                      height: 10.0,
+                    ),
+                    itemCount: name.length,
                   ),
-                  itemCount: name.length,
                 ),
               ),
             ),

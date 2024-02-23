@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:linkestan_application/tabBarPages_VisitingCard/add_visiting_card.dart';
-import 'package:linkestan_application/tabBarPages_VisitingCard/show_visiting_card.dart';
+import 'package:linkestan_application/tabBarPages_VisitCard/add_visit_card.dart';
+import 'package:linkestan_application/tabBarPages_VisitCard/offer_visit_card_image.dart';
 
 class VisitingCard extends StatefulWidget {
   const VisitingCard({super.key});
@@ -94,7 +94,7 @@ class _VisitingCardState extends State<VisitingCard>
                       child: TabBarView(
                         controller: tabController,
                         children: [
-                          ShowVisitingCard(),
+                          OfferVisitingCardImages(),
                           AddVisitingCard(),
                         ],
                       ),
@@ -103,7 +103,7 @@ class _VisitingCardState extends State<VisitingCard>
                 ),
               ),
             ],
-          ), 
+          ),
           Positioned(
             top: 110.0,
             right: 30.0,
@@ -113,28 +113,29 @@ class _VisitingCardState extends State<VisitingCard>
                 color: Color.fromRGBO(255, 255, 255, 1),
                 borderRadius: BorderRadius.circular(45.0),
               ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(1.8),
-                    child: TabBar(
-                      labelStyle: TextStyle(fontSize: 22.0),
-                      controller: tabController,
-                      labelColor: Color.fromRGBO(255, 255, 255, 1),
-                      indicatorColor: Color.fromRGBO(255, 255, 255, 1),
-                      indicatorWeight: 2.0,
-                      indicator: BoxDecoration(
-                        color: Color.fromRGBO(255, 0, 0, 1),
-                        borderRadius: BorderRadius.circular(45.0),
-                      ),
-                      unselectedLabelColor: Color.fromRGBO(255, 0, 0, 1),
-                      tabs: [
-                        Tab(text: "Show"),
-                        Tab(text: "Add"),
-                      ],
+              child: Positioned(
+                top: 200.0,
+                right: 30.0,
+                left: 30.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(1.5),
+                  child: TabBar(
+                    labelStyle: TextStyle(fontSize: 22.0),
+                    controller: tabController,
+                    labelColor: Color.fromRGBO(255, 255, 255, 1),
+                    indicatorColor: Color.fromRGBO(255, 255, 255, 1),
+                    indicatorWeight: 2.0,
+                    indicator: BoxDecoration(
+                      color: Color.fromRGBO(255, 0, 0, 1),
+                      borderRadius: BorderRadius.circular(45.0),
                     ),
+                    unselectedLabelColor: Color.fromRGBO(255, 0, 0, 1),
+                    tabs: [
+                      Tab(text: "Offer"),
+                      Tab(text: "Mine"),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),

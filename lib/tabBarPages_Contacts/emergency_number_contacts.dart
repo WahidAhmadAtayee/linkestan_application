@@ -1,4 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+List emergencyNumbers_name = [
+  "Ambulance",
+  "Fire Station",
+  "Police",
+];
+List emergencyNumbers = [
+  "102",
+  "113",
+  "119",
+];
 
 class EmergencyNumberContacts extends StatefulWidget {
   const EmergencyNumberContacts({super.key});
@@ -9,16 +22,6 @@ class EmergencyNumberContacts extends StatefulWidget {
 }
 
 class _EmergencyNumberContactsState extends State<EmergencyNumberContacts> {
-  List emergencyNumbers_name = [
-    "Ambulance",
-    "Fire Station",
-    "Police",
-  ];
-  List emergencyNumbers = [
-    "102",
-    "113",
-    "119",
-  ];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,17 +48,26 @@ class _EmergencyNumberContactsState extends State<EmergencyNumberContacts> {
                     subtitle: Text(
                       "  ${emergencyNumbers[index]}",
                       style: TextStyle(
-                          color: Color.fromRGBO(255, 0, 0, 1),
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold),
+                        color: Color.fromRGBO(100, 100, 100, 1),
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     trailing: IconButton(
-                      onPressed: () {
-                        //
+                      onPressed: () async {
+                        final Uri dialNumber = Uri(
+                          scheme: 'tel',
+                          path: emergencyNumbers[index],
+                        );
+                        if (await canLaunchUrl(dialNumber)) {
+                          await FlutterPhoneDirectCaller.callNumber(emergencyNumbers[index]);
+                        } else {
+                          throw "Could not launch $dialNumber";
+                        }
                       },
                       icon: Icon(
                         Icons.call,
-                        color: Color.fromRGBO(0, 255, 17, 1),
+                        color: Color.fromRGBO(0, 255, 0, 1),
                       ),
                     ),
                   );
