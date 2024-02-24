@@ -20,7 +20,7 @@ class Communication_Network extends StatefulWidget {
 class _Communication_NetworkState extends State<Communication_Network> {
   List name = [
     "Afghan Wireless",
-    "Etasalat",
+    "Etisalat",
     "Roshan",
     "MTN",
     "Salaam",
