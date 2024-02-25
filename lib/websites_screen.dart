@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/show_details_websites_screen.dart';
 
 class Websites extends StatefulWidget {
@@ -9,16 +10,16 @@ class Websites extends StatefulWidget {
 }
 
 class _WebsitesState extends State<Websites> {
-  List website_categories_name = [
-    "Government",
-    "Programming",
-    "English",
-    "Sport",
-    "News",
-    "Others"
-  ];
   @override
   Widget build(BuildContext context) {
+    List website_categories_name = [
+      translation(context).governmentBT,
+      translation(context).programmingBT,
+      translation(context).englishBT,
+      translation(context).sportBT,
+      translation(context).newsBT,
+      translation(context).othersBT
+    ];
     return Scaffold(
       body: Column(
         children: [
@@ -55,7 +56,7 @@ class _WebsitesState extends State<Websites> {
                     left: 100.0,
                     right: 100.0,
                     child: Text(
-                      "Websites",
+                      translation(context).websites,
                       style: TextStyle(
                         color: Color.fromRGBO(255, 255, 255, 1),
                         fontSize: 30,
@@ -114,20 +115,18 @@ class _WebsitesState extends State<Websites> {
                           ),
                           onTap: () {
                             Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) {
-                                    return ShowDetailsWebsites();
-                                  }),
-                                );
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return ShowDetailsWebsites();
+                              }),
+                            );
                           },
                         ),
                       ),
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) =>
-                      SizedBox(
-                    height: 5.0,
-                  ),
+                      SizedBox(height: 5.0),
                   itemCount: website_categories_name.length,
                 ),
               ),

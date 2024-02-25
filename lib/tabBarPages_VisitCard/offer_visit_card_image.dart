@@ -16,7 +16,6 @@ class _OfferVisitingCardImagesState extends State<OfferVisitingCardImages> {
     "images/Salaam_Logo.png",
     "images/MTN_Logo.png",
   ];
-  // List _secondImageList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +65,7 @@ class _OfferVisitingCardImagesState extends State<OfferVisitingCardImages> {
             );
           },
           separatorBuilder: (context, index) => SizedBox(),
-          itemCount: 5),
+          itemCount: _firstImageList.length),
     );
   }
 }

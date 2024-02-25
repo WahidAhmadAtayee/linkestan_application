@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OfferShowDetailsWebsite extends StatefulWidget {
@@ -22,14 +23,15 @@ class _OfferShowDetailsWebsiteState extends State<OfferShowDetailsWebsite> {
     "www.flutter.dev",
     "www.javatpoint.com",
   ];
-  List websiteDescriptions = [
-    "Description_dart",
-    "Description_w3school",
-    "Description_flutter",
-    "Description_javatpoint",
-  ];
+
   @override
   Widget build(BuildContext context) {
+    List websiteDescriptions = [
+      "${translation(context).descriptionText} dart",
+      "${translation(context).descriptionText} Description_w3school",
+      "${translation(context).descriptionText} Description_flutter",
+      "${translation(context).descriptionText} Description_javatpoint",
+    ];
     return Padding(
       padding: const EdgeInsets.only(
         top: 60.0,
@@ -100,7 +102,7 @@ class _OfferShowDetailsWebsiteState extends State<OfferShowDetailsWebsite> {
           separatorBuilder: (context, index) => SizedBox(
             height: 5.0,
           ),
-          itemCount: 4,
+          itemCount: websiteNames.length,
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:linkestan_application/signin_screen.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
+import 'package:linkestan_application/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     await Future.delayed(Duration(seconds: 5), () {
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
-          return SignIn();
+          return LogIn();
         },
       ));
     });
@@ -71,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                       height: 50.0,
                     ),
                     Text(
-                      "Welcome to\nLinkestan App",
+                      translation(context).splashScreenText,
                       style: TextStyle(
                         color: Color.fromRGBO(255, 255, 255, 1),
                         fontSize: 50,
@@ -84,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Version 0.1",
+                          translation(context).version,
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 15,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkestan_application/contacts_screen.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/navbar.dart';
 import 'package:linkestan_application/notes_screen.dart';
 import 'package:linkestan_application/visit_card_screen.dart';
@@ -16,13 +17,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  List names = [
-    "Visit_Card",
-    "Communication\nNetwork",
-    "Contacts",
-    "Websites",
-    "Notes",
-  ];
   List images = [
     "images/visiting_card.png",
     "images/communication_network.png",
@@ -40,7 +34,60 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List names = [
+      translation(context).visitCard,
+      translation(context).communicationNetwork,
+      translation(context).contacts,
+      translation(context).websites,
+      translation(context).notes,
+    ];
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(255, 0, 0, 1),
+        elevation: 0.0,
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(
+            Icons.menu,
+            color: Color.fromRGBO(255, 255, 255, 1),
+            size: 30.0,
+          ),
+          onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+        ),
+        title: Text(
+          translation(context).homeTitle,
+          style: TextStyle(
+            color: Color.fromRGBO(255, 255, 255, 1),
+            fontSize: 30,
+          ),
+        ),
+        actions: [
+          PopupMenuButton(
+            color: const Color.fromRGBO(255, 255, 255, 1),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                padding: EdgeInsets.all(0.5),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.logout,
+                    color: Color.fromRGBO(255, 0, 0, 1),
+                  ),
+                  title: Text(
+                    translation(context).logOut,
+                    style: TextStyle(
+                      color: Color.fromRGBO(100, 100, 100, 1),
+                    ),
+                  ),
+                  minLeadingWidth: 1.0,
+                  onTap: () {
+                    //
+                  },
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
       key: _scaffoldKey,
       drawer: NavBar(),
       body: Stack(
@@ -62,68 +109,60 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Stack(
                     alignment: AlignmentDirectional.topStart,
                     children: [
-                      Positioned(
-                        top: 15.0,
-                        left: 15.0,
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.menu,
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            size: 30.0,
-                          ),
-                          onPressed: () =>
-                              _scaffoldKey.currentState?.openDrawer(),
-                        ),
-                      ),
-                      Positioned(
-                        top: 15.0,
-                        left: 100.0,
-                        right: 100.0,
-                        child: Text(
-                          "Home",
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontSize: 30,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Positioned(
-                        top: 15.0,
-                        right: 15.0,
-                        child: PopupMenuButton(
-                          color: const Color.fromRGBO(255, 255, 255, 1),
-                          itemBuilder: (context) => [
-                            PopupMenuItem(
-                              padding: EdgeInsets.all(0.5),
-                              child: ListTile(
-                                leading: Icon(
-                                  Icons.logout,
-                                  color: Color.fromRGBO(255, 0, 0, 1),
-                                ),
-                                title: Text(
-                                  "Log out",
-                                  style: TextStyle(
-                                    color: Color.fromRGBO(100, 100, 100, 1),
-                                  ),
-                                ),
-                                minLeadingWidth: 1.0,
-                                onTap: () {
-                                  //
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                        //
-                        //
-                        //
-                        //
-                        //
-                        //
-                        //
-                        //
-                      ),
+                      //   Positioned(
+                      //     top: 15.0,
+                      //     left: 15.0,
+                      //     child: IconButton(
+                      //       icon: Icon(
+                      //         Icons.menu,
+                      //         color: Color.fromRGBO(255, 255, 255, 1),
+                      //         size: 30.0,
+                      //       ),
+                      //       onPressed: () =>
+                      //           _scaffoldKey.currentState?.openDrawer(),
+                      //     ),
+                      //   ),
+                      //   Positioned(
+                      //     top: 15.0,
+                      //     left: 100.0,
+                      //     right: 100.0,
+                      //     child: Text(
+                      //       translation(context).homeTitle,
+                      //       style: TextStyle(
+                      //         color: Color.fromRGBO(255, 255, 255, 1),
+                      //         fontSize: 30,
+                      //       ),
+                      //       textAlign: TextAlign.center,
+                      //     ),
+                      //   ),
+                      //   Positioned(
+                      //     top: 15.0,
+                      //     right: 15.0,
+                      //     child: PopupMenuButton(
+                      //       color: const Color.fromRGBO(255, 255, 255, 1),
+                      //       itemBuilder: (context) => [
+                      //         PopupMenuItem(
+                      //           padding: EdgeInsets.all(0.5),
+                      //           child: ListTile(
+                      //             leading: Icon(
+                      //               Icons.logout,
+                      //               color: Color.fromRGBO(255, 0, 0, 1),
+                      //             ),
+                      //             title: Text(
+                      //               translation(context).logOut,
+                      //               style: TextStyle(
+                      //                 color: Color.fromRGBO(100, 100, 100, 1),
+                      //               ),
+                      //             ),
+                      //             minLeadingWidth: 1.0,
+                      //             onTap: () {
+                      //               //
+                      //             },
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
                     ],
                   ),
                 ),
@@ -220,5 +259,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-

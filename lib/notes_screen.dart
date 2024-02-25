@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/tabBarPages_Notes/add_notes.dart';
 import 'package:linkestan_application/tabBarPages_Notes/show_notes.dart';
 
@@ -64,7 +65,7 @@ class _NotesState extends State<Notes> with SingleTickerProviderStateMixin {
                         left: 100.0,
                         right: 100.0,
                         child: Text(
-                          "Notes",
+                          translation(context).notes,
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 30.0,
@@ -126,8 +127,8 @@ class _NotesState extends State<Notes> with SingleTickerProviderStateMixin {
                   ),
                   unselectedLabelColor: Color.fromRGBO(255, 0, 0, 1),
                   tabs: [
-                    Tab(text: "Show"),
-                    Tab(text: "Add"),
+                    Tab(text: translation(context).show),
+                    Tab(text: translation(context).addNewNoteBT),
                   ],
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 
 class AddNotes extends StatefulWidget {
   const AddNotes({super.key});
@@ -28,7 +29,7 @@ class _AddNotesState extends State<AddNotes> {
                 size: 150.0,
               ),
               SizedBox(
-                height: 20.0,
+                height: 20.0
               ),
               TextField(
                 // controller: ,
@@ -43,7 +44,7 @@ class _AddNotesState extends State<AddNotes> {
                     Icons.note,
                     color: Color.fromRGBO(255, 0, 0, 1),
                   ),
-                  labelText: "Title",
+                  labelText: translation(context).title,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -52,7 +53,7 @@ class _AddNotesState extends State<AddNotes> {
                 cursorColor: Color.fromRGBO(255, 0, 0, 1),
               ),
               SizedBox(
-                height: 15.0,
+                height: 15.0
               ),
               TextField(
                 // controller: ,
@@ -67,7 +68,7 @@ class _AddNotesState extends State<AddNotes> {
                     Icons.description,
                     color: Color.fromRGBO(255, 0, 0, 1),
                   ),
-                  labelText: "Description",
+                  labelText: translation(context).descriptionText,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -77,14 +78,14 @@ class _AddNotesState extends State<AddNotes> {
                 cursorColor: Color.fromRGBO(255, 0, 0, 1),
               ),
               SizedBox(
-                height: 15,
+                height: 15.0
               ),
               ElevatedButton(
                 onPressed: () {
                   //
                 },
                 child: Text(
-                  "Add New Note",
+                  translation(context).addNewNoteBT,
                   style: TextStyle(fontSize: 20),
                 ),
                 style: ButtonStyle(

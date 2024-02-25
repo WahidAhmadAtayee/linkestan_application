@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-List emergencyNumbers_name = [
-  "Ambulance",
-  "Fire Station",
-  "Police",
-];
 List emergencyNumbers = [
   "102",
   "113",
@@ -24,6 +20,11 @@ class EmergencyNumberContacts extends StatefulWidget {
 class _EmergencyNumberContactsState extends State<EmergencyNumberContacts> {
   @override
   Widget build(BuildContext context) {
+    List emergencyNumbers_name = [
+      translation(context).ambulanceText,
+      translation(context).fireStationText,
+      translation(context).policeText,
+    ];
     return Padding(
       padding: const EdgeInsets.only(
         top: 60.0,
@@ -60,7 +61,8 @@ class _EmergencyNumberContactsState extends State<EmergencyNumberContacts> {
                           path: emergencyNumbers[index],
                         );
                         if (await canLaunchUrl(dialNumber)) {
-                          await FlutterPhoneDirectCaller.callNumber(emergencyNumbers[index]);
+                          await FlutterPhoneDirectCaller.callNumber(
+                              emergencyNumbers[index]);
                         } else {
                           throw "Could not launch $dialNumber";
                         }

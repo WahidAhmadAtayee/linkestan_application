@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OthersShowDetailsWebsite extends StatefulWidget {
@@ -156,7 +157,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                     color: Color.fromRGBO(
                                                         255, 17, 0, 1),
                                                   ),
-                                                  labelText: "Website Name",
+                                                  labelText: translation(context).websiteName,
                                                   border: OutlineInputBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -167,7 +168,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                     TextInputType.text,
                                               ),
                                               SizedBox(
-                                                height: 10.0,
+                                                height: 10.0
                                               ),
                                               TextField(
                                                 // controller: ,
@@ -183,11 +184,11 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                     ),
                                                   ),
                                                   prefixIcon: Icon(
-                                                    Icons.title,
+                                                    Icons.link,
                                                     color: Color.fromRGBO(
                                                         255, 0, 0, 1),
                                                   ),
-                                                  labelText: "URL",
+                                                  labelText: translation(context).urlText,
                                                   border: OutlineInputBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -219,7 +220,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                     color: Color.fromRGBO(
                                                         255, 17, 0, 1),
                                                   ),
-                                                  labelText: "Description",
+                                                  labelText: translation(context).descriptionText,
                                                   border: OutlineInputBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -239,7 +240,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                               ElevatedButton(
                                                 onPressed: () {},
                                                 child: Text(
-                                                  "Change",
+                                                  translation(context).change,
                                                   style:
                                                       TextStyle(fontSize: 15.0),
                                                 ),
@@ -391,7 +392,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
               separatorBuilder: (context, index) => SizedBox(
                 height: 5.0,
               ),
-              itemCount: 4,
+              itemCount: websiteNames.length,
             ),
           ),
           Align(
@@ -444,7 +445,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                 Icons.web,
                                 color: Color.fromRGBO(255, 17, 0, 1),
                               ),
-                              labelText: "Website Name",
+                              labelText: translation(context).websiteName,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -452,7 +453,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                             keyboardType: TextInputType.text,
                           ),
                           SizedBox(
-                            height: 10.0,
+                            height: 10.0
                           ),
                           TextField(
                             // controller: ,
@@ -467,7 +468,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                 Icons.link,
                                 color: Color.fromRGBO(255, 17, 0, 1),
                               ),
-                              labelText: "URL",
+                              labelText: translation(context).urlText,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -475,7 +476,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                             keyboardType: TextInputType.url,
                           ),
                           SizedBox(
-                            height: 10.0,
+                            height: 10.0
                           ),
                           TextField(
                             // controller: ,
@@ -490,7 +491,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                 Icons.description,
                                 color: Color.fromRGBO(255, 17, 0, 1),
                               ),
-                              labelText: "Description",
+                              labelText: translation(context).descriptionText,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -505,7 +506,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                           ElevatedButton(
                             onPressed: () {},
                             child: Text(
-                              "Add Website",
+                              translation(context).addNewWebSitesBT,
                               style: TextStyle(fontSize: 20),
                             ),
                             style: ButtonStyle(

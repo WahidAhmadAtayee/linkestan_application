@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 
 class ShowNotes extends StatefulWidget {
   const ShowNotes({super.key});
@@ -90,7 +91,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                           Icons.title,
                                           color: Color.fromRGBO(255, 0, 0, 1),
                                         ),
-                                        labelText: "Title",
+                                        labelText: translation(context).title,
                                         border: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(10),
                                         ),
@@ -115,7 +116,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                           Icons.description,
                                           color: Color.fromRGBO(255, 17, 0, 1),
                                         ),
-                                        labelText: "Description",
+                                        labelText: translation(context).descriptionText,
                                         border: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(10),
                                         ),
@@ -130,7 +131,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                     ElevatedButton(
                                       onPressed: () {},
                                       child: Text(
-                                        "Change",
+                                        translation(context).change,
                                         style: TextStyle(fontSize: 20),
                                       ),
                                       style: ButtonStyle(
@@ -176,7 +177,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                 ),
                                 title: Text(
-                                  "Do you want to delete?",
+                                  translation(context).doYouWantToDelete,
                                   style: TextStyle(
                                     color: Color.fromRGBO(255, 0, 0, 1),
                                     fontSize: 25.0,
@@ -189,7 +190,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                       ElevatedButton(
                                         onPressed: () {},
                                         child: Text(
-                                          "YES",
+                                          translation(context).yesBT,
                                           style: TextStyle(fontSize: 20),
                                         ),
                                         style: ButtonStyle(
@@ -216,7 +217,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                           Navigator.pop(context);
                                         },
                                         child: Text(
-                                          "NO",
+                                          translation(context).noBT,
                                           style: TextStyle(fontSize: 20),
                                         ),
                                         style: ButtonStyle(

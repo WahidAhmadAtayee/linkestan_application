@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/signup_screen.dart';
 
 import 'home_screen.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+class LogIn extends StatefulWidget {
+  const LogIn({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<LogIn> createState() => _LogInState();
 }
 
-class _SignInState extends State<SignIn> {
+class _LogInState extends State<LogIn> {
+
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController password_loginController = TextEditingController();
+  
+  var isVisible = true;
+  var myIcon =
+      const Icon(Icons.visibility, color: Color.fromRGBO(255, 0, 0, 1));
+  var username = '';
+  var password = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +64,10 @@ class _SignInState extends State<SignIn> {
                     child: Column(
                       children: [
                         TextField(
-                          // controller: ,
+                          controller: usernameController,
+                          onChanged: (usernameValue) {
+                            username = usernameValue;
+                          },
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
@@ -65,7 +78,7 @@ class _SignInState extends State<SignIn> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
-                            labelText: "Username",
+                            labelText: translation(context).usernameLogIn,
                             prefixIcon: Icon(
                               Icons.person,
                               color: Color.fromRGBO(255, 0, 0, 1),
@@ -75,9 +88,15 @@ class _SignInState extends State<SignIn> {
                         ),
                         SizedBox(height: 10.0),
                         TextField(
-                          // controller: ,
+                          controller: password_loginController,
+                          obscureText: isVisible,
+                          obscuringCharacter: "*",
+                          onChanged: (passwordValue) {
+                            password = passwordValue;
+                          },
                           cursorColor: Color.fromRGBO(255, 0, 0, 1),
                           decoration: InputDecoration(
+                            // error: ,
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide: BorderSide(
@@ -87,21 +106,33 @@ class _SignInState extends State<SignIn> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
-                            labelText: "Password",
+                            labelText: translation(context).password,
                             prefixIcon: Icon(
                               Icons.lock,
                               color: Color.fromRGBO(255, 0, 0, 1),
                             ),
                             suffixIcon: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.remove_red_eye,
-                                color: Color.fromRGBO(255, 0, 0, 1),
-                              ),
+                              onPressed: () {
+                                setState(() {
+                                  if (isVisible) {
+                                    isVisible = false;
+                                    myIcon = Icon(
+                                      Icons.visibility_off,
+                                      color: Color.fromRGBO(255, 0, 0, 1),
+                                    );
+                                  } else {
+                                    isVisible = true;
+                                    myIcon = Icon(
+                                      Icons.visibility,
+                                      color: Color.fromRGBO(255, 0, 0, 1),
+                                    );
+                                  }
+                                });
+                              },
+                              icon: myIcon,
                             ),
                           ),
-                          obscureText: true,
-                          obscuringCharacter: "*",
+                          keyboardType: TextInputType.visiblePassword,
                         ),
                         Align(
                           alignment: Alignment.topLeft,
@@ -112,20 +143,60 @@ class _SignInState extends State<SignIn> {
                             child: Text("Forgot password?"),
                           ),
                         ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
+                        SizedBox(height: 15.0),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return HomeScreen();
-                              }),
-                            );
+                            if (username == "admin" && password == "0000") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return HomeScreen();
+                                }),
+                              );
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    iconPadding: EdgeInsets.only(right: 1.0),
+                                    icon: Align(
+                                      alignment: Alignment.topRight,
+                                      child: IconButton(
+                                        icon: Icon(
+                                          Icons.close,
+                                          size: 20,
+                                          color: Color.fromRGBO(255, 17, 0, 1),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                      ),
+                                    ),
+                                    title: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.warning_amber_rounded,
+                                          color: Color.fromRGBO(255, 0, 0, 1),
+                                          size: 130.0,
+                                        ),
+                                        Text(
+                                          translation(context).pleaseCheckYourUsernameOrPassword,
+                                          style: TextStyle(
+                                            color: Color.fromRGBO(255, 0, 0, 1),
+                                            fontSize: 16.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            }
                           },
                           child: Text(
-                            "Log In",
+                            translation(context).logInBT,
                             style: TextStyle(
                               fontSize: 22.0,
                               color: Color.fromRGBO(255, 255, 255, 1),
@@ -144,9 +215,7 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
+                        SizedBox(height: 10.0),
                         ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -157,7 +226,7 @@ class _SignInState extends State<SignIn> {
                             );
                           },
                           child: Text(
-                            "Sign Up",
+                            translation(context).signUpBT,
                             style: TextStyle(
                               fontSize: 22.0,
                               color: Color.fromRGBO(255, 255, 255, 1),
@@ -176,23 +245,26 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
+                        SizedBox(height: 10.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Sign In as a Guest?",
+                              translation(context).signInAsAGuestLogIn,
                               style: TextStyle(
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                             ),
                             TextButton(
                               onPressed: () {
-                                //
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return HomeScreen();
+                                  }),
+                                );
                               },
-                              child: Text("Click here!"),
+                              child: Text(translation(context).clickHereBT),
                             ),
                           ],
                         ),
@@ -207,7 +279,7 @@ class _SignInState extends State<SignIn> {
             top: 60.0,
             right: 40.0,
             child: Text(
-              "LOGIN",
+              translation(context).logInText,
               style: TextStyle(
                 color: Color.fromRGBO(255, 255, 255, 1),
                 fontSize: 80.0,

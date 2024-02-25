@@ -72,7 +72,7 @@ class _AddVisitingCardState extends State<AddVisitingCard> {
                   );
                 },
                 separatorBuilder: (context, index) => SizedBox(),
-                itemCount: 5),
+                itemCount: _firstImageList.length),
           ),
           Align(
             alignment: Alignment.bottomRight,

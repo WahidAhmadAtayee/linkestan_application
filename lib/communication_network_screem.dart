@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 List communictionNetworkLinks = [
@@ -18,13 +19,6 @@ class Communication_Network extends StatefulWidget {
 }
 
 class _Communication_NetworkState extends State<Communication_Network> {
-  List name = [
-    "Afghan Wireless",
-    "Etisalat",
-    "Roshan",
-    "MTN",
-    "Salaam",
-  ];
   List pic = [
     "images/Afghan_Wireless_Logo.png",
     "images/Etisalat_Logo.png",
@@ -35,6 +29,13 @@ class _Communication_NetworkState extends State<Communication_Network> {
 
   @override
   Widget build(BuildContext context) {
+    List name = [
+      translation(context).afghanWirelessBT,
+      translation(context).etisalatBT,
+      translation(context).roshanBT,
+      translation(context).mtnBT,
+      translation(context).salaamBT,
+    ];
     return Scaffold(
       body: Column(
         children: [
@@ -71,7 +72,7 @@ class _Communication_NetworkState extends State<Communication_Network> {
                     left: 100.0,
                     right: 100.0,
                     child: Text(
-                      "Communication\nNetwork",
+                      translation(context).communicationNetwork,
                       style: TextStyle(
                         color: Color.fromRGBO(255, 255, 255, 1),
                         fontSize: 30,

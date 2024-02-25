@@ -50,5 +50,9 @@
   		<string>tel</string>
 		<string>mailto</string>
 	</array>
+	<key>NSPhotoLibraryUseageDescription</key>
+	<String>We need permission for the photo library.</String>
+	<key>NSCameraUseageDescription</key>
+	<String>We need permission for the camera.</String>
 </dict>
 </plist>

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 
 class FloatingActionButtonVisitCard extends StatefulWidget {
   const FloatingActionButtonVisitCard({super.key});
@@ -44,7 +45,7 @@ class _FloatingActionButtonVisitCardState
                                     )),
                                     child: Center(
                                       child: Text(
-                                        "Photo",
+                                        translation(context).photoAdd,
                                         style: TextStyle(
                                           color: Color.fromRGBO(255, 0, 0, 1),
                                           fontSize: 10.0,
@@ -87,26 +88,25 @@ class _FloatingActionButtonVisitCardState
                                                             child: Column(
                                                               children: [
                                                                 Icon(
-                                                                  Icons.image,
-                                                                  size: 70,
-                                                                  color: Color
-                                                                      .fromRGBO(
-                                                                          255,
-                                                                          0,
-                                                                          0,
-                                                                          1),
-                                                                ),
-                                                                Text(
-                                                                  "Gallery",
-                                                                  style:
-                                                                      TextStyle(
+                                                                    Icons.image,
+                                                                    size: 70,
                                                                     color: Color
                                                                         .fromRGBO(
                                                                             255,
                                                                             0,
                                                                             0,
-                                                                            1),
-                                                                  ),
+                                                                            1)),
+                                                                Text(
+                                                                  translation(
+                                                                          context)
+                                                                      .gallery,
+                                                                  style: TextStyle(
+                                                                      color: Color
+                                                                          .fromRGBO(
+                                                                              255,
+                                                                              0,
+                                                                              0,
+                                                                              1)),
                                                                 ),
                                                               ],
                                                             ),
@@ -133,7 +133,9 @@ class _FloatingActionButtonVisitCardState
                                                                           1),
                                                                 ),
                                                                 Text(
-                                                                  "Camera",
+                                                                  translation(
+                                                                          context)
+                                                                      .camera,
                                                                   style:
                                                                       TextStyle(
                                                                     color: Color
@@ -165,7 +167,7 @@ class _FloatingActionButtonVisitCardState
                                 ],
                               ),
                               Text(
-                                "Front",
+                                translation(context).frontText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontSize: 15.0,
@@ -187,7 +189,7 @@ class _FloatingActionButtonVisitCardState
                                     )),
                                     child: Center(
                                       child: Text(
-                                        "Photo",
+                                        translation(context).photoAdd,
                                         style: TextStyle(
                                           color: Color.fromRGBO(255, 0, 0, 1),
                                           fontSize: 10.0,
@@ -240,7 +242,7 @@ class _FloatingActionButtonVisitCardState
                                                                           1),
                                                                 ),
                                                                 Text(
-                                                                  "Gallery",
+                                                                  translation(context).gallery,
                                                                   style:
                                                                       TextStyle(
                                                                     color: Color
@@ -276,7 +278,7 @@ class _FloatingActionButtonVisitCardState
                                                                           1),
                                                                 ),
                                                                 Text(
-                                                                  "Camera",
+                                                                  translation(context).camera,
                                                                   style:
                                                                       TextStyle(
                                                                     color: Color
@@ -308,7 +310,7 @@ class _FloatingActionButtonVisitCardState
                                 ],
                               ),
                               Text(
-                                "Back",
+                                translation(context).backText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontSize: 15.0,
@@ -337,7 +339,7 @@ class _FloatingActionButtonVisitCardState
                                   Icons.business,
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                 ),
-                                labelText: "Company Name",
+                                labelText: translation(context).companyName,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -346,7 +348,7 @@ class _FloatingActionButtonVisitCardState
                               cursorColor: Color.fromRGBO(255, 0, 0, 1),
                             ),
                             SizedBox(
-                              height: 25.0,
+                              height: 25.0
                             ),
                             TextField(
                               // controller: ,
@@ -361,7 +363,7 @@ class _FloatingActionButtonVisitCardState
                                   Icons.phone_android,
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                 ),
-                                labelText: "Phone",
+                                labelText: translation(context).phoneText,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -375,7 +377,7 @@ class _FloatingActionButtonVisitCardState
                     ],
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 10.0
                   ),
                   TextField(
                     // controller: ,
@@ -390,7 +392,7 @@ class _FloatingActionButtonVisitCardState
                         Icons.email,
                         color: Color.fromRGBO(255, 0, 0, 1),
                       ),
-                      labelText: "E-mail",
+                      labelText: translation(context).emailText,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -399,7 +401,7 @@ class _FloatingActionButtonVisitCardState
                     cursorColor: Color.fromRGBO(255, 0, 0, 1),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 10.0
                   ),
                   TextField(
                     // controller: ,
@@ -414,7 +416,7 @@ class _FloatingActionButtonVisitCardState
                         Icons.map,
                         color: Color.fromRGBO(255, 0, 0, 1),
                       ),
-                      labelText: "Address",
+                      labelText: translation(context).addressText,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -423,7 +425,7 @@ class _FloatingActionButtonVisitCardState
                     cursorColor: Color.fromRGBO(255, 0, 0, 1),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 10.0
                   ),
                   TextField(
                     // controller: ,
@@ -438,7 +440,7 @@ class _FloatingActionButtonVisitCardState
                         Icons.miscellaneous_services,
                         color: Color.fromRGBO(255, 0, 0, 1),
                       ),
-                      labelText: "Services",
+                      labelText: translation(context).servicesText,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -448,14 +450,14 @@ class _FloatingActionButtonVisitCardState
                     cursorColor: Color.fromRGBO(255, 0, 0, 1),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 15.0
                   ),
                   ElevatedButton(
                     onPressed: () {
                       //
                     },
                     child: Text(
-                      "Add VisitCard",
+                      translation(context).addNewVisitCardBt,
                       style: TextStyle(fontSize: 20),
                     ),
                     style: ButtonStyle(
@@ -472,14 +474,14 @@ class _FloatingActionButtonVisitCardState
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 10.0
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      "Cancel",
+                      translation(context).cancelBT,
                       style: TextStyle(fontSize: 20),
                     ),
                     style: ButtonStyle(
@@ -505,4 +507,3 @@ class _FloatingActionButtonVisitCardState
     );
   }
 }
-

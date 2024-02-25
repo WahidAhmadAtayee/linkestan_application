@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:linkestan_application/home_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -20,11 +21,6 @@ class ShowVisitCardDetails extends StatefulWidget {
   });
 
   int index;
-  // var name;
-  // var phoneNumber;
-  // var emailAddress;
-  // var address;
-  // var services;
 
   @override
   State<ShowVisitCardDetails> createState() => _ShowVisitCardDetailsState();
@@ -73,7 +69,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                         left: 100.0,
                         right: 100.0,
                         child: Text(
-                          "VisitCard Name",
+                          translation(context).visitCardName,
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 30.0,
@@ -199,7 +195,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                "Name:",
+                                translation(context).nameText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
@@ -224,7 +220,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                "Phone:",
+                                translation(context).phoneText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
@@ -266,7 +262,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                "E-mail:",
+                                translation(context).emailText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
@@ -319,7 +315,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                "Address:",
+                                translation(context).addressText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
@@ -344,7 +340,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                "Services:",
+                                translation(context).servicesText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,

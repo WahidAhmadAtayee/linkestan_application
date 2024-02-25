@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/tabBarPages_VisitCard/add_visit_card.dart';
 import 'package:linkestan_application/tabBarPages_VisitCard/offer_visit_card_image.dart';
 
@@ -65,7 +66,7 @@ class _VisitingCardState extends State<VisitingCard>
                         left: 100.0,
                         right: 100.0,
                         child: Text(
-                          "Visiting Card",
+                          translation(context).visitCard,
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 30.0,
@@ -131,8 +132,8 @@ class _VisitingCardState extends State<VisitingCard>
                     ),
                     unselectedLabelColor: Color.fromRGBO(255, 0, 0, 1),
                     tabs: [
-                      Tab(text: "Offer"),
-                      Tab(text: "Mine"),
+                      Tab(text: translation(context).offerBT),
+                      Tab(text: translation(context).mineBT),
                     ],
                   ),
                 ),

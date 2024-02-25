@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:linkestan_application/home_screen.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -66,7 +67,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                         left: 100.0,
                         right: 100.0,
                         child: Text(
-                          "MyVisitCard Name",
+                          translation(context).visitCardName,
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 30.0,
@@ -206,7 +207,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                       CrossAxisAlignment.center,
                                                   children: [
                                                     SizedBox(
-                                                      height: 25.0,
+                                                      height: 25.0
                                                     ),
                                                     Column(
                                                       children: [
@@ -229,7 +230,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                               )),
                                                               child: Center(
                                                                 child: Text(
-                                                                  "Photo",
+                                                                  translation(context).photoAdd,
                                                                   style:
                                                                       TextStyle(
                                                                     color: Color
@@ -294,7 +295,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                                             color: Color.fromRGBO(255, 0, 0, 1),
                                                                                           ),
                                                                                           Text(
-                                                                                            "Gallery",
+                                                                                            translation(context).gallery,
                                                                                             style: TextStyle(
                                                                                               color: Color.fromRGBO(255, 0, 0, 1),
                                                                                             ),
@@ -318,7 +319,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                                             color: Color.fromRGBO(255, 0, 0, 1),
                                                                                           ),
                                                                                           Text(
-                                                                                            "Camera",
+                                                                                            translation(context).camera,
                                                                                             style: TextStyle(
                                                                                               color: Color.fromRGBO(255, 0, 0, 1),
                                                                                             ),
@@ -350,7 +351,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                           ],
                                                         ),
                                                         Text(
-                                                          "Fornt",
+                                                          translation(context).frontText,
                                                           style: TextStyle(
                                                             color:
                                                                 Color.fromRGBO(
@@ -385,7 +386,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                               )),
                                                               child: Center(
                                                                 child: Text(
-                                                                  "Photo",
+                                                                  translation(context).photoAdd,
                                                                   style:
                                                                       TextStyle(
                                                                     color: Color
@@ -450,7 +451,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                                             color: Color.fromRGBO(255, 0, 0, 1),
                                                                                           ),
                                                                                           Text(
-                                                                                            "Gallery",
+                                                                                            translation(context).gallery,
                                                                                             style: TextStyle(
                                                                                               color: Color.fromRGBO(255, 0, 0, 1),
                                                                                             ),
@@ -474,7 +475,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                                             color: Color.fromRGBO(255, 0, 0, 1),
                                                                                           ),
                                                                                           Text(
-                                                                                            "Camera",
+                                                                                            translation(context).camera,
                                                                                             style: TextStyle(
                                                                                               color: Color.fromRGBO(255, 0, 0, 1),
                                                                                             ),
@@ -506,7 +507,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                           ],
                                                         ),
                                                         Text(
-                                                          "Back",
+                                                          translation(context).backText,
                                                           style: TextStyle(
                                                             color:
                                                                 Color.fromRGBO(
@@ -557,7 +558,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                     1),
                                                           ),
                                                           labelText:
-                                                              "Company Name",
+                                                              translation(context).companyName,
                                                           border:
                                                               OutlineInputBorder(
                                                             borderRadius:
@@ -573,7 +574,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                 255, 0, 0, 1),
                                                       ),
                                                       SizedBox(
-                                                        height: 20.0,
+                                                        height: 20.0
                                                       ),
                                                       TextField(
                                                         // controller: ,
@@ -601,7 +602,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                     0,
                                                                     1),
                                                           ),
-                                                          labelText: "Phone",
+                                                          labelText: translation(context).phoneText,
                                                           border:
                                                               OutlineInputBorder(
                                                             borderRadius:
@@ -640,7 +641,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                   color: Color.fromRGBO(
                                                       255, 0, 0, 1),
                                                 ),
-                                                labelText: "E-mail",
+                                                labelText: translation(context).emailText,
                                                 border: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -670,7 +671,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                   color: Color.fromRGBO(
                                                       255, 0, 0, 1),
                                                 ),
-                                                labelText: "Address",
+                                                labelText: translation(context).addressText,
                                                 border: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -699,7 +700,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                   color: Color.fromRGBO(
                                                       255, 0, 0, 1),
                                                 ),
-                                                labelText: "Services",
+                                                labelText: translation(context).servicesText,
                                                 border: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -716,7 +717,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                 //
                                               },
                                               child: Text(
-                                                "Change",
+                                                translation(context).change,
                                                 style: TextStyle(fontSize: 20),
                                               ),
                                               style: ButtonStyle(
@@ -745,7 +746,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                 Navigator.pop(context);
                                               },
                                               child: Text(
-                                                "Cancel",
+                                                translation(context).cancelBT,
                                                 style: TextStyle(fontSize: 20),
                                               ),
                                               style: ButtonStyle(
@@ -878,7 +879,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                "Name:",
+                                translation(context).name,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
@@ -903,7 +904,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                "Phone:",
+                                translation(context).phoneText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
@@ -945,7 +946,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                "E-mail:",
+                                translation(context).emailText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
@@ -991,7 +992,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                "Address:",
+                                translation(context).addressText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
@@ -1016,7 +1017,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                "Services:",
+                                translation(context).servicesText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,

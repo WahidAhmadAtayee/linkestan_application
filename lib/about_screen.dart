@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 
 class About extends StatelessWidget {
   const About({super.key});
@@ -44,7 +45,7 @@ class About extends StatelessWidget {
                         left: 100.0,
                         right: 100.0,
                         child: Text(
-                          "About",
+                          translation(context).aboutTitle,
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 30.0,
@@ -85,7 +86,7 @@ class About extends StatelessWidget {
                     ),
                     Positioned(
                       child: Text(
-                        "2024",
+                        translation(context).year,
                         style: TextStyle(
                           fontSize: 30,
                           color: const Color.fromRGBO(255, 255, 255, 1),
@@ -109,7 +110,7 @@ class About extends StatelessWidget {
                 backgroundColor: Color.fromRGBO(255, 255, 255, 1),
                 // Add your picture => Image.asset(""),
                 child: Text(
-                  "Photo",
+                  translation(context).photoAdd,
                   style: TextStyle(
                     fontSize: 30.0,
                     color: Color.fromRGBO(255, 0, 0, 1),

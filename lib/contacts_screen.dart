@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/tabBarPages_Contacts/emergency_number_contacts.dart';
 import 'package:linkestan_application/tabBarPages_Contacts/my_number_contacts.dart';
 
@@ -65,7 +66,7 @@ class _ContactsState extends State<Contacts>
                         left: 100.0,
                         right: 100.0,
                         child: Text(
-                          "Contacts",
+                          translation(context).contacts,
                           style: TextStyle(
                             color: Color.fromRGBO(255, 255, 255, 1),
                             fontSize: 30.0,
@@ -118,8 +119,8 @@ class _ContactsState extends State<Contacts>
                 indicatorWeight: 4.0,
                 unselectedLabelColor: Color.fromRGBO(255, 0, 0, 0.43),
                 tabs: [
-                  Tab(text: "Emergency"),
-                  Tab(text: "Others"),
+                  Tab(text: translation(context).emergencyTabBar),
+                  Tab(text: translation(context).othersBT),
                 ],
               ),
             ),
