@@ -43,6 +43,7 @@ class _NavBarState extends State<NavBar> {
                   style: TextStyle(
                     fontStyle: FontStyle.italic,
                     color: Color.fromARGB(197, 255, 224, 224),
+                    fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                   ),
                 ),
                 minLeadingWidth: 0.5,
@@ -59,6 +60,7 @@ class _NavBarState extends State<NavBar> {
                 style: TextStyle(
                   fontStyle: FontStyle.italic,
                   color: Color.fromARGB(197, 255, 224, 224),
+                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                 ),
               ),
               minLeadingWidth: 0.5,
@@ -88,6 +90,7 @@ class _NavBarState extends State<NavBar> {
                         translation(context).languageText,
                         style: TextStyle(
                           color: Color.fromRGBO(100, 100, 100, 1),
+                          fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                         ),
                       ),
                       SizedBox(
@@ -122,7 +125,8 @@ class _NavBarState extends State<NavBar> {
                                   e.name,
                                   style: TextStyle(
                                     fontSize: 15.0,
-                                    color: Color.fromRGBO(100, 100, 100, 1),
+                                    color: Color.fromRGBO(57, 57, 57, 1),
+                                    fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                   ),
                                 ),
                               ],
@@ -143,6 +147,7 @@ class _NavBarState extends State<NavBar> {
                     translation(context).changeProfilePhoto,
                     style: TextStyle(
                       color: Color.fromRGBO(100, 100, 100, 1),
+                      fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                     ),
                   ),
                   minLeadingWidth: 1.0,
@@ -178,6 +183,7 @@ class _NavBarState extends State<NavBar> {
                                             style: TextStyle(
                                               color:
                                                   Color.fromRGBO(255, 0, 0, 1),
+                                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                             ),
                                           ),
                                         ],
@@ -203,6 +209,7 @@ class _NavBarState extends State<NavBar> {
                                             style: TextStyle(
                                               color:
                                                   Color.fromRGBO(255, 0, 0, 1),
+                                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                             ),
                                           ),
                                         ],
@@ -227,6 +234,7 @@ class _NavBarState extends State<NavBar> {
                     translation(context).changePasswordAccount,
                     style: TextStyle(
                       color: Color.fromRGBO(100, 100, 100, 1),
+                      fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                     ),
                   ),
                   minLeadingWidth: 1.0,
@@ -243,6 +251,7 @@ class _NavBarState extends State<NavBar> {
                     translation(context).shareApp,
                     style: TextStyle(
                       color: Color.fromRGBO(100, 100, 100, 1),
+                      fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                     ),
                   ),
                   minLeadingWidth: 1.0,
@@ -259,6 +268,7 @@ class _NavBarState extends State<NavBar> {
                     translation(context).aboutUS,
                     style: TextStyle(
                       color: Color.fromRGBO(100, 100, 100, 1),
+                      fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                     ),
                   ),
                   minLeadingWidth: 1.0,
@@ -280,6 +290,7 @@ class _NavBarState extends State<NavBar> {
                     translation(context).exitApp,
                     style: TextStyle(
                       color: Color.fromRGBO(100, 100, 100, 1),
+                      fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                     ),
                   ),
                   minLeadingWidth: 1.0,
@@ -301,6 +312,7 @@ class _NavBarState extends State<NavBar> {
                   style: TextStyle(
                     fontSize: 15.0,
                     color: Color.fromRGBO(255, 255, 255, 0.4),
+                    fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                   ),
                 ),
               ),

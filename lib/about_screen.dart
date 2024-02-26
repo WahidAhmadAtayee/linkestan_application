@@ -7,6 +7,21 @@ class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(255, 0, 0, 1),
+        elevation: 0.0,
+        centerTitle: true,
+        title: Text(
+          translation(context).aboutTitle,
+          style: TextStyle(
+            color: Color.fromRGBO(255, 255, 255, 1),
+            fontSize: 30.0,
+            fontFamily: translation(context).changeLanguage == "English"
+                ? "WLRoyalFlutterBold"
+                : "alvi_Nastaleeq",
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           Column(
@@ -15,46 +30,18 @@ class About extends StatelessWidget {
                 color: Color.fromRGBO(255, 255, 255, 1),
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(170),
-                    ),
+                    borderRadius:
+                        translation(context).changeLanguage == "English"
+                            ? BorderRadius.only(
+                                bottomRight: Radius.circular(170),
+                              )
+                            : BorderRadius.only(
+                                bottomLeft: Radius.circular(170),
+                              ),
                     color: Color.fromRGBO(255, 0, 0, 1),
                   ),
                   width: double.infinity,
-                  height: 200.0,
-                  child: Stack(
-                    alignment: AlignmentDirectional.topStart,
-                    children: [
-                      Positioned(
-                        top: 15.0,
-                        left: 15.0,
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: 30.0,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 15.0,
-                        left: 100.0,
-                        right: 100.0,
-                        child: Text(
-                          translation(context).aboutTitle,
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontSize: 30.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
+                  height: 150.0,
                 ),
               ),
               Expanded(
@@ -64,10 +51,16 @@ class About extends StatelessWidget {
                       color: Color.fromRGBO(255, 0, 0, 1),
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(265),
-                            bottomRight: Radius.circular(300),
-                          ),
+                          borderRadius:
+                              translation(context).changeLanguage == "English"
+                                  ? BorderRadius.only(
+                                      topLeft: Radius.circular(265),
+                                      bottomRight: Radius.circular(300),
+                                    )
+                                  : BorderRadius.only(
+                                      topRight: Radius.circular(265),
+                                      bottomLeft: Radius.circular(300),
+                                    ),
                           color: Color.fromRGBO(255, 255, 255, 1),
                         ),
                         width: double.infinity,
@@ -79,21 +72,30 @@ class About extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 30.0,
                               color: Color.fromRGBO(255, 0, 0, 1),
+                              fontFamily: translation(context).changeLanguage ==
+                                      "English"
+                                  ? "Times_New_Java"
+                                  : "BNaznn",
                             ),
                           ),
                         ),
                       ),
                     ),
                     Positioned(
+                      bottom: 40.0,
+                      right: translation(context).changeLanguage == "English" ? 20.0 : null,
+                      left: translation(context).changeLanguage == "دری" || translation(context).changeLanguage == "پښتو" ? 20.0 : null,
                       child: Text(
                         translation(context).year,
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 30.0,
                           color: const Color.fromRGBO(255, 255, 255, 1),
+                          fontFamily:
+                              translation(context).changeLanguage == "English"
+                                  ? "Times_New_Java"
+                                  : "BNaznn",
                         ),
                       ),
-                      bottom: 40.0,
-                      right: 20.0,
                     ),
                   ],
                 ),
@@ -101,21 +103,20 @@ class About extends StatelessWidget {
             ],
           ),
           Positioned(
-            top: 80.0,
-            left: 20.0,
+            top: 20.0,
+            left:
+                translation(context).changeLanguage == "English" ? 20.0 : null,
+            right: translation(context).changeLanguage == "دری" ||
+                    translation(context).changeLanguage == "پښتو"
+                ? 20.0
+                : null,
             child: Container(
               height: 140.0,
               width: 140.0,
               child: CircleAvatar(
                 backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-                // Add your picture => Image.asset(""),
-                child: Text(
-                  translation(context).photoAdd,
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Color.fromRGBO(255, 0, 0, 1),
-                  ),
-                ),
+                // Add your picture
+                child: Image.asset(""),
               ),
             ),
           ),

@@ -21,51 +21,36 @@ class _WebsitesState extends State<Websites> {
       translation(context).othersBT
     ];
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(255, 0, 0, 1),
+        elevation: 0.0,
+        centerTitle: true,
+        title: Text(
+          translation(context).websites,
+          style: TextStyle(
+            color: Color.fromRGBO(255, 255, 255, 1),
+            fontSize: 30.0,
+            fontFamily: translation(context).changeLanguage == "English" ? "WLRoyalFlutterBold" : "alvi_Nastaleeq",
+          ),
+        ),
+      ),
       body: Column(
         children: [
           Container(
             color: Color.fromRGBO(255, 255, 255, 1),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(280),
-                ),
+                borderRadius: translation(context).changeLanguage == "English"
+                    ? BorderRadius.only(
+                        bottomLeft: Radius.circular(280),
+                      )
+                    : BorderRadius.only(
+                        bottomRight: Radius.circular(280),
+                      ),
                 color: Color.fromRGBO(255, 0, 0, 1),
               ),
               width: double.infinity,
-              height: 200,
-              child: Stack(
-                alignment: AlignmentDirectional.topStart,
-                children: [
-                  Positioned(
-                    top: 15.0,
-                    left: 15.0,
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 30.0,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 15.0,
-                    left: 100.0,
-                    right: 100.0,
-                    child: Text(
-                      translation(context).websites,
-                      style: TextStyle(
-                        color: Color.fromRGBO(255, 255, 255, 1),
-                        fontSize: 30,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
-              ),
+              height: 100,
             ),
           ),
           Expanded(
@@ -73,10 +58,15 @@ class _WebsitesState extends State<Websites> {
               color: Color.fromRGBO(255, 0, 0, 1),
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(150),
-                    bottomLeft: Radius.circular(170),
-                  ),
+                  borderRadius: translation(context).changeLanguage == "English"
+                      ? BorderRadius.only(
+                          topRight: Radius.circular(150),
+                          bottomLeft: Radius.circular(170),
+                        )
+                      : BorderRadius.only(
+                          topLeft: Radius.circular(150),
+                          bottomRight: Radius.circular(170),
+                        ),
                   color: Color.fromRGBO(255, 255, 255, 1),
                 ),
                 width: double.infinity,
@@ -96,10 +86,16 @@ class _WebsitesState extends State<Websites> {
                             color: Color.fromRGBO(255, 0, 0, 1),
                             width: 1.5,
                           ),
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(26.0),
-                            bottomRight: Radius.circular(26.0),
-                          ),
+                          borderRadius:
+                              translation(context).changeLanguage == "English"
+                                  ? BorderRadius.only(
+                                      topRight: Radius.circular(26.0),
+                                      bottomRight: Radius.circular(26.0),
+                                    )
+                                  : BorderRadius.only(
+                                      topLeft: Radius.circular(26.0),
+                                      bottomLeft: Radius.circular(26.0),
+                                    ),
                         ),
                         child: ListTile(
                           title: Text(
@@ -107,6 +103,7 @@ class _WebsitesState extends State<Websites> {
                             style: TextStyle(
                               color: Color.fromRGBO(255, 0, 0, 1),
                               fontSize: 25.0,
+                              fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                             ),
                           ),
                           trailing: Icon(

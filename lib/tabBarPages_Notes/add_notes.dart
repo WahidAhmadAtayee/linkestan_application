@@ -28,9 +28,7 @@ class _AddNotesState extends State<AddNotes> {
                 color: Color.fromRGBO(255, 0, 0, 1),
                 size: 150.0,
               ),
-              SizedBox(
-                height: 20.0
-              ),
+              SizedBox(height: 20.0),
               TextField(
                 // controller: ,
                 decoration: InputDecoration(
@@ -52,9 +50,7 @@ class _AddNotesState extends State<AddNotes> {
                 keyboardType: TextInputType.name,
                 cursorColor: Color.fromRGBO(255, 0, 0, 1),
               ),
-              SizedBox(
-                height: 15.0
-              ),
+              SizedBox(height: 15.0),
               TextField(
                 // controller: ,
                 decoration: InputDecoration(
@@ -77,16 +73,19 @@ class _AddNotesState extends State<AddNotes> {
                 keyboardType: TextInputType.text,
                 cursorColor: Color.fromRGBO(255, 0, 0, 1),
               ),
-              SizedBox(
-                height: 15.0
-              ),
+              SizedBox(height: 15.0),
               ElevatedButton(
                 onPressed: () {
                   //
                 },
                 child: Text(
                   translation(context).addNewNoteBT,
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontFamily: translation(context).changeLanguage == "English"
+                        ? "Times_New_Java"
+                        : "BNaznn",
+                  ),
                 ),
                 style: ButtonStyle(
                   backgroundColor:

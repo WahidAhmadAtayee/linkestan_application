@@ -13,6 +13,7 @@ List myVisitCardNumbers = [
 List myVisitCardEmails = [
   "example@gmail.com",
 ];
+var companyNames = "X company";
 // ignore: must_be_immutable
 class ShowMyVisitCardDetails extends StatefulWidget {
   ShowMyVisitCardDetails({
@@ -30,6 +31,34 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(255, 0, 0, 1),
+        elevation: 0.0,
+        centerTitle: true,
+        title: Text(
+          translation(context).visitCardName,
+          style: TextStyle(
+            color: Color.fromRGBO(255, 255, 255, 1),
+            fontSize: 30.0,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return HomeScreen();
+                }),
+              );
+            },
+            icon: Icon(
+              Icons.home,
+              color: const Color.fromRGBO(255, 255, 255, 1),
+            ),
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           Column(
@@ -38,64 +67,18 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                 color: Color.fromRGBO(255, 255, 255, 1),
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(150),
-                    ),
+                    borderRadius:
+                        translation(context).changeLanguage == "English"
+                            ? BorderRadius.only(
+                                bottomLeft: Radius.circular(150),
+                              )
+                            : BorderRadius.only(
+                                bottomRight: Radius.circular(150),
+                              ),
                     color: Color.fromRGBO(255, 0, 0, 1),
                   ),
                   width: double.infinity,
-                  height: 200.0,
-                  child: Stack(
-                    alignment: AlignmentDirectional.topStart,
-                    children: [
-                      Positioned(
-                        top: 15.0,
-                        left: 15.0,
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: 30.0,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 15.0,
-                        left: 100.0,
-                        right: 100.0,
-                        child: Text(
-                          translation(context).visitCardName,
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontSize: 30.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Positioned(
-                        top: 15.0,
-                        right: 15.0,
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return HomeScreen();
-                              }),
-                            );
-                          },
-                          icon: Icon(
-                            Icons.home,
-                            color: Colors.white,
-                            size: 30.0,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  height: 100.0,
                 ),
               ),
               Expanded(
@@ -103,17 +86,23 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                   color: Color.fromRGBO(255, 0, 0, 1),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(140),
-                        bottomLeft: Radius.circular(170),
-                      ),
+                      borderRadius:
+                          translation(context).changeLanguage == "English"
+                              ? BorderRadius.only(
+                                  topRight: Radius.circular(140),
+                                  bottomLeft: Radius.circular(170),
+                                )
+                              : BorderRadius.only(
+                                  topLeft: Radius.circular(140),
+                                  bottomRight: Radius.circular(170),
+                                ),
                       color: Color.fromRGBO(255, 255, 255, 1),
                     ),
                     width: double.infinity,
                     height: 650.0,
                     child: Padding(
                       padding: const EdgeInsets.only(
-                        top: 30.0,
+                        top: 70.0,
                         left: 50.0,
                         right: 50.0,
                         bottom: 40.0,
@@ -206,9 +195,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.center,
                                                   children: [
-                                                    SizedBox(
-                                                      height: 25.0
-                                                    ),
+                                                    SizedBox(height: 25.0),
                                                     Column(
                                                       children: [
                                                         Stack(
@@ -230,7 +217,9 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                               )),
                                                               child: Center(
                                                                 child: Text(
-                                                                  translation(context).photoAdd,
+                                                                  translation(
+                                                                          context)
+                                                                      .photoAdd,
                                                                   style:
                                                                       TextStyle(
                                                                     color: Color
@@ -241,6 +230,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                             1),
                                                                     fontSize:
                                                                         15.0,
+                                                                        fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                                                   ),
                                                                 ),
                                                               ),
@@ -351,7 +341,8 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                           ],
                                                         ),
                                                         Text(
-                                                          translation(context).frontText,
+                                                          translation(context)
+                                                              .frontText,
                                                           style: TextStyle(
                                                             color:
                                                                 Color.fromRGBO(
@@ -360,6 +351,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                     0,
                                                                     1),
                                                             fontSize: 15.0,
+                                                            fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                                           ),
                                                         ),
                                                       ],
@@ -386,7 +378,9 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                               )),
                                                               child: Center(
                                                                 child: Text(
-                                                                  translation(context).photoAdd,
+                                                                  translation(
+                                                                          context)
+                                                                      .photoAdd,
                                                                   style:
                                                                       TextStyle(
                                                                     color: Color
@@ -397,6 +391,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                             1),
                                                                     fontSize:
                                                                         15.0,
+                                                                        fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                                                   ),
                                                                 ),
                                                               ),
@@ -454,6 +449,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                                             translation(context).gallery,
                                                                                             style: TextStyle(
                                                                                               color: Color.fromRGBO(255, 0, 0, 1),
+                                                                                              fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                                                                             ),
                                                                                           ),
                                                                                         ],
@@ -478,6 +474,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                                             translation(context).camera,
                                                                                             style: TextStyle(
                                                                                               color: Color.fromRGBO(255, 0, 0, 1),
+                                                                                              fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                                                                             ),
                                                                                           ),
                                                                                         ],
@@ -489,7 +486,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                             ),
                                                                           ),
                                                                         );
-                                                                      });
+                                                                      },);
                                                                 },
                                                                 icon: Icon(
                                                                   Icons
@@ -507,7 +504,8 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                           ],
                                                         ),
                                                         Text(
-                                                          translation(context).backText,
+                                                          translation(context)
+                                                              .backText,
                                                           style: TextStyle(
                                                             color:
                                                                 Color.fromRGBO(
@@ -516,6 +514,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                     0,
                                                                     1),
                                                             fontSize: 15.0,
+                                                            fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                                           ),
                                                         ),
                                                       ],
@@ -558,7 +557,9 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                     1),
                                                           ),
                                                           labelText:
-                                                              translation(context).companyName,
+                                                              translation(
+                                                                      context)
+                                                                  .companyName,
                                                           border:
                                                               OutlineInputBorder(
                                                             borderRadius:
@@ -573,9 +574,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                             Color.fromRGBO(
                                                                 255, 0, 0, 1),
                                                       ),
-                                                      SizedBox(
-                                                        height: 20.0
-                                                      ),
+                                                      SizedBox(height: 20.0),
                                                       TextField(
                                                         // controller: ,
                                                         decoration:
@@ -602,7 +601,10 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                                     0,
                                                                     1),
                                                           ),
-                                                          labelText: translation(context).phoneText,
+                                                          labelText:
+                                                              translation(
+                                                                      context)
+                                                                  .phoneNumberSignUp,
                                                           border:
                                                               OutlineInputBorder(
                                                             borderRadius:
@@ -641,7 +643,8 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                   color: Color.fromRGBO(
                                                       255, 0, 0, 1),
                                                 ),
-                                                labelText: translation(context).emailText,
+                                                labelText: translation(context)
+                                                    .emailSignUp,
                                                 border: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -671,7 +674,8 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                   color: Color.fromRGBO(
                                                       255, 0, 0, 1),
                                                 ),
-                                                labelText: translation(context).addressText,
+                                                labelText: translation(context)
+                                                    .address,
                                                 border: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -700,7 +704,8 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                   color: Color.fromRGBO(
                                                       255, 0, 0, 1),
                                                 ),
-                                                labelText: translation(context).servicesText,
+                                                labelText: translation(context)
+                                                    .services,
                                                 border: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -718,7 +723,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                               },
                                               child: Text(
                                                 translation(context).change,
-                                                style: TextStyle(fontSize: 20),
+                                                style: TextStyle(fontSize: 20.0, fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",),
                                               ),
                                               style: ButtonStyle(
                                                 backgroundColor:
@@ -747,7 +752,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                               },
                                               child: Text(
                                                 translation(context).cancelBT,
-                                                style: TextStyle(fontSize: 20),
+                                                style: TextStyle(fontSize: 20.0,fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",),
                                               ),
                                               style: ButtonStyle(
                                                 backgroundColor:
@@ -792,7 +797,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                           color: Color.fromRGBO(255, 0, 0, 1),
                                         ),
                                         title: Text(
-                                          "Do you want to delete?",
+                                          translation(context).doYouWantToDelete,
                                           style: TextStyle(
                                             color: Color.fromRGBO(255, 0, 0, 1),
                                             fontSize: 20.0,
@@ -808,7 +813,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                   //
                                                 },
                                                 child: Text(
-                                                  "Yes",
+                                                  translation(context).yesBT,
                                                   style:
                                                       TextStyle(fontSize: 15.0),
                                                 ),
@@ -838,7 +843,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                                   Navigator.pop(context);
                                                 },
                                                 child: Text(
-                                                  "No",
+                                                  translation(context).noBT,
                                                   style:
                                                       TextStyle(fontSize: 15.0),
                                                 ),
@@ -879,15 +884,16 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                 color: Color.fromRGBO(255, 0, 0, 1),
                               ),
                               title: Text(
-                                translation(context).name,
+                                translation(context).nameText,
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               subtitle: Text(
-                                "X company",
+                                companyNames,
                                 style: TextStyle(
                                   color: Color.fromRGBO(100, 100, 100, 1),
                                   fontSize: 15.0,
@@ -909,6 +915,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               subtitle: Text(
@@ -930,8 +937,13 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                     throw "Could not launch $dialNumber";
                                   }
                                 },
-                                icon: Icon(
-                                  Icons.call,
+                                icon: translation(context).changeLanguage == "English" ?
+                                 Icon(
+                                  Icons.phone_enabled,
+                                  color: Color.fromRGBO(0, 255, 0, 1),
+                                ) : 
+                                Icon(
+                                  Icons.phone,
                                   color: Color.fromRGBO(0, 255, 0, 1),
                                 ),
                               ),
@@ -951,28 +963,36 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               subtitle: TextButton(
                                 onPressed: () async {
-                                String? encodeQueryParameters(Map<String, String> params){
-                                  return params.entries.map((MapEntry<String, String> e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}').join('&');
-                                } 
+                                  String? encodeQueryParameters(
+                                      Map<String, String> params) {
+                                    return params.entries
+                                        .map((MapEntry<String, String> e) =>
+                                            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                        .join('&');
+                                  }
+
                                   final Uri emailUri = Uri(
                                     scheme: 'mailto',
                                     path: myVisitCardEmails[widget.index],
-                                    query: encodeQueryParameters(<String, String>{
+                                    query:
+                                        encodeQueryParameters(<String, String>{
                                       'subject': 'Enter your subject...',
                                     }),
                                   );
-                                  if (await canLaunchUrl(emailUri)){
+                                  if (await canLaunchUrl(emailUri)) {
                                     launchUrl(emailUri);
-                                  }else{
-                                    throw Exception("Could not launch $emailUri");
+                                  } else {
+                                    throw Exception(
+                                        "Could not launch $emailUri");
                                   }
                                 },
                                 child: Align(
-                                  alignment: Alignment.topLeft,
+                                  alignment: translation(context).changeLanguage == "English" ? Alignment.topLeft : Alignment.topRight,
                                   child: Text(
                                     myVisitCardEmails[widget.index],
                                     style: TextStyle(
@@ -997,6 +1017,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               subtitle: Text(
@@ -1022,6 +1043,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               subtitle: Text(

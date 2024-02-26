@@ -20,11 +20,13 @@ class _SignUpState extends State<SignUp> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController repeat_passwordController = TextEditingController();
-  
+
   var isVisible = true;
   var isVisible2 = true;
-  var myIcon = const Icon(Icons.visibility,color: Color.fromRGBO(255, 0, 0, 1));
-  var myIcon2 = const Icon(Icons.visibility,color: Color.fromRGBO(255, 0, 0, 1));
+  var myIcon =
+      const Icon(Icons.visibility, color: Color.fromRGBO(255, 0, 0, 1));
+  var myIcon2 =
+      const Icon(Icons.visibility, color: Color.fromRGBO(255, 0, 0, 1));
 
   var full_name = '';
   var email_address = '';
@@ -43,9 +45,14 @@ class _SignUpState extends State<SignUp> {
                   color: Color.fromRGBO(255, 255, 255, 1),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(230),
-                      ),
+                      borderRadius:
+                          translation(context).changeLanguage == "English"
+                              ? BorderRadius.only(
+                                  bottomRight: Radius.circular(230),
+                                )
+                              : BorderRadius.only(
+                                  bottomLeft: Radius.circular(230),
+                                ),
                       color: Color.fromRGBO(255, 0, 0, 1),
                     ),
                     width: double.infinity,
@@ -57,10 +64,16 @@ class _SignUpState extends State<SignUp> {
                     color: Color.fromRGBO(255, 0, 0, 1),
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(200),
-                          bottomRight: Radius.circular(270),
-                        ),
+                        borderRadius:
+                            translation(context).changeLanguage == "English"
+                                ? BorderRadius.only(
+                                    topLeft: Radius.circular(200),
+                                    bottomRight: Radius.circular(270),
+                                  )
+                                : BorderRadius.only(
+                                    topRight: Radius.circular(200),
+                                    bottomLeft: Radius.circular(270),
+                                  ),
                         color: Color.fromRGBO(255, 255, 255, 1),
                       ),
                       width: double.infinity,
@@ -74,7 +87,7 @@ class _SignUpState extends State<SignUp> {
                         child: Column(
                           children: [
                             TextField(
-                              controller: full_nameController ,
+                              controller: full_nameController,
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -96,7 +109,7 @@ class _SignUpState extends State<SignUp> {
                             ),
                             SizedBox(height: 10.0),
                             TextField(
-                              controller: phoneController ,
+                              controller: phoneController,
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -107,7 +120,8 @@ class _SignUpState extends State<SignUp> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
-                                labelText: translation(context).phoneNumberSignUp,
+                                labelText:
+                                    translation(context).phoneNumberSignUp,
                                 prefixIcon: Icon(
                                   Icons.phone_android,
                                   color: Color.fromRGBO(255, 0, 0, 1),
@@ -140,7 +154,7 @@ class _SignUpState extends State<SignUp> {
                             ),
                             SizedBox(height: 10.0),
                             TextField(
-                              controller: passwordController ,
+                              controller: passwordController,
                               obscureText: isVisible,
                               obscuringCharacter: "*",
                               decoration: InputDecoration(
@@ -236,6 +250,7 @@ class _SignUpState extends State<SignUp> {
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   color: Color.fromRGBO(255, 255, 255, 1),
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               style: ButtonStyle(
@@ -260,13 +275,17 @@ class _SignUpState extends State<SignUp> {
                                   translation(context).alreadyHaveAnAccountText,
                                   style: TextStyle(
                                     color: Color.fromRGBO(255, 0, 0, 1),
+                                    fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                   ),
                                 ),
                                 TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text(translation(context).logInBT),
+                                  child: Text(translation(context).clickHereBT,
+                                  style: TextStyle(
+                                    fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
+                                  ),),
                                 ),
                               ],
                             ),
@@ -281,32 +300,52 @@ class _SignUpState extends State<SignUp> {
           ),
           Positioned(
             top: 50.0,
-            left: 40.0,
+            right: translation(context).changeLanguage == "دری" ||
+                    translation(context).changeLanguage == "پښتو"
+                ? 40.0
+                : null,
+            left:
+                translation(context).changeLanguage == "English" ? 40.0 : null,
             child: Text(
               translation(context).signUpText,
               style: TextStyle(
                 color: Color.fromRGBO(255, 255, 255, 1),
-                fontSize: 80.0,
+                // fontSize: 80.0,
+                fontSize: translation(context).changeLanguage == "English" || translation(context).changeLanguage == "پښتو" ? 80.0 : 90.0,
+                fontFamily: translation(context).changeLanguage == "English" ? "WLRoyalFlutterBold" : "alvi_Nastaleeq",
               ),
               textAlign: TextAlign.center,
             ),
           ),
           Positioned(
             top: 210.0,
-            right: 30.0,
+            left: translation(context).changeLanguage == "دری" ||
+                    translation(context).changeLanguage == "پښتو"
+                ? 30.0
+                : null,
+            right:
+                translation(context).changeLanguage == "English" ? 30.0 : null,
             child: Stack(
               children: [
                 CircleAvatar(
                   radius: 70.0,
                   backgroundColor: Color.fromRGBO(255, 0, 0, 0.317),
-                  child: _image != null ? Image.file(File(_image!.path),fit: BoxFit.cover,) :
-                  Text(
-                    translation(context).photoAdd,
-                    style: TextStyle(
-                      color: Color.fromRGBO(255, 255, 255, 1),
-                      fontSize: 30.0,
-                    ),
-                  ),
+                  child: _image != null
+                      ? Image.file(
+                          File(_image!.path),
+                          fit: BoxFit.cover,
+                        )
+                      : Text(
+                          translation(context).photoAdd,
+                          style: TextStyle(
+                            color: Color.fromRGBO(255, 255, 255, 1),
+                            fontSize: 30.0,
+                            fontFamily:
+                                translation(context).changeLanguage == "English"
+                                    ? "Times_New_Java"
+                                    : "BNaznn",
+                          ),
+                        ),
                 ),
                 Positioned(
                   right: 25.0,
@@ -329,10 +368,9 @@ class _SignUpState extends State<SignUp> {
                                   Expanded(
                                     child: InkWell(
                                       onTap: () async {
-                                       _image = await _imagePicker.pickImage(source: ImageSource.gallery);
-                                        setState(() {
-                                          
-                                        });
+                                        _image = await _imagePicker.pickImage(
+                                            source: ImageSource.gallery);
+                                        setState(() {});
                                       },
                                       child: SizedBox(
                                         child: Column(
@@ -348,6 +386,11 @@ class _SignUpState extends State<SignUp> {
                                               style: TextStyle(
                                                 color: Color.fromRGBO(
                                                     255, 0, 0, 1),
+                                                fontFamily: translation(context)
+                                                            .changeLanguage ==
+                                                        "English"
+                                                    ? "Times_New_Java"
+                                                    : "BNaznn",
                                               ),
                                             ),
                                           ],
@@ -374,6 +417,11 @@ class _SignUpState extends State<SignUp> {
                                               style: TextStyle(
                                                 color: Color.fromRGBO(
                                                     255, 0, 0, 1),
+                                                fontFamily: translation(context)
+                                                            .changeLanguage ==
+                                                        "English"
+                                                    ? "Times_New_Java"
+                                                    : "BNaznn",
                                               ),
                                             ),
                                           ],

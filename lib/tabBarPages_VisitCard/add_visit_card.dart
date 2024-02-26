@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/tabBarPages_VisitCard/floating_action_bt_visit_card.dart';
 import 'package:linkestan_application/tabBarPages_VisitCard/show_my_visit_card_details.dart';
 
@@ -75,7 +76,7 @@ class _AddVisitingCardState extends State<AddVisitingCard> {
                 itemCount: _firstImageList.length),
           ),
           Align(
-            alignment: Alignment.bottomRight,
+            alignment: translation(context).changeLanguage == "English" ? Alignment.bottomRight : Alignment.bottomLeft,
             child: Padding(
               padding: const EdgeInsets.only(top: 15.0, right: 20.0),
               child: FloatingActionButtonVisitCard(),

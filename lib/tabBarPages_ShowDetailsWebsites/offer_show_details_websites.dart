@@ -28,9 +28,9 @@ class _OfferShowDetailsWebsiteState extends State<OfferShowDetailsWebsite> {
   Widget build(BuildContext context) {
     List websiteDescriptions = [
       "${translation(context).descriptionText} dart",
-      "${translation(context).descriptionText} Description_w3school",
-      "${translation(context).descriptionText} Description_flutter",
-      "${translation(context).descriptionText} Description_javatpoint",
+      "${translation(context).descriptionText} w3school",
+      "${translation(context).descriptionText} flutter",
+      "${translation(context).descriptionText} javatpoint",
     ];
     return Padding(
       padding: const EdgeInsets.only(
@@ -63,7 +63,7 @@ class _OfferShowDetailsWebsiteState extends State<OfferShowDetailsWebsite> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        '${websiteNames[index]}',
+                        ' ${websiteNames[index]} ',
                         style: TextStyle(
                           color: Color.fromRGBO(0, 0, 0, 1),
                         ),
@@ -82,7 +82,7 @@ class _OfferShowDetailsWebsiteState extends State<OfferShowDetailsWebsite> {
                         }
                       },
                       child: Align(
-                        alignment: Alignment.topLeft,
+                        alignment: translation(context).changeLanguage == "English" ? Alignment.topLeft : Alignment.topRight,
                         child: Text(
                           "${websiteLinks[index]}",
                         ),

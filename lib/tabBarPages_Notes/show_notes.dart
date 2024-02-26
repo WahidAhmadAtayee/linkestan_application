@@ -32,11 +32,11 @@ class _ShowNotesState extends State<ShowNotes> {
                       color: Color.fromRGBO(0, 0, 0, 1), fontSize: 20.0),
                 ),
                 subtitle: Text(
-                  "info...",
+                  "info...lkjkjlkjjkhjknjkniuggffdydssdfghfgfgfjhfdhddsjhdfktfiudfyfugfughjgvjvvjhgdjgiolgiug",
                   style: TextStyle(
                     color: Color.fromRGBO(100, 100, 100, 1),
                   ),
-                  textAlign: TextAlign.justify,
+                  // textAlign: TextAlign.justify,
                 ),
                 trailing: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -70,9 +70,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                       size: 150.0,
                                       color: Color.fromRGBO(255, 0, 0, 1),
                                     ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
+                                    SizedBox(height: 15.0),
                                   ],
                                 ),
                                 title: Column(
@@ -93,15 +91,14 @@ class _ShowNotesState extends State<ShowNotes> {
                                         ),
                                         labelText: translation(context).title,
                                         border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                       ),
                                       keyboardType: TextInputType.text,
                                       cursorColor: Color.fromRGBO(255, 0, 0, 1),
                                     ),
-                                    SizedBox(
-                                      height: 10.0,
-                                    ),
+                                    SizedBox(height: 10.0),
                                     TextField(
                                       // controller: ,
                                       decoration: InputDecoration(
@@ -116,26 +113,34 @@ class _ShowNotesState extends State<ShowNotes> {
                                           Icons.description,
                                           color: Color.fromRGBO(255, 17, 0, 1),
                                         ),
-                                        labelText: translation(context).descriptionText,
+                                        labelText: translation(context)
+                                            .descriptionText,
                                         border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                       ),
                                       keyboardType: TextInputType.text,
                                       cursorColor: Color.fromRGBO(255, 0, 0, 1),
                                       maxLines: 3,
                                     ),
-                                    SizedBox(
-                                      height: 10.0,
-                                    ),
+                                    SizedBox(height: 10.0),
                                     ElevatedButton(
                                       onPressed: () {},
                                       child: Text(
                                         translation(context).change,
-                                        style: TextStyle(fontSize: 20),
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontFamily: translation(context)
+                                                      .changeLanguage ==
+                                                  "English"
+                                              ? "Times_New_Java"
+                                              : "BNaznn",
+                                        ),
                                       ),
                                       style: ButtonStyle(
-                                        backgroundColor: MaterialStatePropertyAll(
+                                        backgroundColor:
+                                            MaterialStatePropertyAll(
                                           Color.fromRGBO(255, 17, 0, 1),
                                         ),
                                         fixedSize: MaterialStateProperty.all(
@@ -181,6 +186,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                   style: TextStyle(
                                     color: Color.fromRGBO(255, 0, 0, 1),
                                     fontSize: 25.0,
+                                    fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                   ),
                                 ),
                                 content: Expanded(
@@ -191,7 +197,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                         onPressed: () {},
                                         child: Text(
                                           translation(context).yesBT,
-                                          style: TextStyle(fontSize: 20),
+                                          style: TextStyle(fontSize: 20.0,fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",),
                                         ),
                                         style: ButtonStyle(
                                           backgroundColor:
@@ -210,7 +216,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 5.0,
+                                        width: 5.0
                                       ),
                                       ElevatedButton(
                                         onPressed: () {
@@ -218,7 +224,7 @@ class _ShowNotesState extends State<ShowNotes> {
                                         },
                                         child: Text(
                                           translation(context).noBT,
-                                          style: TextStyle(fontSize: 20),
+                                          style: TextStyle(fontSize: 20.0,fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",),
                                         ),
                                         style: ButtonStyle(
                                           backgroundColor:

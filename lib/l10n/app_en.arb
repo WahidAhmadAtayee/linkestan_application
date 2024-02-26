@@ -1,5 +1,5 @@
 {
-    "splashScreenText": "Welcome to\nLinkestan app",
+    "splashScreenText": "Welcome to\nLinkestan app!",
     "version": "Version 0.1",
     "logInText": "LogIn",
     "usernameLogIn": "Username",
@@ -36,7 +36,7 @@
     "aboutUS": "About Us",
     "exitApp": "Exit App",
     "logOut": "Log out",
-    "mineBT": "Mine",
+    "mineBT": "َAdd",
     "offerBT": "Offer",
     "visitCardName": "VisitCrad Name",
     "nameText": "Name:",

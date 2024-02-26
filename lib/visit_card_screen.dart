@@ -29,6 +29,21 @@ class _VisitingCardState extends State<VisitingCard>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(255, 0, 0, 1),
+        elevation: 0.0,
+        centerTitle: true,
+        title: Text(
+          translation(context).visitCard,
+          style: TextStyle(
+            color: Color.fromRGBO(255, 255, 255, 1),
+            fontSize: 30.0,
+            fontFamily: translation(context).changeLanguage == "English"
+                ? "WLRoyalFlutterBold"
+                : "alvi_Nastaleeq",
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           Column(
@@ -37,45 +52,18 @@ class _VisitingCardState extends State<VisitingCard>
                 color: Color.fromRGBO(255, 255, 255, 1),
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(150),
-                    ),
+                    borderRadius:
+                        translation(context).changeLanguage == "English"
+                            ? BorderRadius.only(
+                                bottomLeft: Radius.circular(150),
+                              )
+                            : BorderRadius.only(
+                                bottomRight: Radius.circular(150),
+                              ),
                     color: Color.fromRGBO(255, 0, 0, 1),
                   ),
                   width: double.infinity,
-                  height: 200.0,
-                  child: Stack(
-                    alignment: AlignmentDirectional.topStart,
-                    children: [
-                      Positioned(
-                        top: 15.0,
-                        left: 15.0,
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: 30.0,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 15.0,
-                        left: 100.0,
-                        right: 100.0,
-                        child: Text(
-                          translation(context).visitCard,
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontSize: 30.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
+                  height: 150.0,
                 ),
               ),
               Expanded(
@@ -83,10 +71,16 @@ class _VisitingCardState extends State<VisitingCard>
                   color: Color.fromRGBO(255, 0, 0, 1),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(140),
-                        bottomLeft: Radius.circular(170),
-                      ),
+                      borderRadius:
+                          translation(context).changeLanguage == "English"
+                              ? BorderRadius.only(
+                                  topRight: Radius.circular(140),
+                                  bottomLeft: Radius.circular(170),
+                                )
+                              : BorderRadius.only(
+                                  topLeft: Radius.circular(140),
+                                  bottomRight: Radius.circular(170),
+                                ),
                       color: Color.fromRGBO(255, 255, 255, 1),
                     ),
                     width: double.infinity,
@@ -106,8 +100,13 @@ class _VisitingCardState extends State<VisitingCard>
             ],
           ),
           Positioned(
-            top: 110.0,
-            right: 30.0,
+            top: 60.0,
+            left: translation(context).changeLanguage == "دری" ||
+                    translation(context).changeLanguage == "پښتو"
+                ? 30.0
+                : null,
+            right:
+                translation(context).changeLanguage == "English" ? 30.0 : null,
             child: Container(
               width: 290,
               decoration: BoxDecoration(
@@ -121,7 +120,13 @@ class _VisitingCardState extends State<VisitingCard>
                 child: Padding(
                   padding: const EdgeInsets.all(1.5),
                   child: TabBar(
-                    labelStyle: TextStyle(fontSize: 22.0),
+                    labelStyle: TextStyle(
+                      fontSize: 22.0,
+                      fontFamily:
+                          translation(context).changeLanguage == "English"
+                              ? "Times_New_Java"
+                              : "BNaznn",
+                    ),
                     controller: tabController,
                     labelColor: Color.fromRGBO(255, 255, 255, 1),
                     indicatorColor: Color.fromRGBO(255, 255, 255, 1),

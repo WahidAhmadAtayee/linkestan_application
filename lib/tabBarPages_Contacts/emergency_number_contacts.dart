@@ -40,10 +40,14 @@ class _EmergencyNumberContactsState extends State<EmergencyNumberContacts> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
-                      "${emergencyNumbers_name[index]}:",
+                      "${emergencyNumbers_name[index]}",
                       style: TextStyle(
                         color: Color.fromRGBO(255, 0, 0, 1),
                         fontWeight: FontWeight.bold,
+                        fontFamily:
+                            translation(context).changeLanguage == "English"
+                                ? "Times_New_Java"
+                                : "BNaznn",
                       ),
                     ),
                     subtitle: Text(
@@ -52,6 +56,10 @@ class _EmergencyNumberContactsState extends State<EmergencyNumberContacts> {
                         color: Color.fromRGBO(100, 100, 100, 1),
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
+                        fontFamily:
+                            translation(context).changeLanguage == "English"
+                                ? "Times_New_Java"
+                                : "BNaznn",
                       ),
                     ),
                     trailing: IconButton(
@@ -67,10 +75,15 @@ class _EmergencyNumberContactsState extends State<EmergencyNumberContacts> {
                           throw "Could not launch $dialNumber";
                         }
                       },
-                      icon: Icon(
-                        Icons.call,
-                        color: Color.fromRGBO(0, 255, 0, 1),
-                      ),
+                      icon: translation(context).changeLanguage == "English"
+                          ? Icon(
+                              Icons.phone_enabled,
+                              color: Color.fromRGBO(0, 255, 0, 1),
+                            )
+                          : Icon(
+                              Icons.phone,
+                              color: Color.fromRGBO(0, 255, 0, 1),
+                            ),
                     ),
                   );
                 },

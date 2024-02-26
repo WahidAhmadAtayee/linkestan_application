@@ -29,9 +29,7 @@ class _FloatingActionButtonVisitCardState
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            height: 20.0,
-                          ),
+                          SizedBox(height: 20.0),
                           Column(
                             children: [
                               Stack(
@@ -49,6 +47,11 @@ class _FloatingActionButtonVisitCardState
                                         style: TextStyle(
                                           color: Color.fromRGBO(255, 0, 0, 1),
                                           fontSize: 10.0,
+                                          fontFamily: translation(context)
+                                                      .changeLanguage ==
+                                                  "English"
+                                              ? "Times_New_Java"
+                                              : "BNaznn",
                                         ),
                                       ),
                                     ),
@@ -100,13 +103,19 @@ class _FloatingActionButtonVisitCardState
                                                                   translation(
                                                                           context)
                                                                       .gallery,
-                                                                  style: TextStyle(
-                                                                      color: Color
-                                                                          .fromRGBO(
-                                                                              255,
-                                                                              0,
-                                                                              0,
-                                                                              1)),
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Color
+                                                                        .fromRGBO(
+                                                                            255,
+                                                                            0,
+                                                                            0,
+                                                                            1),
+                                                                    fontFamily: translation(context).changeLanguage ==
+                                                                            "English"
+                                                                        ? "Times_New_Java"
+                                                                        : "BNaznn",
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),
@@ -144,6 +153,10 @@ class _FloatingActionButtonVisitCardState
                                                                             0,
                                                                             0,
                                                                             1),
+                                                                    fontFamily: translation(context).changeLanguage ==
+                                                                            "English"
+                                                                        ? "Times_New_Java"
+                                                                        : "BNaznn",
                                                                   ),
                                                                 ),
                                                               ],
@@ -171,6 +184,11 @@ class _FloatingActionButtonVisitCardState
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontSize: 15.0,
+                                  fontFamily:
+                                      translation(context).changeLanguage ==
+                                              "English"
+                                          ? "Times_New_Java"
+                                          : "BNaznn",
                                 ),
                               ),
                             ],
@@ -193,6 +211,11 @@ class _FloatingActionButtonVisitCardState
                                         style: TextStyle(
                                           color: Color.fromRGBO(255, 0, 0, 1),
                                           fontSize: 10.0,
+                                          fontFamily: translation(context)
+                                                      .changeLanguage ==
+                                                  "English"
+                                              ? "Times_New_Java"
+                                              : "BNaznn",
                                         ),
                                       ),
                                     ),
@@ -242,7 +265,9 @@ class _FloatingActionButtonVisitCardState
                                                                           1),
                                                                 ),
                                                                 Text(
-                                                                  translation(context).gallery,
+                                                                  translation(
+                                                                          context)
+                                                                      .gallery,
                                                                   style:
                                                                       TextStyle(
                                                                     color: Color
@@ -251,6 +276,10 @@ class _FloatingActionButtonVisitCardState
                                                                             0,
                                                                             0,
                                                                             1),
+                                                                    fontFamily: translation(context).changeLanguage ==
+                                                                            "English"
+                                                                        ? "Times_New_Java"
+                                                                        : "BNaznn",
                                                                   ),
                                                                 ),
                                                               ],
@@ -278,7 +307,9 @@ class _FloatingActionButtonVisitCardState
                                                                           1),
                                                                 ),
                                                                 Text(
-                                                                  translation(context).camera,
+                                                                  translation(
+                                                                          context)
+                                                                      .camera,
                                                                   style:
                                                                       TextStyle(
                                                                     color: Color
@@ -287,6 +318,10 @@ class _FloatingActionButtonVisitCardState
                                                                             0,
                                                                             0,
                                                                             1),
+                                                                    fontFamily: translation(context).changeLanguage ==
+                                                                            "English"
+                                                                        ? "Times_New_Java"
+                                                                        : "BNaznn",
                                                                   ),
                                                                 ),
                                                               ],
@@ -314,6 +349,11 @@ class _FloatingActionButtonVisitCardState
                                 style: TextStyle(
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontSize: 15.0,
+                                  fontFamily:
+                                      translation(context).changeLanguage ==
+                                              "English"
+                                          ? "Times_New_Java"
+                                          : "BNaznn",
                                 ),
                               ),
                             ],
@@ -347,9 +387,7 @@ class _FloatingActionButtonVisitCardState
                               keyboardType: TextInputType.name,
                               cursorColor: Color.fromRGBO(255, 0, 0, 1),
                             ),
-                            SizedBox(
-                              height: 25.0
-                            ),
+                            SizedBox(height: 25.0),
                             TextField(
                               // controller: ,
                               decoration: InputDecoration(
@@ -363,7 +401,8 @@ class _FloatingActionButtonVisitCardState
                                   Icons.phone_android,
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                 ),
-                                labelText: translation(context).phoneText,
+                                labelText:
+                                    translation(context).phoneNumberSignUp,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -376,9 +415,7 @@ class _FloatingActionButtonVisitCardState
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 10.0
-                  ),
+                  SizedBox(height: 10.0),
                   TextField(
                     // controller: ,
                     decoration: InputDecoration(
@@ -392,7 +429,7 @@ class _FloatingActionButtonVisitCardState
                         Icons.email,
                         color: Color.fromRGBO(255, 0, 0, 1),
                       ),
-                      labelText: translation(context).emailText,
+                      labelText: translation(context).emailSignUp,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -400,9 +437,7 @@ class _FloatingActionButtonVisitCardState
                     keyboardType: TextInputType.emailAddress,
                     cursorColor: Color.fromRGBO(255, 0, 0, 1),
                   ),
-                  SizedBox(
-                    height: 10.0
-                  ),
+                  SizedBox(height: 10.0),
                   TextField(
                     // controller: ,
                     decoration: InputDecoration(
@@ -416,7 +451,7 @@ class _FloatingActionButtonVisitCardState
                         Icons.map,
                         color: Color.fromRGBO(255, 0, 0, 1),
                       ),
-                      labelText: translation(context).addressText,
+                      labelText: translation(context).address,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -424,9 +459,7 @@ class _FloatingActionButtonVisitCardState
                     keyboardType: TextInputType.text,
                     cursorColor: Color.fromRGBO(255, 0, 0, 1),
                   ),
-                  SizedBox(
-                    height: 10.0
-                  ),
+                  SizedBox(height: 10.0),
                   TextField(
                     // controller: ,
                     decoration: InputDecoration(
@@ -440,7 +473,7 @@ class _FloatingActionButtonVisitCardState
                         Icons.miscellaneous_services,
                         color: Color.fromRGBO(255, 0, 0, 1),
                       ),
-                      labelText: translation(context).servicesText,
+                      labelText: translation(context).services,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -449,16 +482,20 @@ class _FloatingActionButtonVisitCardState
                     maxLines: 3,
                     cursorColor: Color.fromRGBO(255, 0, 0, 1),
                   ),
-                  SizedBox(
-                    height: 15.0
-                  ),
+                  SizedBox(height: 15.0),
                   ElevatedButton(
                     onPressed: () {
                       //
                     },
                     child: Text(
                       translation(context).addNewVisitCardBt,
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily:
+                            translation(context).changeLanguage == "English"
+                                ? "Times_New_Java"
+                                : "BNaznn",
+                      ),
                     ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
@@ -473,16 +510,20 @@ class _FloatingActionButtonVisitCardState
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 10.0
-                  ),
+                  SizedBox(height: 10.0),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
                     child: Text(
                       translation(context).cancelBT,
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily:
+                            translation(context).changeLanguage == "English"
+                                ? "Times_New_Java"
+                                : "BNaznn",
+                      ),
                     ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(

@@ -23,15 +23,15 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
     "www.flutter.dev",
     "www.javatpoint.com",
   ];
-  List websiteDescriptions = [
-    "Description_1",
-    "Description_2",
-    "Description_3",
-    "Description_4",
-  ];
 
   @override
   Widget build(BuildContext context) {
+    List websiteDescriptions = [
+      "${translation(context).descriptionText} google",
+      "${translation(context).descriptionText} youtube",
+      "${translation(context).descriptionText} flutter",
+      "${translation(context).descriptionText} javatpoint",
+    ];
     return Padding(
       padding: const EdgeInsets.only(
         top: 60.0,
@@ -66,7 +66,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                           Padding(
                             padding: const EdgeInsets.only(left: 10.0),
                             child: Text(
-                              '${websiteNames[index]}',
+                              ' ${websiteNames[index]} ',
                               style: TextStyle(
                                 color: Color.fromRGBO(0, 0, 0, 1),
                               ),
@@ -85,7 +85,10 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                               }
                             },
                             child: Align(
-                              alignment: Alignment.topLeft,
+                              alignment: translation(context).changeLanguage ==
+                                      "English"
+                                  ? Alignment.topLeft
+                                  : Alignment.topRight,
                               child: Text(
                                 "${myWebsiteLinks[index]}",
                               ),
@@ -157,7 +160,9 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                     color: Color.fromRGBO(
                                                         255, 17, 0, 1),
                                                   ),
-                                                  labelText: translation(context).websiteName,
+                                                  labelText:
+                                                      translation(context)
+                                                          .websiteName,
                                                   border: OutlineInputBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -167,9 +172,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                 keyboardType:
                                                     TextInputType.text,
                                               ),
-                                              SizedBox(
-                                                height: 10.0
-                                              ),
+                                              SizedBox(height: 10.0),
                                               TextField(
                                                 // controller: ,
                                                 decoration: InputDecoration(
@@ -188,7 +191,9 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                     color: Color.fromRGBO(
                                                         255, 0, 0, 1),
                                                   ),
-                                                  labelText: translation(context).urlText,
+                                                  labelText:
+                                                      translation(context)
+                                                          .urlText,
                                                   border: OutlineInputBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -220,7 +225,9 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                     color: Color.fromRGBO(
                                                         255, 17, 0, 1),
                                                   ),
-                                                  labelText: translation(context).descriptionText,
+                                                  labelText:
+                                                      translation(context)
+                                                          .descriptionText,
                                                   border: OutlineInputBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -241,8 +248,15 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                 onPressed: () {},
                                                 child: Text(
                                                   translation(context).change,
-                                                  style:
-                                                      TextStyle(fontSize: 15.0),
+                                                  style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontFamily: translation(
+                                                                    context)
+                                                                .changeLanguage ==
+                                                            "English"
+                                                        ? "Times_New_Java"
+                                                        : "BNaznn",
+                                                  ),
                                                 ),
                                                 style: ButtonStyle(
                                                   backgroundColor:
@@ -277,9 +291,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                height: 10.0,
-                              ),
+                              SizedBox(height: 10.0),
                               Expanded(
                                 child: IconButton(
                                   onPressed: () {
@@ -295,11 +307,17 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                             color: Color.fromRGBO(255, 0, 0, 1),
                                           ),
                                           title: Text(
-                                            "Do you want to delete?",
+                                            translation(context)
+                                                .doYouWantToDelete,
                                             style: TextStyle(
                                               color:
                                                   Color.fromRGBO(255, 0, 0, 1),
                                               fontSize: 25.0,
+                                              fontFamily: translation(context)
+                                                          .changeLanguage ==
+                                                      "English"
+                                                  ? "Times_New_Java"
+                                                  : "BNaznn",
                                             ),
                                           ),
                                           content: Expanded(
@@ -310,9 +328,16 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                 ElevatedButton(
                                                   onPressed: () {},
                                                   child: Text(
-                                                    "Yes",
+                                                    translation(context).yesBT,
                                                     style: TextStyle(
-                                                        fontSize: 15.0),
+                                                      fontSize: 15.0,
+                                                      fontFamily: translation(
+                                                                      context)
+                                                                  .changeLanguage ==
+                                                              "English"
+                                                          ? "Times_New_Java"
+                                                          : "BNaznn",
+                                                    ),
                                                   ),
                                                   style: ButtonStyle(
                                                     backgroundColor:
@@ -335,17 +360,22 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  width: 5.0,
-                                                ),
+                                                SizedBox(width: 5.0),
                                                 ElevatedButton(
                                                   onPressed: () {
                                                     Navigator.pop(context);
                                                   },
                                                   child: Text(
-                                                    "No",
+                                                    translation(context).noBT,
                                                     style: TextStyle(
-                                                        fontSize: 15.0),
+                                                      fontSize: 15.0,
+                                                      fontFamily: translation(
+                                                                      context)
+                                                                  .changeLanguage ==
+                                                              "English"
+                                                          ? "Times_New_Java"
+                                                          : "BNaznn",
+                                                    ),
                                                   ),
                                                   style: ButtonStyle(
                                                     backgroundColor:
@@ -396,7 +426,9 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
             ),
           ),
           Align(
-            alignment: Alignment.bottomRight,
+            alignment: translation(context).changeLanguage == "English"
+                ? Alignment.bottomRight
+                : Alignment.bottomLeft,
             child: FloatingActionButton(
               backgroundColor: Color.fromRGBO(255, 0, 0, 1),
               onPressed: () {
@@ -425,9 +457,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                             width: 200.0,
                             height: 150.0,
                           ),
-                          SizedBox(
-                            height: 15,
-                          ),
+                          SizedBox(height: 15.0),
                         ],
                       ),
                       title: Column(
@@ -452,9 +482,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                             ),
                             keyboardType: TextInputType.text,
                           ),
-                          SizedBox(
-                            height: 10.0
-                          ),
+                          SizedBox(height: 10.0),
                           TextField(
                             // controller: ,
                             decoration: InputDecoration(
@@ -475,9 +503,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                             ),
                             keyboardType: TextInputType.url,
                           ),
-                          SizedBox(
-                            height: 10.0
-                          ),
+                          SizedBox(height: 10.0),
                           TextField(
                             // controller: ,
                             decoration: InputDecoration(
@@ -500,14 +526,19 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                             maxLength: 150,
                             maxLines: 2,
                           ),
-                          SizedBox(
-                            height: 15,
-                          ),
+                          SizedBox(height: 15.0),
                           ElevatedButton(
                             onPressed: () {},
                             child: Text(
                               translation(context).addNewWebSitesBT,
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily:
+                                    translation(context).changeLanguage ==
+                                            "English"
+                                        ? "Times_New_Java"
+                                        : "BNaznn",
+                              ),
                             ),
                             style: ButtonStyle(
                               backgroundColor: MaterialStatePropertyAll(

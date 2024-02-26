@@ -29,6 +29,21 @@ class _ContactsState extends State<Contacts>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(255, 0, 0, 1),
+        elevation: 0.0,
+        centerTitle: true,
+        title: Text(
+          translation(context).contacts,
+          style: TextStyle(
+            color: Color.fromRGBO(255, 255, 255, 1),
+            fontSize: 30.0,
+            fontFamily: translation(context).changeLanguage == "English"
+                ? "WLRoyalFlutterBold"
+                : "alvi_Nastaleeq",
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           Column(
@@ -37,45 +52,18 @@ class _ContactsState extends State<Contacts>
                 color: Color.fromRGBO(255, 255, 255, 1),
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(150),
-                    ),
+                    borderRadius:
+                        translation(context).changeLanguage == "English"
+                            ? BorderRadius.only(
+                                bottomLeft: Radius.circular(150),
+                              )
+                            : BorderRadius.only(
+                                bottomRight: Radius.circular(150),
+                              ),
                     color: Color.fromRGBO(255, 0, 0, 1),
                   ),
                   width: double.infinity,
-                  height: 200.0,
-                  child: Stack(
-                    alignment: AlignmentDirectional.topStart,
-                    children: [
-                      Positioned(
-                        top: 15.0,
-                        left: 15.0,
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: 30.0,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 15.0,
-                        left: 100.0,
-                        right: 100.0,
-                        child: Text(
-                          translation(context).contacts,
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontSize: 30.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
+                  height: 100.0,
                 ),
               ),
               Expanded(
@@ -83,10 +71,16 @@ class _ContactsState extends State<Contacts>
                   color: Color.fromRGBO(255, 0, 0, 1),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(140),
-                        bottomLeft: Radius.circular(170),
-                      ),
+                      borderRadius:
+                          translation(context).changeLanguage == "English"
+                              ? BorderRadius.only(
+                                  topRight: Radius.circular(140),
+                                  bottomLeft: Radius.circular(170),
+                                )
+                              : BorderRadius.only(
+                                  topLeft: Radius.circular(140),
+                                  bottomRight: Radius.circular(170),
+                                ),
                       color: Color.fromRGBO(255, 255, 255, 1),
                     ),
                     width: double.infinity,
@@ -106,13 +100,18 @@ class _ContactsState extends State<Contacts>
             ],
           ),
           Positioned(
-            top: 200.0,
+            top: 100.0,
             right: 30.0,
             left: 30.0,
             child: Padding(
               padding: const EdgeInsets.all(0.0),
               child: TabBar(
-                labelStyle: TextStyle(fontSize: 20.0),
+                labelStyle: TextStyle(
+                  fontSize: 20.0,
+                  fontFamily: translation(context).changeLanguage == "English"
+                      ? "Times_New_Java"
+                      : "BNaznn",
+                ),
                 controller: tabController,
                 labelColor: Color.fromRGBO(255, 0, 0, 1),
                 indicatorColor: Color.fromRGBO(255, 0, 0, 1),
@@ -124,7 +123,7 @@ class _ContactsState extends State<Contacts>
                 ],
               ),
             ),
-          ),  
+          ),
         ],
       ),
     );

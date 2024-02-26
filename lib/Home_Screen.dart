@@ -59,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(
             color: Color.fromRGBO(255, 255, 255, 1),
             fontSize: 30,
+            fontFamily: translation(context).changeLanguage == "English" ? "WLRoyalFlutterBold" : "alvi_Nastaleeq",
           ),
         ),
         actions: [
@@ -76,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     translation(context).logOut,
                     style: TextStyle(
                       color: Color.fromRGBO(100, 100, 100, 1),
+                      fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                     ),
                   ),
                   minLeadingWidth: 1.0,
@@ -99,72 +101,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: Color.fromARGB(255, 255, 0, 0)),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(160),
-                    ),
+                    borderRadius:
+                        translation(context).changeLanguage == "English"
+                            ? BorderRadius.only(
+                                bottomRight: Radius.circular(160),
+                              )
+                            : BorderRadius.only(
+                                bottomLeft: Radius.circular(160),
+                              ),
                     color: Color.fromRGBO(255, 0, 0, 1),
                   ),
                   width: double.infinity,
-                  height: 150,
-                  child: Stack(
-                    alignment: AlignmentDirectional.topStart,
-                    children: [
-                      //   Positioned(
-                      //     top: 15.0,
-                      //     left: 15.0,
-                      //     child: IconButton(
-                      //       icon: Icon(
-                      //         Icons.menu,
-                      //         color: Color.fromRGBO(255, 255, 255, 1),
-                      //         size: 30.0,
-                      //       ),
-                      //       onPressed: () =>
-                      //           _scaffoldKey.currentState?.openDrawer(),
-                      //     ),
-                      //   ),
-                      //   Positioned(
-                      //     top: 15.0,
-                      //     left: 100.0,
-                      //     right: 100.0,
-                      //     child: Text(
-                      //       translation(context).homeTitle,
-                      //       style: TextStyle(
-                      //         color: Color.fromRGBO(255, 255, 255, 1),
-                      //         fontSize: 30,
-                      //       ),
-                      //       textAlign: TextAlign.center,
-                      //     ),
-                      //   ),
-                      //   Positioned(
-                      //     top: 15.0,
-                      //     right: 15.0,
-                      //     child: PopupMenuButton(
-                      //       color: const Color.fromRGBO(255, 255, 255, 1),
-                      //       itemBuilder: (context) => [
-                      //         PopupMenuItem(
-                      //           padding: EdgeInsets.all(0.5),
-                      //           child: ListTile(
-                      //             leading: Icon(
-                      //               Icons.logout,
-                      //               color: Color.fromRGBO(255, 0, 0, 1),
-                      //             ),
-                      //             title: Text(
-                      //               translation(context).logOut,
-                      //               style: TextStyle(
-                      //                 color: Color.fromRGBO(100, 100, 100, 1),
-                      //               ),
-                      //             ),
-                      //             minLeadingWidth: 1.0,
-                      //             onTap: () {
-                      //               //
-                      //             },
-                      //           ),
-                      //         ),
-                      //       ],
-                      //     ),
-                      //   ),
-                    ],
-                  ),
+                  height: 100,
                 ),
               ),
               Expanded(
@@ -174,17 +122,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                       border: Border.all(
                           color: const Color.fromARGB(255, 255, 255, 255)),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(200),
-                        bottomRight: Radius.circular(200),
-                      ),
+                      borderRadius:
+                          translation(context).changeLanguage == "English"
+                              ? BorderRadius.only(
+                                  topLeft: Radius.circular(200),
+                                  bottomRight: Radius.circular(200),
+                                )
+                              : BorderRadius.only(
+                                  topRight: Radius.circular(200),
+                                  bottomLeft: Radius.circular(200),
+                                ),
                       color: Color.fromRGBO(255, 255, 255, 1),
                     ),
                     width: double.infinity,
                     height: 700,
                     child: Padding(
                       padding: const EdgeInsets.only(
-                        top: 90.0,
+                        top: 110.0,
                         bottom: 20.0,
                       ),
                       child: GridView.builder(
@@ -230,6 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     style: TextStyle(
                                       fontSize: 20.0,
                                       color: Color.fromRGBO(255, 17, 0, 1),
+                                      fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -246,8 +201,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           Positioned(
-            top: 60.0,
-            left: 5.0,
+            top: 20.0,
+            left: translation(context).changeLanguage == "English" ? 5.0 : null,
+            right: translation(context).changeLanguage == "دری" ||
+                    translation(context).changeLanguage == "پښتو"
+                ? 5.0
+                : null,
             child: Image.asset(
               "images/LinkestanLogo.png",
               width: 180.0,

@@ -12,10 +12,9 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-
   TextEditingController usernameController = TextEditingController();
   TextEditingController password_loginController = TextEditingController();
-  
+
   var isVisible = true;
   var myIcon =
       const Icon(Icons.visibility, color: Color.fromRGBO(255, 0, 0, 1));
@@ -33,9 +32,14 @@ class _LogInState extends State<LogIn> {
                   color: Color.fromRGBO(255, 255, 255, 1),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(230),
-                      ),
+                      borderRadius:
+                          translation(context).changeLanguage == "English"
+                              ? BorderRadius.only(
+                                  bottomLeft: Radius.circular(230),
+                                )
+                              : BorderRadius.only(
+                                  bottomRight: Radius.circular(230),
+                                ),
                       color: Color.fromRGBO(255, 0, 0, 1),
                     ),
                     width: double.infinity,
@@ -47,10 +51,16 @@ class _LogInState extends State<LogIn> {
                 color: Color.fromRGBO(255, 0, 0, 1),
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(200),
-                      bottomLeft: Radius.circular(270),
-                    ),
+                    borderRadius:
+                        translation(context).changeLanguage == "English"
+                            ? BorderRadius.only(
+                                topRight: Radius.circular(200),
+                                bottomLeft: Radius.circular(270),
+                              )
+                            : BorderRadius.only(
+                                topLeft: Radius.circular(200),
+                                bottomRight: Radius.circular(270),
+                              ),
                     color: Color.fromRGBO(255, 255, 255, 1),
                   ),
                   width: double.infinity,
@@ -135,12 +145,17 @@ class _LogInState extends State<LogIn> {
                           keyboardType: TextInputType.visiblePassword,
                         ),
                         Align(
-                          alignment: Alignment.topLeft,
+                          alignment:
+                              translation(context).changeLanguage == "English"
+                                  ? Alignment.topLeft
+                                  : Alignment.topRight,
                           child: TextButton(
                             onPressed: () {
                               //
                             },
-                            child: Text("Forgot password?"),
+                            child: Text(translation(context).forgotPasswordLogIn, style: TextStyle(
+                              fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
+                            ),),
                           ),
                         ),
                         SizedBox(height: 15.0),
@@ -173,8 +188,10 @@ class _LogInState extends State<LogIn> {
                                       ),
                                     ),
                                     title: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Icon(
                                           Icons.warning_amber_rounded,
@@ -182,10 +199,12 @@ class _LogInState extends State<LogIn> {
                                           size: 130.0,
                                         ),
                                         Text(
-                                          translation(context).pleaseCheckYourUsernameOrPassword,
+                                          translation(context)
+                                              .pleaseCheckYourUsernameOrPassword,
                                           style: TextStyle(
                                             color: Color.fromRGBO(255, 0, 0, 1),
                                             fontSize: 16.0,
+                                            fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                           ),
                                         ),
                                       ],
@@ -200,6 +219,7 @@ class _LogInState extends State<LogIn> {
                             style: TextStyle(
                               fontSize: 22.0,
                               color: Color.fromRGBO(255, 255, 255, 1),
+                              fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                             ),
                           ),
                           style: ButtonStyle(
@@ -230,6 +250,7 @@ class _LogInState extends State<LogIn> {
                             style: TextStyle(
                               fontSize: 22.0,
                               color: Color.fromRGBO(255, 255, 255, 1),
+                              fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                             ),
                           ),
                           style: ButtonStyle(
@@ -253,6 +274,7 @@ class _LogInState extends State<LogIn> {
                               translation(context).signInAsAGuestLogIn,
                               style: TextStyle(
                                 color: Color.fromRGBO(255, 0, 0, 1),
+                                fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                               ),
                             ),
                             TextButton(
@@ -264,7 +286,9 @@ class _LogInState extends State<LogIn> {
                                   }),
                                 );
                               },
-                              child: Text(translation(context).clickHereBT),
+                              child: Text(translation(context).clickHereBT, style: TextStyle(
+                                fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
+                              ),),
                             ),
                           ],
                         ),
@@ -277,12 +301,15 @@ class _LogInState extends State<LogIn> {
           ),
           Positioned(
             top: 60.0,
-            right: 40.0,
+            right: translation(context).changeLanguage == "English" ? 40.0 : null,
+            left: translation(context).changeLanguage == "دری" || translation(context).changeLanguage == "پښتو" ? 40.0 : null,
+            
             child: Text(
               translation(context).logInText,
               style: TextStyle(
                 color: Color.fromRGBO(255, 255, 255, 1),
-                fontSize: 80.0,
+                fontSize: translation(context).changeLanguage == "English" || translation(context).changeLanguage == "پښتو" ? 80.0 : 90.0,
+                fontFamily: translation(context).changeLanguage == "English" ? "WLRoyalFlutterBold" : "alvi_Nastaleeq",
               ),
               textAlign: TextAlign.center,
             ),

@@ -32,6 +32,35 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(255, 0, 0, 1),
+        elevation: 0.0,
+        centerTitle: true,
+        title: Text(
+          translation(context).visitCardName,
+          style: TextStyle(
+            color: Color.fromRGBO(255, 255, 255, 1),
+            fontSize: 30.0,
+            fontFamily: translation(context).changeLanguage == "English" ? "WLRoyalFlutterBold" : "alvi_Nastaleeq",
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return HomeScreen();
+                }),
+              );
+            },
+            icon: Icon(
+              Icons.home,
+              color: const Color.fromRGBO(255, 255, 255, 1),
+            ),
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           Column(
@@ -40,64 +69,18 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                 color: Color.fromRGBO(255, 255, 255, 1),
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(150),
-                    ),
+                    borderRadius:
+                        translation(context).changeLanguage == "English"
+                            ? BorderRadius.only(
+                                bottomLeft: Radius.circular(150),
+                              )
+                            : BorderRadius.only(
+                                bottomRight: Radius.circular(150),
+                              ),
                     color: Color.fromRGBO(255, 0, 0, 1),
                   ),
                   width: double.infinity,
-                  height: 200.0,
-                  child: Stack(
-                    alignment: AlignmentDirectional.topStart,
-                    children: [
-                      Positioned(
-                        top: 15.0,
-                        left: 15.0,
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: 30.0,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 15.0,
-                        left: 100.0,
-                        right: 100.0,
-                        child: Text(
-                          translation(context).visitCardName,
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontSize: 30.0,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Positioned(
-                        top: 15.0,
-                        right: 15.0,
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return HomeScreen();
-                              }),
-                            );
-                          },
-                          icon: Icon(
-                            Icons.home,
-                            color: Colors.white,
-                            size: 30.0,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  height: 100.0,
                 ),
               ),
               Expanded(
@@ -105,17 +88,23 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                   color: Color.fromRGBO(255, 0, 0, 1),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(140),
-                        bottomLeft: Radius.circular(170),
-                      ),
+                      borderRadius:
+                          translation(context).changeLanguage == "English"
+                              ? BorderRadius.only(
+                                  topRight: Radius.circular(140),
+                                  bottomLeft: Radius.circular(170),
+                                )
+                              : BorderRadius.only(
+                                  topLeft: Radius.circular(140),
+                                  bottomRight: Radius.circular(170),
+                                ),
                       color: Color.fromRGBO(255, 255, 255, 1),
                     ),
                     width: double.infinity,
                     height: 650.0,
                     child: Padding(
                       padding: const EdgeInsets.only(
-                        top: 30.0,
+                        top: 70.0,
                         left: 50.0,
                         right: 50.0,
                         bottom: 40.0,
@@ -200,6 +189,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               subtitle: Text(
@@ -225,6 +215,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               subtitle: Text(
@@ -246,10 +237,15 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                     throw "Could not launch $dialNumber";
                                   }
                                 },
-                                icon: Icon(
-                                  Icons.call,
+                                icon: translation(context).changeLanguage == "English" ?
+                                 Icon(
+                                  Icons.phone_enabled,
                                   color: Color.fromRGBO(0, 255, 0, 1),
-                                ),
+                                ) : 
+                                Icon(
+                                  Icons.phone,
+                                  color: Color.fromRGBO(0, 255, 0, 1),
+                                )
                               ),
                             ),
                             Divider(
@@ -267,6 +263,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               subtitle: TextButton(
@@ -295,7 +292,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                   }
                                 },
                                 child: Align(
-                                  alignment: Alignment.topLeft,
+                                  alignment: translation(context).changeLanguage == "English" ? Alignment.topLeft : Alignment.topRight,
                                   child: Text(
                                     "example@gmail.com",
                                     style: TextStyle(
@@ -320,6 +317,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               subtitle: Text(
@@ -345,6 +343,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
                                   color: Color.fromRGBO(255, 0, 0, 1),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
+                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
                                 ),
                               ),
                               subtitle: Text(

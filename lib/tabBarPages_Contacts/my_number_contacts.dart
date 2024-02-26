@@ -9,9 +9,9 @@ List nameContacts = [
   "Ali",
 ];
 List phoneContacts = [
-  "+93790325434",
-  "0093782940110",
-  "0703940029",
+  "07903xxxxx",
+  "0782xxxxxx",
+  "070394xxxx",
 ];
 
 class MyNumbersContacts extends StatefulWidget {
@@ -20,18 +20,19 @@ class MyNumbersContacts extends StatefulWidget {
   @override
   State<MyNumbersContacts> createState() => _MyNumbersContactsState();
 }
-class _MyNumbersContactsState extends State<MyNumbersContacts> {
 
+class _MyNumbersContactsState extends State<MyNumbersContacts> {
   TextEditingController name_contactsController = TextEditingController();
-  TextEditingController phone_number_contactsController = TextEditingController();
-  
+  TextEditingController phone_number_contactsController =
+      TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
         top: 60.0,
-        right: 30.0,
-        left: 30.0,
+        right: 50.0,
+        left: 50.0,
         bottom: 40.0,
       ),
       child: Column(
@@ -51,15 +52,21 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                           path: phoneContacts[index],
                         );
                         if (await canLaunchUrl(dialNumber)) {
-                          await FlutterPhoneDirectCaller.callNumber(phoneContacts[index]);
+                          await FlutterPhoneDirectCaller.callNumber(
+                              phoneContacts[index]);
                         } else {
                           throw "Could not launch $dialNumber";
                         }
                       },
-                      icon: Icon(
-                        Icons.call,
-                        color: Color.fromRGBO(0, 255, 0, 1),
-                      ),
+                      icon: translation(context).changeLanguage == "English"
+                          ? Icon(
+                              Icons.phone,
+                              color: Color.fromRGBO(0, 255, 0, 1),
+                            )
+                          : Icon(
+                              Icons.phone_enabled,
+                              color: Color.fromRGBO(0, 255, 0, 1),
+                            ),
                     ),
                     title: Text(
                       "${nameContacts[index]}",
@@ -73,6 +80,7 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                       "${phoneContacts[index]}",
                       style: TextStyle(
                         color: Color.fromRGBO(100, 100, 100, 1),
+                        
                       ),
                     ),
                     trailing: Column(
@@ -115,7 +123,8 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                                               color:
                                                   Color.fromRGBO(255, 0, 0, 1),
                                             ),
-                                            labelText: translation(context).name,
+                                            labelText:
+                                                translation(context).name,
                                             border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10),
@@ -123,9 +132,7 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                                           ),
                                           keyboardType: TextInputType.name,
                                         ),
-                                        SizedBox(
-                                          height: 15
-                                        ),
+                                        SizedBox(height: 15),
                                         TextField(
                                           // controller: ,
                                           decoration: InputDecoration(
@@ -142,7 +149,8 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                                               color:
                                                   Color.fromRGBO(255, 17, 0, 1),
                                             ),
-                                            labelText: translation(context).phoneNumberSignUp,
+                                            labelText: translation(context)
+                                                .phoneNumberSignUp,
                                             border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10),
@@ -150,12 +158,19 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                                           ),
                                           keyboardType: TextInputType.phone,
                                         ),
-                                        SizedBox(height: 15),
+                                        SizedBox(height: 15.0),
                                         ElevatedButton(
                                           onPressed: () {},
                                           child: Text(
                                             translation(context).change,
-                                            style: TextStyle(fontSize: 15.0),
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              fontFamily: translation(context)
+                                                          .changeLanguage ==
+                                                      "English"
+                                                  ? "Times_New_Java"
+                                                  : "BNaznn",
+                                            ),
                                           ),
                                           style: ButtonStyle(
                                             backgroundColor:
@@ -175,16 +190,21 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
-                                          height: 10.0
-                                        ),
+                                        SizedBox(height: 10.0),
                                         ElevatedButton(
                                           onPressed: () {
                                             Navigator.pop(context);
                                           },
                                           child: Text(
                                             translation(context).cancelBT,
-                                            style: TextStyle(fontSize: 15.0),
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              fontFamily: translation(context)
+                                                          .changeLanguage ==
+                                                      "English"
+                                                  ? "Times_New_Java"
+                                                  : "BNaznn",
+                                            ),
                                           ),
                                           style: ButtonStyle(
                                             backgroundColor:
@@ -235,6 +255,11 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                                       style: TextStyle(
                                         color: Color.fromRGBO(255, 0, 0, 1),
                                         fontSize: 20.0,
+                                        fontFamily: translation(context)
+                                                    .changeLanguage ==
+                                                "English"
+                                            ? "Times_New_Java"
+                                            : "BNaznn",
                                       ),
                                     ),
                                     content: Expanded(
@@ -246,7 +271,14 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                                             onPressed: () {},
                                             child: Text(
                                               translation(context).yesBT,
-                                              style: TextStyle(fontSize: 15.0),
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontFamily: translation(context)
+                                                            .changeLanguage ==
+                                                        "English"
+                                                    ? "Times_New_Java"
+                                                    : "BNaznn",
+                                              ),
                                             ),
                                             style: ButtonStyle(
                                               backgroundColor:
@@ -267,16 +299,21 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                                               ),
                                             ),
                                           ),
-                                          SizedBox(
-                                            width: 10.0
-                                          ),
+                                          SizedBox(width: 10.0),
                                           ElevatedButton(
                                             onPressed: () {
                                               Navigator.pop(context);
                                             },
                                             child: Text(
                                               translation(context).noBT,
-                                              style: TextStyle(fontSize: 15.0),
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontFamily: translation(context)
+                                                            .changeLanguage ==
+                                                        "English"
+                                                    ? "Times_New_Java"
+                                                    : "BNaznn",
+                                              ),
                                             ),
                                             style: ButtonStyle(
                                               backgroundColor:
@@ -320,7 +357,9 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                 itemCount: nameContacts.length),
           ),
           Align(
-            alignment: Alignment.bottomRight,
+            alignment: translation(context).changeLanguage == "English"
+                ? Alignment.bottomRight
+                : Alignment.bottomLeft,
             child: FloatingActionButton(
               backgroundColor: Color.fromRGBO(255, 0, 0, 1),
               onPressed: () {
@@ -375,9 +414,7 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                             ),
                             keyboardType: TextInputType.name,
                           ),
-                          SizedBox(
-                            height: 10.0
-                          ),
+                          SizedBox(height: 10.0),
                           TextField(
                             // controller: phone_number_contactsController,
                             decoration: InputDecoration(
@@ -405,7 +442,14 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                             },
                             child: Text(
                               translation(context).addNewContact,
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontFamily:
+                                    translation(context).changeLanguage ==
+                                            "English"
+                                        ? "Times_New_Java"
+                                        : "BNaznn",
+                              ),
                             ),
                             style: ButtonStyle(
                               backgroundColor: MaterialStatePropertyAll(
