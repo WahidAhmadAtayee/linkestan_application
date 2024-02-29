@@ -3,14 +3,14 @@ import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/tabBarPages_Contacts/emergency_number_contacts.dart';
 import 'package:linkestan_application/tabBarPages_Contacts/my_number_contacts.dart';
 
-class Contacts extends StatefulWidget {
-  const Contacts({super.key});
+class MyContacts extends StatefulWidget {
+  const MyContacts({super.key});
 
   @override
-  State<Contacts> createState() => _ContactsState();
+  State<MyContacts> createState() => _MyContactsState();
 }
 
-class _ContactsState extends State<Contacts>
+class _MyContactsState extends State<MyContacts>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
 
@@ -100,7 +100,7 @@ class _ContactsState extends State<Contacts>
             ],
           ),
           Positioned(
-            top: 100.0,
+            top: 105.0,
             right: 30.0,
             left: 30.0,
             child: Padding(

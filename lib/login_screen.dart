@@ -4,14 +4,15 @@ import 'package:linkestan_application/signup_screen.dart';
 
 import 'home_screen.dart';
 
-class LogIn extends StatefulWidget {
-  const LogIn({super.key});
+class LogInPage extends StatefulWidget {
+  const LogInPage({super.key});
 
   @override
-  State<LogIn> createState() => _LogInState();
+  State<LogInPage> createState() => _LogInPageState();
 }
 
-class _LogInState extends State<LogIn> {
+class _LogInPageState extends State<LogInPage> {
+
   TextEditingController usernameController = TextEditingController();
   TextEditingController password_loginController = TextEditingController();
 

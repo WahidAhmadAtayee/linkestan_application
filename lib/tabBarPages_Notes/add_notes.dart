@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:linkestan_application/models/linkestan_models.dart';
 
 class AddNotes extends StatefulWidget {
   const AddNotes({super.key});
@@ -9,6 +11,9 @@ class AddNotes extends StatefulWidget {
 }
 
 class _AddNotesState extends State<AddNotes> {
+  TextEditingController noteTitleController = TextEditingController();
+  TextEditingController noteDescriptionController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -30,7 +35,7 @@ class _AddNotesState extends State<AddNotes> {
               ),
               SizedBox(height: 20.0),
               TextField(
-                // controller: ,
+                controller: noteTitleController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
@@ -52,7 +57,7 @@ class _AddNotesState extends State<AddNotes> {
               ),
               SizedBox(height: 15.0),
               TextField(
-                // controller: ,
+                controller: noteDescriptionController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
@@ -76,7 +81,51 @@ class _AddNotesState extends State<AddNotes> {
               SizedBox(height: 15.0),
               ElevatedButton(
                 onPressed: () {
-                  //
+                  add(noteTitleController.text, noteDescriptionController.text);
+
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          icon: Icon(
+                            Icons.note_add,
+                            size: 100.0,
+                            color: Color.fromRGBO(255, 0, 0, 1),
+                          ),
+                          title: Column(
+                            children: [
+                              Text(
+                                "Added successfully!",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                              SizedBox(height: 10.0,),
+                              ElevatedButton(
+                                onPressed: () {
+                                  noteDescriptionController.text = "";
+                                  noteTitleController.text = "";
+                                  Navigator.pop(context);
+                                },
+                                child: Text("OK"),
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      Color.fromRGBO(255, 0, 0, 1)),
+                                  fixedSize: MaterialStateProperty.all(
+                                    Size(70, 30),
+                                  ),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      });
                 },
                 child: Text(
                   translation(context).addNewNoteBT,
@@ -105,5 +154,11 @@ class _AddNotesState extends State<AddNotes> {
         ),
       ),
     );
+  }
+
+  add(var textTitle, var textDescription) async {
+    var noteBox = await Hive.openBox("note");
+    Notes notes = Notes(textTitle, textDescription);
+    await noteBox.add(notes);
   }
 }

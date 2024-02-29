@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/login_screen.dart';
+import 'package:linkestan_application/models/linkestan_models.dart';
 import 'package:linkestan_application/splash_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(LogInAdapter());
+  Hive.registerAdapter(SignUpAdapter());
+  Hive.registerAdapter(VisitCardAdapter());
+  Hive.registerAdapter(ContactsAdapter());
+  Hive.registerAdapter(WebsitesAdapter());
+  Hive.registerAdapter(NotesAdapter());
+
+
   runApp(MyApp(),
     
   );
@@ -45,7 +56,7 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: _locale,
       routes: {
-        '/nextScreen': (context) => LogIn(),
+        '/nextScreen': (context) => LogInPage(),
       },
       home: SplashScreen(),
     );

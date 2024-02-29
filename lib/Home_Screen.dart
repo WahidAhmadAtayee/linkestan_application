@@ -27,8 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List pages = [
     VisitingCard(),
     Communication_Network(),
-    Contacts(),
-    Websites(),
+    MyContacts(),
+    WebsitesCategoryPage(),
     Notes(),
   ];
 

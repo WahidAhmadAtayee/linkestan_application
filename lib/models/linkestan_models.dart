@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-// part 'linkestan_models.g.dart';
+part 'linkestan_models.g.dart';
 
 @HiveType(typeId: 1)
 class VisitCard {
@@ -58,6 +58,7 @@ class Websites {
   );
   @HiveField(0)
   var website_name;
+  
   @HiveField(1)
   var url;
 

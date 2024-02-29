@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/show_details_websites_screen.dart';
 
-class Websites extends StatefulWidget {
-  const Websites({super.key});
+class WebsitesCategoryPage extends StatefulWidget {
+  const WebsitesCategoryPage({super.key});
 
   @override
-  State<Websites> createState() => _WebsitesState();
+  State<WebsitesCategoryPage> createState() => _WebsitesCategoryPageState();
 }
 
-class _WebsitesState extends State<Websites> {
+class _WebsitesCategoryPageState extends State<WebsitesCategoryPage> {
   @override
   Widget build(BuildContext context) {
     List website_categories_name = [
