@@ -4,8 +4,8 @@ import 'package:linkestan_application/tabBarPages_VisitCard/add_visit_card.dart'
 import 'package:linkestan_application/tabBarPages_VisitCard/offer_visit_card_image.dart';
 
 class VisitingCard extends StatefulWidget {
-  const VisitingCard({super.key});
-
+   VisitingCard({super.key, required this.isButtonActive});
+  bool isButtonActive;
   @override
   State<VisitingCard> createState() => _VisitingCardState();
 }
@@ -89,8 +89,8 @@ class _VisitingCardState extends State<VisitingCard>
                       child: TabBarView(
                         controller: tabController,
                         children: [
-                          OfferVisitingCardImages(),
-                          AddVisitingCard(),
+                          OfferVisitingCardImages(isButtonActive: widget.isButtonActive),
+                          AddVisitingCard(isButtonActive: widget.isButtonActive),
                         ],
                       ),
                     ),

@@ -4,7 +4,8 @@ import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/models/linkestan_models.dart';
 
 class AddWebsites extends StatefulWidget {
-  const AddWebsites({super.key});
+   AddWebsites({super.key, required this.isButtonActive});
+   bool isButtonActive;
 
   @override
   State<AddWebsites> createState() => _AddWebsitesState();
@@ -116,7 +117,7 @@ class _AddWebsitesState extends State<AddWebsites> {
                   ),
                   SizedBox(height: 15.0),
                   ElevatedButton(
-                    onPressed: () async {
+                    onPressed: widget.isButtonActive == true ? () async {
                       var websiteBox = await Hive.openBox("websites");
                       Websites websites = Websites(websiteNameController.text, websiteURLController.text, websiteDescriptionController.text,);
                       await websiteBox.add(websites);
@@ -128,7 +129,7 @@ class _AddWebsitesState extends State<AddWebsites> {
                       setState(() {
                         
                       });
-                    },
+                    } : null,
                     child: Text(
                       translation(context).addNewWebSitesBT,
                       style: TextStyle(
@@ -140,8 +141,8 @@ class _AddWebsitesState extends State<AddWebsites> {
                       ),
                     ),
                     style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                          Color.fromRGBO(255, 17, 0, 1)),
+                      backgroundColor: widget.isButtonActive == true ? MaterialStatePropertyAll(
+                          Color.fromRGBO(255, 0, 0, 1)) : MaterialStatePropertyAll(Color.fromRGBO(255, 95, 95, 1)),
                       fixedSize: MaterialStateProperty.all(
                         Size(260, 40),
                       ),

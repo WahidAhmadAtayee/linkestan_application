@@ -1,17 +1,20 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:linkestan_application/home_screen.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
+import 'package:linkestan_application/models/linkestan_models.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignUpPageState extends State<SignUpPage> {
   final _imagePicker = ImagePicker();
   XFile? _image;
 
@@ -243,14 +246,29 @@ class _SignUpState extends State<SignUp> {
                             SizedBox(height: 15.0),
                             ElevatedButton(
                               onPressed: () {
-                                // when email entered and pass = rpass => homePage
+                                if (passwordController.text ==
+                                    repeat_passwordController.text) {
+                                  add(
+                                    _image!.path,
+                                    full_nameController.text,
+                                    phoneController.text,
+                                    emailController.text,
+                                    passwordController.text,
+                                    repeat_passwordController.text,
+                                  );
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(isActive: true),));
+                                }
                               },
                               child: Text(
                                 translation(context).createAccountBT,
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   color: Color.fromRGBO(255, 255, 255, 1),
-                                  fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
+                                  fontFamily:
+                                      translation(context).changeLanguage ==
+                                              "English"
+                                          ? "Times_New_Java"
+                                          : "BNaznn",
                                 ),
                               ),
                               style: ButtonStyle(
@@ -275,17 +293,27 @@ class _SignUpState extends State<SignUp> {
                                   translation(context).alreadyHaveAnAccountText,
                                   style: TextStyle(
                                     color: Color.fromRGBO(255, 0, 0, 1),
-                                    fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
+                                    fontFamily:
+                                        translation(context).changeLanguage ==
+                                                "English"
+                                            ? "Times_New_Java"
+                                            : "BNaznn",
                                   ),
                                 ),
                                 TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text(translation(context).clickHereBT,
-                                  style: TextStyle(
-                                    fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
-                                  ),),
+                                  child: Text(
+                                    translation(context).clickHereBT,
+                                    style: TextStyle(
+                                      fontFamily:
+                                          translation(context).changeLanguage ==
+                                                  "English"
+                                              ? "Times_New_Java"
+                                              : "BNaznn",
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -311,8 +339,13 @@ class _SignUpState extends State<SignUp> {
               style: TextStyle(
                 color: Color.fromRGBO(255, 255, 255, 1),
                 // fontSize: 80.0,
-                fontSize: translation(context).changeLanguage == "English" || translation(context).changeLanguage == "پښتو" ? 80.0 : 90.0,
-                fontFamily: translation(context).changeLanguage == "English" ? "WLRoyalFlutterBold" : "alvi_Nastaleeq",
+                fontSize: translation(context).changeLanguage == "English" ||
+                        translation(context).changeLanguage == "پښتو"
+                    ? 80.0
+                    : 90.0,
+                fontFamily: translation(context).changeLanguage == "English"
+                    ? "WLRoyalFlutterBold"
+                    : "alvi_Nastaleeq",
               ),
               textAlign: TextAlign.center,
             ),
@@ -449,5 +482,25 @@ class _SignUpState extends State<SignUp> {
         ],
       ),
     );
+  }
+
+  add(
+    var photoSignup,
+    var fullName_signup,
+    var phone_signup,
+    var email_signup,
+    var password_signup,
+    var rePassword_signup,
+  ) async {
+    var signUpBox = await Hive.openBox("signup");
+    SignUp signup = SignUp(
+      photoSignup,
+      fullName_signup,
+      phone_signup,
+      email_signup,
+      password_signup,
+      rePassword_signup,
+    );
+    await signUpBox.add(signup);
   }
 }

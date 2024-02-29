@@ -4,8 +4,8 @@ import 'package:linkestan_application/tabBarPages_Contacts/emergency_number_cont
 import 'package:linkestan_application/tabBarPages_Contacts/my_number_contacts.dart';
 
 class MyContacts extends StatefulWidget {
-  const MyContacts({super.key});
-
+   MyContacts({super.key, required this.isButtonActive});
+bool isButtonActive;
   @override
   State<MyContacts> createState() => _MyContactsState();
 }
@@ -90,7 +90,7 @@ class _MyContactsState extends State<MyContacts>
                         controller: tabController,
                         children: [
                           EmergencyNumberContacts(),
-                          MyNumbersContacts(),
+                          MyNumbersContacts(isButtonActive: widget.isButtonActive),
                         ],
                       ),
                     ),

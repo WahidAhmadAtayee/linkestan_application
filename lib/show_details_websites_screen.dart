@@ -5,8 +5,8 @@ import 'package:linkestan_application/tabBarPages_ShowDetailsWebsites/offer_show
 import 'package:linkestan_application/tabBarPages_ShowDetailsWebsites/others_show_details_website.dart';
 
 class ShowDetailsWebsites extends StatefulWidget {
-  const ShowDetailsWebsites({super.key});
-
+   ShowDetailsWebsites({super.key, required this.isButtonActive});
+  bool isButtonActive;
   @override
   State<ShowDetailsWebsites> createState() => _ShowDetailsWebsitesState();
 }
@@ -62,7 +62,7 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites>
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return HomeScreen();
+                  return HomeScreen(isActive: widget.isButtonActive,);
                 }),
               );
             },
@@ -120,7 +120,7 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites>
                         controller: tabController,
                         children: [
                           OfferShowDetailsWebsite(),
-                          OthersShowDetailsWebsite(),
+                          OthersShowDetailsWebsite(isButtonActive: widget.isButtonActive),
                         ],
                       ),
                     ),

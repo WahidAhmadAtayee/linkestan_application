@@ -6,8 +6,8 @@ import 'package:linkestan_application/tabBarPages_ShowDetailsWebsites/add_my_web
 import 'package:url_launcher/url_launcher.dart';
 
 class OthersShowDetailsWebsite extends StatefulWidget {
-  const OthersShowDetailsWebsite({super.key});
-
+  OthersShowDetailsWebsite({super.key, required this.isButtonActive});
+  bool isButtonActive;
   @override
   State<OthersShowDetailsWebsite> createState() =>
       _OthersShowDetailsWebsiteState();
@@ -525,7 +525,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                   alignment: translation(context).changeLanguage == "English"
                       ? Alignment.bottomRight
                       : Alignment.bottomLeft,
-                  child: AddWebsites(),
+                  child: AddWebsites(isButtonActive: widget.isButtonActive),
                 ),
               ],
             ),

@@ -3,9 +3,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/models/linkestan_models.dart';
 
-class AddContactBT extends StatefulWidget {
-  const AddContactBT({super.key});
 
+
+class AddContactBT extends StatefulWidget {
+   AddContactBT({super.key, required this.isButtonActive});
+  bool isButtonActive;
   @override
   State<AddContactBT> createState() => _AddContactBTState();
 }
@@ -13,6 +15,8 @@ class AddContactBT extends StatefulWidget {
 class _AddContactBTState extends State<AddContactBT> {
   TextEditingController nameContactsController = TextEditingController();
   TextEditingController phoneNumberContactsController = TextEditingController();
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +97,7 @@ class _AddContactBTState extends State<AddContactBT> {
                   ),
                   SizedBox(height: 15.0),
                   ElevatedButton(
-                    onPressed: () async {
+                    onPressed: widget.isButtonActive == true ? () async {
                       var contactBox = await Hive.openBox("contacts");
                       Contacts contacts = Contacts(nameContactsController.text,
                           phoneNumberContactsController.text);
@@ -103,7 +107,7 @@ class _AddContactBTState extends State<AddContactBT> {
                       phoneNumberContactsController.text = "";
                       Navigator.pop(context);
                       setState(() {});
-                    },
+                    } : null,
                     child: Text(
                       translation(context).addNewContact,
                       style: TextStyle(
@@ -115,8 +119,9 @@ class _AddContactBTState extends State<AddContactBT> {
                       ),
                     ),
                     style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                          Color.fromRGBO(255, 17, 0, 1)),
+                      backgroundColor: widget.isButtonActive == true ? MaterialStatePropertyAll(
+                          Color.fromRGBO(255, 0, 0, 1)) : MaterialStatePropertyAll(
+                          Color.fromRGBO(255, 95, 95, 1)),
                       fixedSize: MaterialStateProperty.all(
                         Size(260, 40),
                       ),

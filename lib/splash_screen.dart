@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/home_screen.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/login_screen.dart';
 
@@ -18,12 +19,25 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void _navigator() async {
+
     await Future.delayed(Duration(seconds: 5), () {
-      Navigator.push(context, MaterialPageRoute(
-        builder: (context) {
-          return LogInPage();
-        },
-      ));
+      
+      if (username == "admin@gmail.com" &&
+                                password == "0000") {
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) {
+            return HomeScreen(
+              isActive: true,
+            );
+          },
+        ));
+      } else {
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) {
+            return LogInPage();
+          },
+        ));
+      }
     });
   }
 

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:linkestan_application/tabBarPages_VisitCard/show_visit_card_details.dart';
 
 class OfferVisitingCardImages extends StatefulWidget {
-  const OfferVisitingCardImages({super.key});
+   OfferVisitingCardImages({super.key, required this.isButtonActive});
 
+  bool isButtonActive;
   @override
   State<OfferVisitingCardImages> createState() => _OfferVisitingCardImagesState();
 }
@@ -58,7 +59,7 @@ class _OfferVisitingCardImagesState extends State<OfferVisitingCardImages> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            ShowVisitCardDetails(index: index),
+                            ShowVisitCardDetails(index: index, isButtonActive: widget.isButtonActive,),
                       ));
                 },
               ),

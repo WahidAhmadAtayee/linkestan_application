@@ -4,8 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linkestan_application/models/linkestan_models.dart';
 
 class AddNotes extends StatefulWidget {
-  const AddNotes({super.key});
-
+   AddNotes({super.key, required this.isButtonActive});
+  bool isButtonActive;
   @override
   State<AddNotes> createState() => _AddNotesState();
 }
@@ -80,7 +80,7 @@ class _AddNotesState extends State<AddNotes> {
               ),
               SizedBox(height: 15.0),
               ElevatedButton(
-                onPressed: () {
+                onPressed: widget.isButtonActive == true ? () {
                   add(noteTitleController.text, noteDescriptionController.text);
 
                   showDialog(
@@ -126,7 +126,7 @@ class _AddNotesState extends State<AddNotes> {
                           ),
                         );
                       });
-                },
+                } : null,
                 child: Text(
                   translation(context).addNewNoteBT,
                   style: TextStyle(
@@ -137,8 +137,9 @@ class _AddNotesState extends State<AddNotes> {
                   ),
                 ),
                 style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStatePropertyAll(Color.fromRGBO(255, 17, 0, 1)),
+                  backgroundColor: widget.isButtonActive == true ? MaterialStatePropertyAll(
+                          Color.fromRGBO(255, 0, 0, 1)) : MaterialStatePropertyAll(
+                          Color.fromRGBO(255, 95, 95, 1)),
                   fixedSize: MaterialStateProperty.all(
                     Size(330, 45),
                   ),

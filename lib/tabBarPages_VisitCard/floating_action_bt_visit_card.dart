@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:linkestan_application/models/linkestan_models.dart';
+import 'package:image_picker/image_picker.dart';
 
 class FloatingActionButtonVisitCard extends StatefulWidget {
-  const FloatingActionButtonVisitCard({super.key});
+  FloatingActionButtonVisitCard({super.key, required this.isButtonActive});
+
+  bool isButtonActive;
 
   @override
   State<FloatingActionButtonVisitCard> createState() =>
@@ -11,6 +16,15 @@ class FloatingActionButtonVisitCard extends StatefulWidget {
 
 class _FloatingActionButtonVisitCardState
     extends State<FloatingActionButtonVisitCard> {
+  ImagePicker _imagePicker = ImagePicker();
+  XFile? _imageFront;
+  XFile? _imageBack;
+
+  TextEditingController companyNameController = TextEditingController();
+  TextEditingController phoneNumberCompanyController = TextEditingController();
+  TextEditingController emailCompabyController = TextEditingController();
+  TextEditingController addressCompanyController = TextEditingController();
+  TextEditingController servicesCompanyController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
@@ -84,8 +98,13 @@ class _FloatingActionButtonVisitCardState
                                                     children: [
                                                       Expanded(
                                                         child: InkWell(
-                                                          onTap: () {
-                                                            //
+                                                          onTap: () async {
+                                                            _imageFront =
+                                                                await _imagePicker
+                                                                    .pickImage(
+                                                                        source:
+                                                                            ImageSource.gallery);
+                                                            setState(() {});
                                                           },
                                                           child: SizedBox(
                                                             child: Column(
@@ -124,8 +143,13 @@ class _FloatingActionButtonVisitCardState
                                                       ),
                                                       Expanded(
                                                         child: InkWell(
-                                                          onTap: () {
-                                                            //
+                                                          onTap: () async {
+                                                            _imageFront =
+                                                                await _imagePicker
+                                                                    .pickImage(
+                                                                        source:
+                                                                            ImageSource.camera);
+                                                            setState(() {});
                                                           },
                                                           child: SizedBox(
                                                             child: Column(
@@ -248,8 +272,13 @@ class _FloatingActionButtonVisitCardState
                                                     children: [
                                                       Expanded(
                                                         child: InkWell(
-                                                          onTap: () {
-                                                            //
+                                                          onTap: () async {
+                                                            _imageBack =
+                                                                await _imagePicker
+                                                                    .pickImage(
+                                                                        source:
+                                                                            ImageSource.gallery);
+                                                            setState(() {});
                                                           },
                                                           child: SizedBox(
                                                             child: Column(
@@ -289,8 +318,13 @@ class _FloatingActionButtonVisitCardState
                                                       ),
                                                       Expanded(
                                                         child: InkWell(
-                                                          onTap: () {
-                                                            //
+                                                          onTap: () async {
+                                                            _imageBack =
+                                                                await _imagePicker
+                                                                    .pickImage(
+                                                                        source:
+                                                                            ImageSource.camera);
+                                                            setState(() {});
                                                           },
                                                           child: SizedBox(
                                                             child: Column(
@@ -367,7 +401,7 @@ class _FloatingActionButtonVisitCardState
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             TextField(
-                              // controller: ,
+                              controller: companyNameController,
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -389,7 +423,7 @@ class _FloatingActionButtonVisitCardState
                             ),
                             SizedBox(height: 25.0),
                             TextField(
-                              // controller: ,
+                              controller: phoneNumberCompanyController,
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
@@ -417,7 +451,7 @@ class _FloatingActionButtonVisitCardState
                   ),
                   SizedBox(height: 10.0),
                   TextField(
-                    // controller: ,
+                    controller: emailCompabyController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -439,7 +473,7 @@ class _FloatingActionButtonVisitCardState
                   ),
                   SizedBox(height: 10.0),
                   TextField(
-                    // controller: ,
+                    controller: addressCompanyController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -461,7 +495,7 @@ class _FloatingActionButtonVisitCardState
                   ),
                   SizedBox(height: 10.0),
                   TextField(
-                    // controller: ,
+                    controller: servicesCompanyController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -484,9 +518,20 @@ class _FloatingActionButtonVisitCardState
                   ),
                   SizedBox(height: 15.0),
                   ElevatedButton(
-                    onPressed: () {
-                      //
-                    },
+                    onPressed: widget.isButtonActive == true
+                        ? () {
+                            add(
+                              _imageFront!.path,
+                              _imageBack!.path,
+                              companyNameController.text,
+                              phoneNumberCompanyController.text,
+                              emailCompabyController.text,
+                              addressCompanyController.text,
+                              servicesCompanyController.text,
+                            );
+                            Navigator.pop(context);
+                          }
+                        : null,
                     child: Text(
                       translation(context).addNewVisitCardBt,
                       style: TextStyle(
@@ -498,8 +543,11 @@ class _FloatingActionButtonVisitCardState
                       ),
                     ),
                     style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                          Color.fromRGBO(255, 17, 0, 1)),
+                      backgroundColor: widget.isButtonActive == true
+                          ? MaterialStatePropertyAll(
+                              Color.fromRGBO(255, 0, 0, 1))
+                          : MaterialStatePropertyAll(
+                              Color.fromRGBO(255, 95, 95, 1)),
                       fixedSize: MaterialStateProperty.all(
                         Size(330, 45),
                       ),
@@ -527,7 +575,7 @@ class _FloatingActionButtonVisitCardState
                     ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
-                          Color.fromRGBO(255, 17, 0, 1)),
+                          Color.fromRGBO(255, 0, 0, 1)),
                       fixedSize: MaterialStateProperty.all(
                         Size(330, 45),
                       ),
@@ -546,5 +594,25 @@ class _FloatingActionButtonVisitCardState
       },
       child: Icon(Icons.add),
     );
+  }
+
+  add(
+      var visitcardImageFront,
+      var visitcardImageBack,
+      var visitcardName,
+      var visitcardPhone,
+      var visitcardEmail,
+      var visitcardAddress,
+      var visitcardServices) async {
+    var visitcardBox = await Hive.openBox("visitcard");
+    VisitCard visitcard = VisitCard(
+        visitcardImageFront,
+        visitcardImageBack,
+        visitcardName,
+        visitcardPhone,
+        visitcardEmail,
+        visitcardAddress,
+        visitcardServices);
+    await visitcardBox.add(visitcard);
   }
 }

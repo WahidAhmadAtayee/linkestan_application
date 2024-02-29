@@ -3,7 +3,8 @@ import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/show_details_websites_screen.dart';
 
 class WebsitesCategoryPage extends StatefulWidget {
-  const WebsitesCategoryPage({super.key});
+   WebsitesCategoryPage({super.key, required this.isButtonActive});
+   bool isButtonActive;
 
   @override
   State<WebsitesCategoryPage> createState() => _WebsitesCategoryPageState();
@@ -114,7 +115,7 @@ class _WebsitesCategoryPageState extends State<WebsitesCategoryPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return ShowDetailsWebsites();
+                                return ShowDetailsWebsites(isButtonActive: widget.isButtonActive);
                               }),
                             );
                           },

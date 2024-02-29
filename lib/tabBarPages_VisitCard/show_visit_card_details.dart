@@ -18,10 +18,11 @@ class ShowVisitCardDetails extends StatefulWidget {
   ShowVisitCardDetails({
     super.key,
     required this.index,
+    required this.isButtonActive
   });
 
   int index;
-
+  bool isButtonActive;
   @override
   State<ShowVisitCardDetails> createState() => _ShowVisitCardDetailsState();
 }
@@ -50,7 +51,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return HomeScreen();
+                  return HomeScreen(isActive: widget.isButtonActive,);
                 }),
               );
             },

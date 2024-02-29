@@ -12,8 +12,8 @@ List communictionNetworkLinks = [
 ];
 
 class Communication_Network extends StatefulWidget {
-  const Communication_Network({super.key});
-
+ Communication_Network({super.key, required this.isButtonActive});
+bool isButtonActive;
   @override
   State<Communication_Network> createState() => _Communication_NetworkState();
 }
@@ -26,6 +26,7 @@ class _Communication_NetworkState extends State<Communication_Network> {
     "images/MTN_Logo.png",
     "images/Salaam_Logo.png",
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +51,7 @@ class _Communication_NetworkState extends State<Communication_Network> {
                 ? "WLRoyalFlutterBold"
                 : "alvi_Nastaleeq",
           ),
+          textAlign: TextAlign.center,
         ),
       ),
       body: Column(
@@ -73,7 +75,7 @@ class _Communication_NetworkState extends State<Communication_Network> {
           ),
           Expanded(
             child: Container(
-              color: Color.fromRGBO(255, 0, 0, 1),
+              color:Color.fromRGBO(255, 0, 0, 1),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: translation(context).changeLanguage == "English"
@@ -111,7 +113,7 @@ class _Communication_NetworkState extends State<Communication_Network> {
                                       topLeft: Radius.circular(50),
                                       bottomLeft: Radius.circular(50),
                                     ),
-                          color: Color.fromRGBO(255, 0, 0, 1),
+                          color: widget.isButtonActive == true ? Color.fromRGBO(255, 0, 0, 1) : Color.fromRGBO(255, 95, 95, 1),
                         ),
                         child: ListTile(
                           contentPadding: EdgeInsets.all(1.5),
@@ -136,13 +138,13 @@ class _Communication_NetworkState extends State<Communication_Network> {
                             Icons.arrow_forward_ios,
                             color: Color.fromRGBO(255, 255, 255, 1),
                           ),
-                          onTap: () async {
+                          onTap: widget.isButtonActive == true ? () async {
                             final Uri _url =
                                 Uri.parse(communictionNetworkLinks[index]);
                             if (!await launchUrl(_url)) {
                               throw Exception("Could not launch $_url");
                             }
-                          },
+                          } : null,
                         ),
                       );
                     },

@@ -29,6 +29,7 @@ class _NavBarState extends State<NavBar> {
           UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(
               backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+              child: full_name != null ? Text(full_name[0]) : Text("Photo"),
             ),
             accountName: Padding(
               padding: EdgeInsets.only(top: 30.0),

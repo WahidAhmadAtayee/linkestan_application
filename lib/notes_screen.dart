@@ -4,8 +4,8 @@ import 'package:linkestan_application/tabBarPages_Notes/add_notes.dart';
 import 'package:linkestan_application/tabBarPages_Notes/show_notes.dart';
 
 class Notes extends StatefulWidget {
-  const Notes({super.key});
-
+   Notes({super.key, required this.isButtonActive});
+  bool isButtonActive;
   @override
   State<Notes> createState() => _NotesState();
 }
@@ -89,7 +89,7 @@ class _NotesState extends State<Notes> with SingleTickerProviderStateMixin {
                         controller: tabController,
                         children: [
                           ShowNotes(),
-                          AddNotes(),
+                          AddNotes(isButtonActive: widget.isButtonActive),
                         ],
                       ),
                     ),

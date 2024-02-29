@@ -7,7 +7,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class MyNumbersContacts extends StatefulWidget {
-  const MyNumbersContacts({super.key});
+   MyNumbersContacts({super.key, required this.isButtonActive});
+  bool isButtonActive;
 
   @override
   State<MyNumbersContacts> createState() => _MyNumbersContactsState();
@@ -402,7 +403,7 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                   alignment: translation(context).changeLanguage == "English"
                       ? Alignment.bottomRight
                       : Alignment.bottomLeft,
-                  child: AddContactBT())
+                  child: AddContactBT(isButtonActive: widget.isButtonActive))
             ],
           ),
         );
