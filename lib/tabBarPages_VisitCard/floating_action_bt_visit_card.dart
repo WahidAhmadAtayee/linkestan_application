@@ -25,6 +25,14 @@ class _FloatingActionButtonVisitCardState
   TextEditingController emailCompabyController = TextEditingController();
   TextEditingController addressCompanyController = TextEditingController();
   TextEditingController servicesCompanyController = TextEditingController();
+
+  //  To clean the textfields
+  var name = "";
+  var phone = "";
+  var email = "";
+  var address = "";
+  var service = "";
+
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
@@ -39,6 +47,7 @@ class _FloatingActionButtonVisitCardState
                 children: [
                   Row(
                     children: [
+
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -394,6 +403,7 @@ class _FloatingActionButtonVisitCardState
                           ),
                         ],
                       ),
+
                       SizedBox(width: 10.0),
                       Expanded(
                         child: Column(
@@ -401,6 +411,7 @@ class _FloatingActionButtonVisitCardState
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             TextField(
+                              onChanged: (value) => name = value,
                               controller: companyNameController,
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -423,6 +434,7 @@ class _FloatingActionButtonVisitCardState
                             ),
                             SizedBox(height: 25.0),
                             TextField(
+                              onChanged: (value) => phone = value,
                               controller: phoneNumberCompanyController,
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -451,6 +463,7 @@ class _FloatingActionButtonVisitCardState
                   ),
                   SizedBox(height: 10.0),
                   TextField(
+                    onChanged: (value) => email = value,
                     controller: emailCompabyController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -473,6 +486,7 @@ class _FloatingActionButtonVisitCardState
                   ),
                   SizedBox(height: 10.0),
                   TextField(
+                    onChanged: (value) => address = value,
                     controller: addressCompanyController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -495,6 +509,7 @@ class _FloatingActionButtonVisitCardState
                   ),
                   SizedBox(height: 10.0),
                   TextField(
+                    onChanged: (value) => service = value,
                     controller: servicesCompanyController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -521,8 +536,8 @@ class _FloatingActionButtonVisitCardState
                     onPressed: widget.isButtonActive == true
                         ? () {
                             add(
-                              _imageFront!.path,
-                              _imageBack!.path,
+                              _imageFront?.path,
+                              _imageBack?.path,
                               companyNameController.text,
                               phoneNumberCompanyController.text,
                               emailCompabyController.text,
@@ -530,6 +545,30 @@ class _FloatingActionButtonVisitCardState
                               servicesCompanyController.text,
                             );
                             Navigator.pop(context);
+                            showModalBottomSheet(
+                              backgroundColor: Color.fromRGBO(255, 95, 95, 1),
+                              context: context,
+                              builder: (context) {
+                                return SizedBox(
+                                  height: 40.0,
+                                  child: Center(
+                                    child: Text(
+                                      "Added!",
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(255, 255, 255, 1),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                            setState(() {
+                              companyNameController.text = "";
+                              phoneNumberCompanyController.text = "";
+                              emailCompabyController.text = "";
+                              addressCompanyController.text = "";
+                              servicesCompanyController.text = "";
+                            });
                           }
                         : null,
                     child: Text(

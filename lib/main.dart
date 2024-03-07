@@ -5,20 +5,23 @@ import 'package:linkestan_application/models/linkestan_models.dart';
 import 'package:linkestan_application/splash_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(LogInAdapter());
-  Hive.registerAdapter(SignUpAdapter());
+  Hive.registerAdapter(UsersAdapter());
   Hive.registerAdapter(VisitCardAdapter());
   Hive.registerAdapter(ContactsAdapter());
   Hive.registerAdapter(WebsitesAdapter());
   Hive.registerAdapter(NotesAdapter());
 
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
-  runApp(MyApp(),
-    
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -27,7 +30,7 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 
-  static void setLocale(BuildContext context, Locale newLocale){
+  static void setLocale(BuildContext context, Locale newLocale) {
     _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
     state?.setLocale(newLocale);
   }
@@ -36,14 +39,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
 
-  setLocale(Locale locale){
+  setLocale(Locale locale) {
     setState(() {
       _locale = locale;
     });
   }
 
   @override
-  void didChangeDependencies(){
+  void didChangeDependencies() {
     getLocale().then((locale) => setLocale(locale));
     super.didChangeDependencies();
   }

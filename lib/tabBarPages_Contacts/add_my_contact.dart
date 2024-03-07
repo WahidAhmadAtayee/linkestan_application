@@ -3,10 +3,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/models/linkestan_models.dart';
 
-
-
 class AddContactBT extends StatefulWidget {
-   AddContactBT({super.key, required this.isButtonActive});
+  AddContactBT({super.key, required this.isButtonActive});
   bool isButtonActive;
   @override
   State<AddContactBT> createState() => _AddContactBTState();
@@ -15,8 +13,6 @@ class AddContactBT extends StatefulWidget {
 class _AddContactBTState extends State<AddContactBT> {
   TextEditingController nameContactsController = TextEditingController();
   TextEditingController phoneNumberContactsController = TextEditingController();
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -97,17 +93,58 @@ class _AddContactBTState extends State<AddContactBT> {
                   ),
                   SizedBox(height: 15.0),
                   ElevatedButton(
-                    onPressed: widget.isButtonActive == true ? () async {
-                      var contactBox = await Hive.openBox("contacts");
-                      Contacts contacts = Contacts(nameContactsController.text,
-                          phoneNumberContactsController.text);
-                      await contactBox.add(contacts);
+                    onPressed: widget.isButtonActive == true
+                        ? () async {
+                            if (phoneNumberContactsController.text.isEmpty) {
+                              showModalBottomSheet(
+                                backgroundColor: Color.fromRGBO(255, 95, 95, 1),
+                                context: context,
+                                builder: (context) {
+                                  return SizedBox(
+                                    height: 40.0,
+                                    child: Center(
+                                      child: Text(
+                                        "Add Phone Number!",
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(255, 255, 255, 1),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            } else {
+                              var contactBox = await Hive.openBox("contacts");
+                              Contacts contacts = Contacts(
+                                  nameContactsController.text,
+                                  phoneNumberContactsController.text);
+                              await contactBox.add(contacts);
 
-                      nameContactsController.text = "";
-                      phoneNumberContactsController.text = "";
-                      Navigator.pop(context);
-                      setState(() {});
-                    } : null,
+                              nameContactsController.text = "";
+                              phoneNumberContactsController.text = "";
+                              Navigator.pop(context);
+                              setState(() {});
+                            }
+                            showModalBottomSheet(
+                              backgroundColor: Color.fromRGBO(255, 95, 95, 1),
+                              context: context,
+                              builder: (context) {
+                                return SizedBox(
+                                  height: 40.0,
+                                  child: Center(
+                                    child: Text(
+                                      "Added!",
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(255, 255, 255, 1),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          }
+                        : null,
                     child: Text(
                       translation(context).addNewContact,
                       style: TextStyle(
@@ -119,9 +156,11 @@ class _AddContactBTState extends State<AddContactBT> {
                       ),
                     ),
                     style: ButtonStyle(
-                      backgroundColor: widget.isButtonActive == true ? MaterialStatePropertyAll(
-                          Color.fromRGBO(255, 0, 0, 1)) : MaterialStatePropertyAll(
-                          Color.fromRGBO(255, 95, 95, 1)),
+                      backgroundColor: widget.isButtonActive == true
+                          ? MaterialStatePropertyAll(
+                              Color.fromRGBO(255, 0, 0, 1))
+                          : MaterialStatePropertyAll(
+                              Color.fromRGBO(255, 95, 95, 1)),
                       fixedSize: MaterialStateProperty.all(
                         Size(260, 40),
                       ),

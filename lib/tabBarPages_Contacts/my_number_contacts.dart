@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class MyNumbersContacts extends StatefulWidget {
-   MyNumbersContacts({super.key, required this.isButtonActive});
+  MyNumbersContacts({super.key, required this.isButtonActive});
   bool isButtonActive;
 
   @override
@@ -60,7 +60,8 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                           TextEditingController();
                       final Contacts contacts = contactsBox.getAt(index);
                       nameContactsController.text = contacts.nameContacts;
-                      phoneNumberContactsController.text = contacts.phoneNumberContacts;
+                      phoneNumberContactsController.text =
+                          contacts.phoneNumberContacts;
                       return ListTile(
                         leading: IconButton(
                           onPressed: () async {
@@ -184,8 +185,66 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                                             SizedBox(height: 15.0),
                                             ElevatedButton(
                                               onPressed: () {
-                                                contactsBox.putAt(index, Contacts(nameContactsController.text, phoneNumberContactsController.text));
-                                                Navigator.pop(context);
+                                                if (phoneNumberContactsController
+                                                    .text.isNotEmpty) {
+                                                  contactsBox.putAt(
+                                                      index,
+                                                      Contacts(
+                                                          nameContactsController
+                                                              .text,
+                                                          phoneNumberContactsController
+                                                              .text));
+                                                  Navigator.pop(context);
+                                                  showModalBottomSheet(
+                                                    backgroundColor:
+                                                        Color.fromRGBO(
+                                                            255, 95, 95, 1),
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return SizedBox(
+                                                        height: 40.0,
+                                                        child: Center(
+                                                          child: Text(
+                                                            "Changed!",
+                                                            style: TextStyle(
+                                                              color: Color
+                                                                  .fromRGBO(
+                                                                      255,
+                                                                      255,
+                                                                      255,
+                                                                      1),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                } else {
+                                                  showModalBottomSheet(
+                                                    backgroundColor:
+                                                        Color.fromRGBO(
+                                                            255, 95, 95, 1),
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return SizedBox(
+                                                        height: 40.0,
+                                                        child: Center(
+                                                          child: Text(
+                                                            "Check Phone Number!",
+                                                            style: TextStyle(
+                                                              color: Color
+                                                                  .fromRGBO(
+                                                                      255,
+                                                                      255,
+                                                                      255,
+                                                                      1),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                }
                                               },
                                               child: Text(
                                                 translation(context).change,
@@ -307,6 +366,30 @@ class _MyNumbersContactsState extends State<MyNumbersContacts> {
                                                       Hive.box('contacts');
                                                   contactBox.deleteAt(index);
                                                   Navigator.pop(context);
+                                                  showModalBottomSheet(
+                                                    backgroundColor:
+                                                        Color.fromRGBO(
+                                                            255, 95, 95, 1),
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return SizedBox(
+                                                        height: 40.0,
+                                                        child: Center(
+                                                          child: Text(
+                                                            "Deleted Phone Number!",
+                                                            style: TextStyle(
+                                                              color: Color
+                                                                  .fromRGBO(
+                                                                      255,
+                                                                      255,
+                                                                      255,
+                                                                      1),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
                                                 },
                                                 child: Text(
                                                   translation(context).yesBT,

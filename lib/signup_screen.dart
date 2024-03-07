@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:linkestan_application/home_screen.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/models/linkestan_models.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -31,10 +32,10 @@ class _SignUpPageState extends State<SignUpPage> {
   var myIcon2 =
       const Icon(Icons.visibility, color: Color.fromRGBO(255, 0, 0, 1));
 
-  var full_name = '';
-  var email_address = '';
-  var password = '';
-  var repeatPassword = '';
+  // var full_name = '';
+  // var email_address = '';
+  // var password = '';
+  // var repeatPassword = '';
 
   @override
   Widget build(BuildContext context) {
@@ -245,18 +246,73 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             SizedBox(height: 15.0),
                             ElevatedButton(
-                              onPressed: () {
-                                if (passwordController.text ==
-                                    repeat_passwordController.text) {
-                                  add(
-                                    _image!.path,
-                                    full_nameController.text,
-                                    phoneController.text,
-                                    emailController.text,
-                                    passwordController.text,
-                                    repeat_passwordController.text,
+                              onPressed: () async {
+                                final SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
+                                if (full_nameController.text.isNotEmpty &&
+                                    phoneController.text.isNotEmpty &&
+                                    emailController.text.isNotEmpty &&
+                                    passwordController.text.isNotEmpty &&
+                                    repeat_passwordController.text.isNotEmpty) {
+                                  if (repeat_passwordController.text ==
+                                      passwordController.text) {
+                                    add(
+                                      _image!.path,
+                                      full_nameController.text,
+                                      phoneController.text,
+                                      emailController.text,
+                                      passwordController.text,
+                                      emailController.text,
+                                    );
+
+                                    await prefs.setBool('isLoggedIn', true);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return HomeScreen(isActive: true);
+                                      }),
+                                    );
+                                  } else {
+                                    showModalBottomSheet(
+                                      backgroundColor:
+                                          Color.fromRGBO(255, 95, 95, 1),
+                                      context: context,
+                                      builder: (context) {
+                                        return SizedBox(
+                                          height: 40.0,
+                                          child: Center(
+                                            child: Text(
+                                              "Check the password!",
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    255, 255, 255, 1),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  }
+                                } else {
+                                  showModalBottomSheet(
+                                    backgroundColor:
+                                        Color.fromRGBO(255, 95, 95, 1),
+                                    context: context,
+                                    builder: (context) {
+                                      return SizedBox(
+                                        height: 40.0,
+                                        child: Center(
+                                          child: Text(
+                                            "Fill in all the textFields!",
+                                            style: TextStyle(
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 1),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   );
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(isActive: true),));
                                 }
                               },
                               child: Text(
@@ -380,6 +436,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                 ),
+
                 Positioned(
                   right: 25.0,
                   bottom: -5.0,
@@ -476,6 +533,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                 ),
+
               ],
             ),
           ),
@@ -490,17 +548,17 @@ class _SignUpPageState extends State<SignUpPage> {
     var phone_signup,
     var email_signup,
     var password_signup,
-    var rePassword_signup,
+    var username,
   ) async {
-    var signUpBox = await Hive.openBox("signup");
-    SignUp signup = SignUp(
+    var signUpBox = await Hive.openBox("users");
+    Users users = Users(
       photoSignup,
       fullName_signup,
       phone_signup,
       email_signup,
       password_signup,
-      rePassword_signup,
+      username,
     );
-    await signUpBox.add(signup);
+    await signUpBox.add(users);
   }
 }

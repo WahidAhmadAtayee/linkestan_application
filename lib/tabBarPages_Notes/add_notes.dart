@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linkestan_application/models/linkestan_models.dart';
 
 class AddNotes extends StatefulWidget {
-   AddNotes({super.key, required this.isButtonActive});
+  AddNotes({super.key, required this.isButtonActive});
   bool isButtonActive;
   @override
   State<AddNotes> createState() => _AddNotesState();
@@ -13,6 +13,9 @@ class AddNotes extends StatefulWidget {
 class _AddNotesState extends State<AddNotes> {
   TextEditingController noteTitleController = TextEditingController();
   TextEditingController noteDescriptionController = TextEditingController();
+
+  String t = "";
+  String d = "";
 
   @override
   Widget build(BuildContext context) {
@@ -80,53 +83,55 @@ class _AddNotesState extends State<AddNotes> {
               ),
               SizedBox(height: 15.0),
               ElevatedButton(
-                onPressed: widget.isButtonActive == true ? () {
-                  add(noteTitleController.text, noteDescriptionController.text);
-
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          icon: Icon(
-                            Icons.note_add,
-                            size: 100.0,
-                            color: Color.fromRGBO(255, 0, 0, 1),
-                          ),
-                          title: Column(
-                            children: [
-                              Text(
-                                "Added successfully!",
-                                style: TextStyle(
-                                  fontSize: 20.0,
-                                ),
-                              ),
-                              SizedBox(height: 10.0,),
-                              ElevatedButton(
-                                onPressed: () {
-                                  noteDescriptionController.text = "";
-                                  noteTitleController.text = "";
-                                  Navigator.pop(context);
-                                },
-                                child: Text("OK"),
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStatePropertyAll(
-                                      Color.fromRGBO(255, 0, 0, 1)),
-                                  fixedSize: MaterialStateProperty.all(
-                                    Size(70, 30),
-                                  ),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
+                onPressed: widget.isButtonActive == true
+                    ? () {
+                        if (noteTitleController.text.isEmpty ||
+                            noteDescriptionController.text.isEmpty) {
+                          showModalBottomSheet(
+                            backgroundColor: Color.fromRGBO(255, 95, 95, 1),
+                            context: context,
+                            builder: (context) {
+                              return SizedBox(
+                                height: 40.0,
+                                child: Center(
+                                  child: Text(
+                                    "Add Title and Description!",
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(255, 255, 255, 1),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        );
-                      });
-                } : null,
+                              );
+                            },
+                          );
+                        } else {
+                          add(noteTitleController.text,
+                              noteDescriptionController.text);
+
+                          showModalBottomSheet(
+                            backgroundColor: Color.fromRGBO(255, 95, 95, 1),
+                            context: context,
+                            builder: (context) {
+                              return SizedBox(
+                                height: 40.0,
+                                child: Center(
+                                  child: Text(
+                                    "Added successfully!",
+                                    style: TextStyle(
+                                      color: Color.fromRGBO(255, 255, 255, 1),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                          setState(() {
+                            noteTitleController.text = '';
+                            noteDescriptionController.text = '';
+                          });
+                        }
+                      }
+                    : null,
                 child: Text(
                   translation(context).addNewNoteBT,
                   style: TextStyle(
@@ -137,8 +142,9 @@ class _AddNotesState extends State<AddNotes> {
                   ),
                 ),
                 style: ButtonStyle(
-                  backgroundColor: widget.isButtonActive == true ? MaterialStatePropertyAll(
-                          Color.fromRGBO(255, 0, 0, 1)) : MaterialStatePropertyAll(
+                  backgroundColor: widget.isButtonActive == true
+                      ? MaterialStatePropertyAll(Color.fromRGBO(255, 0, 0, 1))
+                      : MaterialStatePropertyAll(
                           Color.fromRGBO(255, 95, 95, 1)),
                   fixedSize: MaterialStateProperty.all(
                     Size(330, 45),

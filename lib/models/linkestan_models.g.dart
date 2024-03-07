@@ -109,19 +109,22 @@ class WebsitesAdapter extends TypeAdapter<Websites> {
       fields[0] as dynamic,
       fields[1] as dynamic,
       fields[3] as dynamic,
+      fields[4] as dynamic,
     );
   }
 
   @override
   void write(BinaryWriter writer, Websites obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.website_name)
       ..writeByte(1)
       ..write(obj.url)
       ..writeByte(3)
-      ..write(obj.description_websites);
+      ..write(obj.description_websites)
+      ..writeByte(4)
+      ..write(obj.type);
   }
 
   @override
@@ -172,54 +175,17 @@ class NotesAdapter extends TypeAdapter<Notes> {
           typeId == other.typeId;
 }
 
-class LogInAdapter extends TypeAdapter<LogIn> {
+class UsersAdapter extends TypeAdapter<Users> {
   @override
   final int typeId = 5;
 
   @override
-  LogIn read(BinaryReader reader) {
+  Users read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return LogIn(
-      fields[0] as dynamic,
-      fields[1] as dynamic,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, LogIn obj) {
-    writer
-      ..writeByte(2)
-      ..writeByte(0)
-      ..write(obj.username)
-      ..writeByte(1)
-      ..write(obj.password);
-  }
-
-  @override
-  int get hashCode => typeId.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is LogInAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
-}
-
-class SignUpAdapter extends TypeAdapter<SignUp> {
-  @override
-  final int typeId = 6;
-
-  @override
-  SignUp read(BinaryReader reader) {
-    final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SignUp(
+    return Users(
       fields[0] as dynamic,
       fields[1] as dynamic,
       fields[2] as dynamic,
@@ -230,7 +196,7 @@ class SignUpAdapter extends TypeAdapter<SignUp> {
   }
 
   @override
-  void write(BinaryWriter writer, SignUp obj) {
+  void write(BinaryWriter writer, Users obj) {
     writer
       ..writeByte(6)
       ..writeByte(0)
@@ -244,7 +210,7 @@ class SignUpAdapter extends TypeAdapter<SignUp> {
       ..writeByte(4)
       ..write(obj.password)
       ..writeByte(5)
-      ..write(obj.repeat_password);
+      ..write(obj.username);
   }
 
   @override
@@ -253,7 +219,7 @@ class SignUpAdapter extends TypeAdapter<SignUp> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SignUpAdapter &&
+      other is UsersAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

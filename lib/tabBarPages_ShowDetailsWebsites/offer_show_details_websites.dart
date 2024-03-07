@@ -1,37 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:linkestan_application/info/websiteInformation.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OfferShowDetailsWebsite extends StatefulWidget {
-  const OfferShowDetailsWebsite({super.key});
-
+  OfferShowDetailsWebsite({super.key, this.title});
+  String? title;
   @override
   State<OfferShowDetailsWebsite> createState() =>
       _OfferShowDetailsWebsiteState();
 }
 
 class _OfferShowDetailsWebsiteState extends State<OfferShowDetailsWebsite> {
-  List websiteNames = [
-    "Dart",
-    "W3school",
-    "Flutter",
-    "JavaTpoint",
-  ];
-  List websiteLinks = [
-    "www.dart.dev",
-    "www.w3school.org",
-    "www.flutter.dev",
-    "www.javatpoint.com",
-  ];
 
   @override
   Widget build(BuildContext context) {
-    List websiteDescriptions = [
-      "${translation(context).descriptionText} dart",
-      "${translation(context).descriptionText} w3school",
-      "${translation(context).descriptionText} flutter",
-      "${translation(context).descriptionText} javatpoint",
-    ];
     return Padding(
       padding: const EdgeInsets.only(
         top: 60.0,
@@ -62,39 +45,67 @@ class _OfferShowDetailsWebsiteState extends State<OfferShowDetailsWebsite> {
                     Icon(Icons.web),
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
-                      child: Text(
-                        ' ${websiteNames[index]} ',
-                        style: TextStyle(
-                          color: Color.fromRGBO(0, 0, 0, 1),
-                        ),
-                      ),
+                      child: WebsiteNames(index)
                     ),
                   ],
                 ),
                 children: [
                   ListTile(
-                    contentPadding: EdgeInsets.all(5.5),
-                    title: TextButton(
-                      onPressed: () async {
-                        final Uri _url = Uri.parse(websiteLinks[index]);
-                        if (!await launchUrl(_url)) {
-                          throw Exception("Could not launch $_url");
-                        }
-                      },
-                      child: Align(
-                        alignment: translation(context).changeLanguage == "English" ? Alignment.topLeft : Alignment.topRight,
-                        child: Text(
-                          "${websiteLinks[index]}",
+                      contentPadding: EdgeInsets.all(5.5),
+                      title: TextButton(
+                        onPressed: () async {
+                          if (widget.title ==
+                              translation(context).governmentBT) {
+                            final Uri _url =
+                                Uri.parse(WebInfo().govlink[index]);
+                            if (!await launchUrl(_url)) {
+                              throw Exception("Could not launch $_url");
+                            }
+                          } else if (widget.title ==
+                              translation(context).programmingBT) {
+                            final Uri _url =
+                                Uri.parse(WebInfo().prolink[index]);
+                            if (!await launchUrl(_url)) {
+                              throw Exception("Could not launch $_url");
+                            }
+                          } else if (widget.title ==
+                              translation(context).englishBT) {
+                            final Uri _url =
+                                Uri.parse(WebInfo().englink[index]);
+                            if (!await launchUrl(_url)) {
+                              throw Exception("Could not launch $_url");
+                            }
+                          } else if (widget.title ==
+                              translation(context).sportBT) {
+                            final Uri _url =
+                                Uri.parse(WebInfo().sportlink[index]);
+                            if (!await launchUrl(_url)) {
+                              throw Exception("Could not launch $_url");
+                            }
+                          } else if (widget.title ==
+                              translation(context).newsBT) {
+                            final Uri _url =
+                                Uri.parse(WebInfo().newslink[index]);
+                            if (!await launchUrl(_url)) {
+                              throw Exception("Could not launch $_url");
+                            }
+                          } else {
+                            final Uri _url =
+                                Uri.parse(WebInfo().otherslink[index]);
+                            if (!await launchUrl(_url)) {
+                              throw Exception("Could not launch $_url");
+                            }
+                          }
+                        },
+                        child: Align(
+                          alignment:
+                              translation(context).changeLanguage == "English"
+                                  ? Alignment.topLeft
+                                  : Alignment.topRight,
+                          child: WebsiteLinks(index),
                         ),
                       ),
-                    ),
-                    subtitle: Text(
-                      "  ${websiteDescriptions[index]}",
-                      style: TextStyle(
-                        color: Color.fromRGBO(100, 100, 100, 1),
-                      ),
-                    ),
-                  ),
+                      subtitle: WebsiteDescriptions(index)),
                 ],
               ),
             );
@@ -102,9 +113,130 @@ class _OfferShowDetailsWebsiteState extends State<OfferShowDetailsWebsite> {
           separatorBuilder: (context, index) => SizedBox(
             height: 5.0,
           ),
-          itemCount: websiteNames.length,
+          itemCount: WebInfo().govname.length,
         ),
       ),
     );
+  }
+
+  // To show website names
+  Widget WebsiteNames(int index) {
+    if (widget.title == translation(context).governmentBT) {
+      return Text(
+        WebInfo().govname[index],
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    } else if (widget.title == translation(context).programmingBT) {
+      return Text(
+        WebInfo().proname[index],
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    } else if (widget.title == translation(context).englishBT) {
+      return Text(
+        WebInfo().engname[index],
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    } else if (widget.title == translation(context).sportBT) {
+      return Text(
+        WebInfo().sportname[index],
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    } else if (widget.title == translation(context).newsBT) {
+      return Text(
+        WebInfo().newsname[index],
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    } else {
+      return Text(
+        WebInfo().othersname[index],
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    }
+  }
+  // // To show website links
+  Widget WebsiteLinks (int index){
+     if (widget.title == translation(context).governmentBT) {
+      return Text(
+        WebInfo().govlink[index],
+      );
+    } else if (widget.title == translation(context).programmingBT) {
+      return Text(
+        WebInfo().prolink[index],
+      );
+    } else if (widget.title == translation(context).englishBT) {
+      return Text(
+        WebInfo().englink[index],
+      );
+    } else if (widget.title == translation(context).sportBT) {
+      return Text(
+        WebInfo().sportlink[index],
+      );
+    } else if (widget.title == translation(context).newsBT) {
+      return Text(
+        WebInfo().newslink[index],
+      );
+    } else {
+      return Text(
+        WebInfo().otherslink[index],
+      );
+    }
+  }
+  // To show website descriptions
+  Widget WebsiteDescriptions(int index) {
+    if (widget.title == translation(context).governmentBT) {
+      return Text(
+        "  ${WebInfo().govdes[index]}",
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    } else if (widget.title == translation(context).programmingBT) {
+      return Text(
+        "  ${WebInfo().prodes[index]}",
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    } else if (widget.title == translation(context).englishBT) {
+      return Text(
+        "  ${WebInfo().engdes[index]}",
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    } else if (widget.title == translation(context).sportBT) {
+      return Text(
+        "  ${WebInfo().sportdes[index]}",
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    } else if (widget.title == translation(context).newsBT) {
+      return Text(
+        "  ${WebInfo().newsdes[index]}",
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    } else {
+      return Text(
+        "  ${WebInfo().othersdes[index]}",
+        style: TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 1),
+        ),
+      );
+    }
   }
 }

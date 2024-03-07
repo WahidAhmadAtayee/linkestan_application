@@ -175,8 +175,57 @@ class _ShowNotesState extends State<ShowNotes> {
                                         ElevatedButton(
                                           // Update the note
                                           onPressed: () {
-                                            box.put(index, Notes(noteTitleController.text, noteDescriptionController.text));
-                                            Navigator.pop(context);
+                                            if (noteTitleController
+                                                    .text.isNotEmpty &&
+                                                noteDescriptionController
+                                                    .text.isNotEmpty) {
+                                              box.put(
+                                                  index,
+                                                  Notes(
+                                                      noteTitleController.text,
+                                                      noteDescriptionController
+                                                          .text));
+                                              Navigator.pop(context);
+                                              showModalBottomSheet(
+                                                backgroundColor: Color.fromRGBO(
+                                                    255, 95, 95, 1),
+                                                context: context,
+                                                builder: (context) {
+                                                  return SizedBox(
+                                                    height: 40.0,
+                                                    child: Center(
+                                                      child: Text(
+                                                        "Changes was applied!",
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              255, 255, 255, 1),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            }else{
+                                              showModalBottomSheet(
+                                              backgroundColor: Color.fromRGBO(
+                                                  255, 95, 95, 1),
+                                              context: context,
+                                              builder: (context) {
+                                                return SizedBox(
+                                                  height: 40.0,
+                                                  child: Center(
+                                                    child: Text(
+                                                      "Add Title and Description!",
+                                                      style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            255, 255, 255, 1),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                            }
                                           },
                                           child: Text(
                                             translation(context).change,
@@ -256,6 +305,26 @@ class _ShowNotesState extends State<ShowNotes> {
                                               Box box = Hive.box('note');
                                               box.deleteAt(index);
                                               Navigator.pop(context);
+
+                                              showModalBottomSheet(
+                                                backgroundColor: Color.fromRGBO(
+                                                    255, 95, 95, 1),
+                                                context: context,
+                                                builder: (context) {
+                                                  return SizedBox(
+                                                    height: 40.0,
+                                                    child: Center(
+                                                      child: Text(
+                                                        "Note deleted!",
+                                                        style: TextStyle(
+                                                          color: Color.fromRGBO(
+                                                              255, 255, 255, 1),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
                                             },
                                             child: Text(
                                               translation(context).yesBT,

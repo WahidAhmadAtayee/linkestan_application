@@ -55,6 +55,7 @@ class Websites {
     this.website_name,
     this.url,
     this.description_websites,
+    this.type,
   );
   @HiveField(0)
   var website_name;
@@ -64,6 +65,9 @@ class Websites {
 
   @HiveField(3)
   var description_websites;
+
+  @HiveField(4)
+  var type;
 }
 
 @HiveType(typeId: 4)
@@ -79,38 +83,32 @@ class Notes {
 }
 
 @HiveType(typeId: 5)
-class LogIn {
-  LogIn(
-    this.username,
-    this.password,
-  );
-  @HiveField(0)
-  var username;
-  @HiveField(1)
-  var password;
-}
-
-@HiveType(typeId: 6)
-class SignUp {
-  SignUp(
+class Users {
+  Users(
     this.image_signup,
     this.full_name,
     this.phone,
     this.email,
     this.password,
-    this.repeat_password,
+    this.username,
   );
   @HiveField(0)
   var image_signup;
+
   @HiveField(1)
   var full_name;
+
   @HiveField(2)
   var phone;
+
   @HiveField(3)
   var email;
+
   @HiveField(4)
   var password;
+
   @HiveField(5)
-  var repeat_password;
+  var username;
+  
 }
 // flutter packages pub run build_runner build

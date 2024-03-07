@@ -48,7 +48,7 @@ class _ShowVisitCardDetailsState extends State<ShowVisitCardDetails> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) {
                   return HomeScreen(isActive: widget.isButtonActive,);

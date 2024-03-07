@@ -115,7 +115,7 @@ class _WebsitesCategoryPageState extends State<WebsitesCategoryPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return ShowDetailsWebsites(isButtonActive: widget.isButtonActive);
+                                return ShowDetailsWebsites(isButtonActive: widget.isButtonActive, title: website_categories_name[index]);
                               }),
                             );
                           },

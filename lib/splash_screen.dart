@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linkestan_application/home_screen.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/login_screen.dart';
+import 'package:linkestan_application/models/linkestan_models.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,23 +21,26 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
   }
 
-  void _navigator() async {
+  var username;
+  var password;
 
+  void _navigator() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     await Future.delayed(Duration(seconds: 5), () {
-      
-      if (username == "admin@gmail.com" &&
-                                password == "0000") {
+      bool? isloggedin = prefs.getBool('isLoggedIn');
+
+      if (isloggedin != true) {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return HomeScreen(
-              isActive: true,
-            );
+            return LogInPage();
           },
         ));
       } else {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return LogInPage();
+            return HomeScreen(
+              isActive: true,
+            );
           },
         ));
       }
@@ -46,30 +52,32 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            color: Color.fromRGBO(255, 0, 0, 1),
+          Expanded(
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: translation(context).changeLanguage == "English"
-                    ? BorderRadius.only(
-                        bottomLeft: Radius.circular(255),
-                      )
-                    : BorderRadius.only(
-                        bottomRight: Radius.circular(255),
-                      ),
-                color: Color.fromRGBO(255, 255, 255, 1),
-              ),
-              width: double.infinity,
-              height: 500,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 20.0,
-                  left: 80.0,
-                  right: 60.0,
-                  bottom: 30.0,
+              color: Color.fromRGBO(255, 0, 0, 1),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: translation(context).changeLanguage == "English"
+                      ? BorderRadius.only(
+                          bottomLeft: Radius.circular(255),
+                        )
+                      : BorderRadius.only(
+                          bottomRight: Radius.circular(255),
+                        ),
+                  color: Color.fromRGBO(255, 255, 255, 1),
                 ),
-                child: Image.asset(
-                  "images/LinkestanLogo.png",
+                width: double.infinity,
+                height: 500,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 20.0,
+                    left: 80.0,
+                    right: 60.0,
+                    bottom: 30.0,
+                  ),
+                  child: Image.asset(
+                    "images/LinkestanLogo.png",
+                  ),
                 ),
               ),
             ),

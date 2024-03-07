@@ -5,8 +5,9 @@ import 'package:linkestan_application/tabBarPages_ShowDetailsWebsites/offer_show
 import 'package:linkestan_application/tabBarPages_ShowDetailsWebsites/others_show_details_website.dart';
 
 class ShowDetailsWebsites extends StatefulWidget {
-   ShowDetailsWebsites({super.key, required this.isButtonActive});
+   ShowDetailsWebsites({super.key, required this.isButtonActive, this.title});
   bool isButtonActive;
+  String? title;
   @override
   State<ShowDetailsWebsites> createState() => _ShowDetailsWebsitesState();
 }
@@ -27,18 +28,6 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites>
     super.dispose();
   }
 
-  List websiteLinks = [
-    "www.google.com",
-    "www.youtube.com",
-    "www.flutter.dev",
-    "www.javatpoint.com",
-  ];
-  List websiteDescriptions = [
-    "Description_1",
-    "Description_2",
-    "Description_3",
-    "Description_4",
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +36,7 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites>
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          translation(context).governmentBT,
+         '${widget.title}',
           style: TextStyle(
             color: Color.fromRGBO(255, 255, 255, 1),
             fontSize: 30.0,
@@ -59,7 +48,7 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites>
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) {
                   return HomeScreen(isActive: widget.isButtonActive,);
@@ -119,8 +108,8 @@ class _ShowDetailsWebsitesState extends State<ShowDetailsWebsites>
                       child: TabBarView(
                         controller: tabController,
                         children: [
-                          OfferShowDetailsWebsite(),
-                          OthersShowDetailsWebsite(isButtonActive: widget.isButtonActive),
+                          OfferShowDetailsWebsite(title: widget.title,),
+                          OthersShowDetailsWebsite(isButtonActive: widget.isButtonActive, title: widget.title,),
                         ],
                       ),
                     ),

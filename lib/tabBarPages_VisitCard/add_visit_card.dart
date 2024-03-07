@@ -16,14 +16,6 @@ class AddVisitingCard extends StatefulWidget {
 }
 
 class _AddVisitingCardState extends State<AddVisitingCard> {
-  List _firstImageList = [
-    "images/MTN_Logo.png",
-    "images/Salaam_Logo.png",
-    "images/MTN_Logo.png",
-    "images/Salaam_Logo.png",
-    "images/MTN_Logo.png",
-  ];
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -45,7 +37,6 @@ class _AddVisitingCardState extends State<AddVisitingCard> {
     return ValueListenableBuilder(
       valueListenable: visitcardBox.listenable(),
       builder: (context, Box box, child) {
-        
         return Padding(
           padding: const EdgeInsets.only(
             top: 30.0,
@@ -67,23 +58,45 @@ class _AddVisitingCardState extends State<AddVisitingCard> {
                           bottom: 5.0,
                         ),
                         child: GestureDetector(
-                          child: Container(
-                            width: 210.0,
-                            height: 200.0,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color.fromRGBO(255, 0, 0, 1),
-                                width: 1.5,
-                              ),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15.0),
-                              ),
-                              image: DecorationImage(
-                                image: FileImage(File(visitCard.imageFrontVisitCard)),
-                                fit: BoxFit.cover,
+                          child: Center(
+                            child: Text(
+                              visitCard.visitCardName,
+                              style: TextStyle(
+                                color: Color.fromRGBO(0, 162, 255, 1),
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
+                          // child: Column(
+                          //   mainAxisAlignment: MainAxisAlignment.center,
+                          //   crossAxisAlignment: CrossAxisAlignment.start,
+                          //   children: [
+                          //     Container(
+                          //       width: 210.0,
+                          //       height: 200.0,
+                          //       decoration: BoxDecoration(
+                          //         border: Border.all(
+                          //           color: Color.fromRGBO(255, 0, 0, 1),
+                          //           width: 1.5,
+                          //         ),
+                          //         borderRadius: BorderRadius.all(
+                          //           Radius.circular(15.0),
+                          //         ),
+                          //       ),
+                          //       child: visitCard.imageFrontVisitCard == null
+                          //           ? Image.asset("images/visiting_card.png",
+                          //               fit: BoxFit.cover)
+                          //           : Image.file(
+                          //               File(visitCard.imageFrontVisitCard),
+                          //               fit: BoxFit.cover,
+                          //             ),
+                          //     ),
+                          //     Align(
+                          //       alignment: Alignment.center,
+                          //       child: Text(visitCard.visitCardName),
+                          //     ),
+                          //   ],
+                          // ),
                           onTap: () {
                             Navigator.push(
                               context,

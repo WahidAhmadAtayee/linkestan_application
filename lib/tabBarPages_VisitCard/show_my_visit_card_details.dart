@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:linkestan_application/home_screen.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/models/linkestan_models.dart';
+import 'package:linkestan_application/visit_card_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,16 +29,22 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
   XFile? _imageBack;
 
   int _currentIndex = 0;
+  var title;
 
   @override
   Widget build(BuildContext context) {
+    Box visitcardBox = Hive.box("visitcard");
+    
+    final VisitCard visitCard = visitcardBox.getAt(widget.index);
+    title = visitCard.visitCardName;
+    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(255, 0, 0, 1),
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          translation(context).visitCardName,
+          title,
           style: TextStyle(
             color: Color.fromRGBO(255, 255, 255, 1),
             fontSize: 30.0,
@@ -46,7 +53,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) {
                   return HomeScreen(
@@ -203,7 +210,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                           Radius.circular(15.0),
                         ),
                         image: DecorationImage(
-                          image:FileImage(File(visitCard.imageBackVisitCard)),
+                          image: FileImage(File(visitCard.imageBackVisitCard)),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -223,6 +230,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                     paintStyle: PaintingStyle.fill,
                   ),
                 ),
+
                 ListTile(
                   leading: IconButton(
                     onPressed: () {
@@ -564,6 +572,7 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                         ),
                                       ],
                                     ),
+
                                     SizedBox(width: 10.0),
                                     Expanded(
                                       child: Column(
@@ -716,6 +725,25 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                       ),
                                     );
                                     Navigator.pop(context);
+                                    showModalBottomSheet(
+                                      backgroundColor:
+                                          Color.fromRGBO(255, 95, 95, 1),
+                                      context: context,
+                                      builder: (context) {
+                                        return SizedBox(
+                                          height: 40.0,
+                                          child: Center(
+                                            child: Text(
+                                              "Changed!",
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    255, 255, 255, 1),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
                                   },
                                   child: Text(
                                     translation(context).change,
@@ -810,7 +838,33 @@ class _ShowMyVisitCardDetailsState extends State<ShowMyVisitCardDetails> {
                                     onPressed: () {
                                       Box vbox = Hive.box('visitcard');
                                       vbox.deleteAt(widget.index);
-                                      Navigator.pop(context);
+
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => VisitingCard(isButtonActive: true),
+                                          ));
+
+
+                                      showModalBottomSheet(
+                                        backgroundColor:
+                                            Color.fromRGBO(255, 95, 95, 1),
+                                        context: context,
+                                        builder: (context) {
+                                          return SizedBox(
+                                            height: 40.0,
+                                            child: Center(
+                                              child: Text(
+                                                "Deleted!",
+                                                style: TextStyle(
+                                                  color: Color.fromRGBO(
+                                                      255, 255, 255, 1),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
                                     },
                                     child: Text(
                                       translation(context).yesBT,

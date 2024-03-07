@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
 import 'package:linkestan_application/contacts_screen.dart';
 import 'package:linkestan_application/languageClasses/language_constants.dart';
+import 'package:linkestan_application/login_screen.dart';
 import 'package:linkestan_application/navbar.dart';
 import 'package:linkestan_application/notes_screen.dart';
 import 'package:linkestan_application/visit_card_screen.dart';
 import 'package:linkestan_application/websites_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'communication_network_screem.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
     "images/website.png",
     "images/notes.png",
   ];
-  
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +39,12 @@ class _HomeScreenState extends State<HomeScreen> {
       translation(context).notes,
     ];
     List pages = [
-    VisitingCard(isButtonActive: widget.isActive!),
-    Communication_Network(isButtonActive: widget.isActive!),
-    MyContacts(isButtonActive: widget.isActive!),
-    WebsitesCategoryPage(isButtonActive: widget.isActive!),
-    Notes(isButtonActive: widget.isActive!),
-  ];
+      VisitingCard(isButtonActive: widget.isActive!),
+      Communication_Network(isButtonActive: widget.isActive!),
+      MyContacts(isButtonActive: widget.isActive!),
+      WebsitesCategoryPage(isButtonActive: widget.isActive!),
+      Notes(isButtonActive: widget.isActive!),
+    ];
     return WillPopScope(
       onWillPop: () async {
         SystemNavigator.pop();
@@ -66,7 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(
               color: Color.fromRGBO(255, 255, 255, 1),
               fontSize: 30,
-              fontFamily: translation(context).changeLanguage == "English" ? "WLRoyalFlutterBold" : "alvi_Nastaleeq",
+              fontFamily: translation(context).changeLanguage == "English"
+                  ? "WLRoyalFlutterBold"
+                  : "alvi_Nastaleeq",
             ),
           ),
           actions: [
@@ -84,12 +88,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       translation(context).logOut,
                       style: TextStyle(
                         color: Color.fromRGBO(100, 100, 100, 1),
-                        fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
+                        fontFamily:
+                            translation(context).changeLanguage == "English"
+                                ? "Times_New_Java"
+                                : "BNaznn",
                       ),
                     ),
                     minLeadingWidth: 1.0,
-                    onTap: () {
-                      //
+                    onTap: () async {
+                      final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                      await prefs.setBool('isLoggedIn', false);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LogInPage(),
+                          ));
                     },
                   ),
                 ),
@@ -149,7 +163,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           bottom: 20.0,
                         ),
                         child: GridView.builder(
-                          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                          gridDelegate:
+                              SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 250,
                             mainAxisSpacing: 11.0,
                             crossAxisSpacing: 11.0,
@@ -191,7 +206,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 20.0,
                                         color: Color.fromRGBO(255, 17, 0, 1),
-                                        fontFamily: translation(context).changeLanguage == "English" ? "Times_New_Java" : "BNaznn",
+                                        fontFamily: translation(context)
+                                                    .changeLanguage ==
+                                                "English"
+                                            ? "Times_New_Java"
+                                            : "BNaznn",
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
@@ -209,7 +228,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Positioned(
               top: 20.0,
-              left: translation(context).changeLanguage == "English" ? 5.0 : null,
+              left:
+                  translation(context).changeLanguage == "English" ? 5.0 : null,
               right: translation(context).changeLanguage == "دری" ||
                       translation(context).changeLanguage == "پښتو"
                   ? 5.0

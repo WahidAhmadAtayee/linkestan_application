@@ -4,8 +4,9 @@ import 'package:linkestan_application/languageClasses/language_constants.dart';
 import 'package:linkestan_application/models/linkestan_models.dart';
 
 class AddWebsites extends StatefulWidget {
-   AddWebsites({super.key, required this.isButtonActive});
-   bool isButtonActive;
+  AddWebsites({super.key, required this.isButtonActive, this.title});
+  bool isButtonActive;
+  String? title;
 
   @override
   State<AddWebsites> createState() => _AddWebsitesState();
@@ -117,19 +118,65 @@ class _AddWebsitesState extends State<AddWebsites> {
                   ),
                   SizedBox(height: 15.0),
                   ElevatedButton(
-                    onPressed: widget.isButtonActive == true ? () async {
-                      var websiteBox = await Hive.openBox("websites");
-                      Websites websites = Websites(websiteNameController.text, websiteURLController.text, websiteDescriptionController.text,);
-                      await websiteBox.add(websites);
+                    onPressed: widget.isButtonActive == true
+                        ? () async {
+                            if (websiteNameController.text.isNotEmpty &&
+                                websiteURLController.text.isNotEmpty &&
+                                websiteDescriptionController.text.isNotEmpty) {
+                              var websiteBox = await Hive.openBox("websites");
+                              Websites websites = Websites(
+                                websiteNameController.text,
+                                websiteURLController.text,
+                                websiteDescriptionController.text,
+                                widget.title,
+                              );
+                              await websiteBox.add(websites);
 
-                      websiteNameController.text = "";
-                      websiteURLController.text = "";
-                      websiteDescriptionController.text = "";
-                      Navigator.pop(context);
-                      setState(() {
-                        
-                      });
-                    } : null,
+                              websiteNameController.text = "";
+                              websiteURLController.text = "";
+                              websiteDescriptionController.text = "";
+                              Navigator.pop(context);
+                              showModalBottomSheet(
+                                backgroundColor: Color.fromRGBO(255, 95, 95, 1),
+                                context: context,
+                                builder: (context) {
+                                  return SizedBox(
+                                    height: 40.0,
+                                    child: Center(
+                                      child: Text(
+                                        "Website added!",
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(255, 255, 255, 1),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                              setState(() {});
+                            } else {
+                              showModalBottomSheet(
+                                backgroundColor: Color.fromRGBO(255, 95, 95, 1),
+                                context: context,
+                                builder: (context) {
+                                  return SizedBox(
+                                    height: 40.0,
+                                    child: Center(
+                                      child: Text(
+                                        "Fill in the textfields!",
+                                        style: TextStyle(
+                                          color:
+                                              Color.fromRGBO(255, 255, 255, 1),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            }
+                          }
+                        : null,
                     child: Text(
                       translation(context).addNewWebSitesBT,
                       style: TextStyle(
@@ -141,8 +188,11 @@ class _AddWebsitesState extends State<AddWebsites> {
                       ),
                     ),
                     style: ButtonStyle(
-                      backgroundColor: widget.isButtonActive == true ? MaterialStatePropertyAll(
-                          Color.fromRGBO(255, 0, 0, 1)) : MaterialStatePropertyAll(Color.fromRGBO(255, 95, 95, 1)),
+                      backgroundColor: widget.isButtonActive == true
+                          ? MaterialStatePropertyAll(
+                              Color.fromRGBO(255, 0, 0, 1))
+                          : MaterialStatePropertyAll(
+                              Color.fromRGBO(255, 95, 95, 1)),
                       fixedSize: MaterialStateProperty.all(
                         Size(260, 40),
                       ),

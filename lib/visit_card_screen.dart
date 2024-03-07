@@ -89,8 +89,8 @@ class _VisitingCardState extends State<VisitingCard>
                       child: TabBarView(
                         controller: tabController,
                         children: [
-                          OfferVisitingCardImages(isButtonActive: widget.isButtonActive),
                           AddVisitingCard(isButtonActive: widget.isButtonActive),
+                          OfferVisitingCardImages(isButtonActive: widget.isButtonActive),
                         ],
                       ),
                     ),
@@ -137,8 +137,8 @@ class _VisitingCardState extends State<VisitingCard>
                     ),
                     unselectedLabelColor: Color.fromRGBO(255, 0, 0, 1),
                     tabs: [
-                      Tab(text: translation(context).offerBT),
                       Tab(text: translation(context).mineBT),
+                      Tab(text: translation(context).offerBT),
                     ],
                   ),
                 ),
