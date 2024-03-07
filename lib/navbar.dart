@@ -31,6 +31,7 @@ class _NavBarState extends State<NavBar> {
 
   Widget DrawerMenu() {
     Box usersBox = Hive.box("users");
+    
 
     return ValueListenableBuilder(
       valueListenable: usersBox.listenable(),

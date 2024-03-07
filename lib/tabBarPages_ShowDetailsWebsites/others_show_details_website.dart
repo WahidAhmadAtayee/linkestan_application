@@ -51,7 +51,7 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
             child: Column(
               children: [
                 Expanded(
-                  child: ListView.separated(
+                  child: ListView.builder(
                     padding: const EdgeInsets.only(
                       top: 10.0,
                     ),
@@ -68,9 +68,10 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                       websiteURLController.text = websites.url;
                       websiteDescriptionController.text =
                           websites.description_websites;
-                      return Expanded(
-                            child:  websites.type != widget.title
-                          ? Center() : Container(
+                      return websites.type != widget.title
+                          ? Container() : Expanded(
+                            child: Container(
+                              margin: EdgeInsets.only(bottom: 10.0),
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     color: Color.fromRGBO(255, 0, 0, 1),
@@ -656,9 +657,6 @@ class _OthersShowDetailsWebsiteState extends State<OthersShowDetailsWebsite> {
                               ),
                           );
                     },
-                    separatorBuilder: (context, index) => SizedBox(
-                      height: 5.0,
-                    ),
                     itemCount: websiteBox.length,
                   ),
                 ),

@@ -257,7 +257,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                   if (repeat_passwordController.text ==
                                       passwordController.text) {
                                     add(
-                                      _image!.path,
+                                      // _image!.path,
+                                      "images/Salaam_Logo.png",
                                       full_nameController.text,
                                       phoneController.text,
                                       emailController.text,
